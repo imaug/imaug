@@ -1297,7 +1297,7 @@ def pool(arr, block_size, func, pad_mode="constant", pad_cval=0,
     input_dtype = arr.dtype
 
     arr_reduced = skimage.measure.block_reduce(arr, tuple(block_size), func,
-                                               cval=cval)
+                                               cval=pad_cval)
     if preserve_dtype and arr_reduced.dtype.name != input_dtype.name:
         arr_reduced = arr_reduced.astype(input_dtype)
     return arr_reduced
