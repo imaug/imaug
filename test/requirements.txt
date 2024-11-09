@@ -12,3 +12,4 @@ xdoctest >= 0.7.2
 # that library has scikit-image 15+ as a requirement, which does not exist
 # in <=3.4, so it is not tested here
 imagecorruptions; python_version >= '3.5'
+opencv-python < 4

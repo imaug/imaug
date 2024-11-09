@@ -14,7 +14,7 @@ INSTALL_REQUIRES = [
     "scipy",
     "Pillow",
     "matplotlib",
-    "scikit-image>=0.14.2",
+    "scikit-image>=0.14.2,<0.18.2",
     "opencv-python-headless<4",
     "imageio<=2.6.1; python_version<'3.5'",
     "imageio; python_version>='3.5'",
