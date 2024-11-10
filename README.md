@@ -84,7 +84,8 @@ It converts a set of input images into a new, much larger set of slightly altere
 4. [Recent Changes](#recent_changes)
 5. [Example Images](#example_images)
 6. [Code Examples](#code_examples)
-7. [Citation](#citation)
+7. [Development](#development)
+8. [Citation](#citation)
 
 
 <a name="features"/>
@@ -1177,6 +1178,20 @@ aug = iaa.WithChannels(
 )
 
 images_aug = aug(images=images)
+```
+
+<a name="development"/>
+
+## Development
+
+To install this packages with all development requirments, clone this repository, and run
+```
+pip install -e .[dev]
+```
+
+You can run the tests locally via
+```
+./test/run_tests.sh
 ```
 
 

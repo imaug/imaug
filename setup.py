@@ -27,6 +27,13 @@ ALT_INSTALL_REQUIRES = {
     "opencv-python-headless": ["opencv-python", "opencv-contrib-python", "opencv-contrib-python-headless"],
 }
 
+DEV_REQUIRES = [
+    "pytest-subtests; python_version >= '3.4'",
+    "mock; python_version < '3.3'", # unittest.mock does not exist in older versions
+    "unittest2; python_version < '3.4'",  # in 3.4, self.subTest was added
+    "xdoctest >= 0.7.2",
+]
+
 
 def check_alternative_installation(install_require, alternative_install_requires):
     """If some version version of alternative requirement installed, return alternative,
@@ -66,6 +73,9 @@ setup(
     url="https://github.com/aleju/imgaug",
     download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
     install_requires=INSTALL_REQUIRES,
+    extras_require={
+        'dev': DEV_REQUIRES,
+    },
     packages=find_packages(),
     include_package_data=True,
     package_data={
