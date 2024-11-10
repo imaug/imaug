@@ -29,6 +29,9 @@ ALT_INSTALL_REQUIRES = {
 DEV_REQUIRES = [
     "pytest-subtests",
     "xdoctest >= 0.7.2",
+    "coverage",
+    "pytest-cov",
+    "flake8",
 ]
 
 
