@@ -17,10 +17,9 @@ INSTALL_REQUIRES = [
     "scikit-image>=0.14.2,<0.17",
     "opencv-python-headless<4",
     "opencv-python<4",
-    "imageio<=2.6.1; python_version<'3.5'",
-    "imageio; python_version>='3.5'",
+    "imageio",
     "Shapely",
-    "imagecorruptions; python_version>='3.5'", # requires scikit-image 15+ which requires python>=3.5
+    "imagecorruptions",
 ]
 
 ALT_INSTALL_REQUIRES = {
@@ -28,9 +27,7 @@ ALT_INSTALL_REQUIRES = {
 }
 
 DEV_REQUIRES = [
-    "pytest-subtests; python_version >= '3.4'",
-    "mock; python_version < '3.3'", # unittest.mock does not exist in older versions
-    "unittest2; python_version < '3.4'",  # in 3.4, self.subTest was added
+    "pytest-subtests",
     "xdoctest >= 0.7.2",
 ]
 
@@ -72,6 +69,7 @@ setup(
     author_email="kontakt@ajung.name",
     url="https://github.com/aleju/imgaug",
     download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
+    python_requires='>3.5',
     install_requires=INSTALL_REQUIRES,
     extras_require={
         'dev': DEV_REQUIRES,
@@ -96,10 +94,7 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",

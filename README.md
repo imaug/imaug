@@ -122,7 +122,7 @@ It converts a set of input images into a new, much larger set of slightly altere
 
 ## Installation
 
-The library supports python 2.7 and 3.4+.
+The library supports python 3.6+.
 
 ### Installation: Anaconda
 
