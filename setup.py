@@ -16,9 +16,11 @@ INSTALL_REQUIRES = [
     "matplotlib",
     "scikit-image>=0.14.2,<0.17",
     "opencv-python-headless<4",
+    "opencv-python<4",
     "imageio<=2.6.1; python_version<'3.5'",
     "imageio; python_version>='3.5'",
-    "Shapely"
+    "Shapely",
+    "imagecorruptions; python_version>='3.5'", # requires scikit-image 15+ which requires python>=3.5
 ]
 
 ALT_INSTALL_REQUIRES = {
