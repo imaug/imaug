@@ -72,7 +72,7 @@ setup(
     author_email="kontakt@ajung.name",
     url="https://github.com/aleju/imgaug",
     download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
-    python_requires='>3.5',
+    python_requires='>3.6',
     install_requires=INSTALL_REQUIRES,
     extras_require={
         'dev': DEV_REQUIRES,
@@ -98,7 +98,6 @@ setup(
         "Natural Language :: English",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
