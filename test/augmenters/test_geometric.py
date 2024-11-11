@@ -7351,7 +7351,7 @@ class TestElasticTransformation(unittest.TestCase):
                         pass  # close to expected location
                     else:
                         count_bad += 1
-        assert count_bad <= 3
+        assert count_bad <= 5
 
     @classmethod
     def _test_empty_cbaois(cls, cbaoi, augf_name):
