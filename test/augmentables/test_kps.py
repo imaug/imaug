@@ -624,7 +624,7 @@ class TestKeypointsOnImage(unittest.TestCase):
         kpi = ia.KeypointsOnImage(keypoints=kps, shape=(5, 5, 3))
         image = np.zeros((5, 5, 3), dtype=np.uint8) + 10
 
-        kps_mask = np.zeros(image.shape[0:2], dtype=bool_)
+        kps_mask = np.zeros(image.shape[0:2], dtype=bool)
         kps_mask[2, 1] = 1
         kps_mask[4, 3] = 1
 
