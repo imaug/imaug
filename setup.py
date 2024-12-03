@@ -10,10 +10,12 @@ maps in a variety of different ways."""
 
 INSTALL_REQUIRES = [
     "six",
-    "numpy>=1.21,<1.25",
+    "numpy>=1.21",
     "scipy",
     "Pillow",
     "matplotlib",
+    #"scikit-image>=0.17", # test errors due to broken random control in imagecorruptions
+    #"scikit-image>=0.14.2,<0.18", # only possible with numpy < 1.24", # AttributeError: module 'numpy' has no attribute 'bool'.
     "scikit-image>=0.17,<0.19",
     "opencv-python-headless<4",
     "opencv-python<4",
