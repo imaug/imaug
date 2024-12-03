@@ -237,6 +237,9 @@ def _warp_affine_arr_skimage(arr, matrix, cval, mode, order, output_shape):
     if input_dtype == iadt._BOOL_DTYPE and order != 0:
         arr = arr.astype(np.float32)
 
+    if input_dtype == np.float16 and order == 0:
+        arr = arr.astype(np.float32)
+
     image_warped = tf.warp(
         arr,
         np.linalg.inv(matrix),
@@ -3203,6 +3206,9 @@ class PiecewiseAffine(meta.Augmenter):
                 input_dtype = image.dtype
                 if image.dtype.kind == "b":
                     image = image.astype(np.float64)
+
+                if image.dtype == np.float16 and samples.order[i] == 0:
+                    image = image.astype(np.float32)
 
                 image_warped = tf.warp(
                     image,
