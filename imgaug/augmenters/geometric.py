@@ -3210,12 +3210,13 @@ class PiecewiseAffine(meta.Augmenter):
                 if image.dtype == np.float16 and samples.order[i] == 0:
                     image = image.astype(np.float32)
 
+                cval = samples.get_clipped_cval(i, image.dtype)
                 image_warped = tf.warp(
                     image,
                     transformer,
                     order=samples.order[i],
                     mode=samples.mode[i],
-                    cval=samples.get_clipped_cval(i, image.dtype),
+                    cval=cval,
                     preserve_range=True,
                     output_shape=images[i].shape
                 )
@@ -3223,6 +3224,9 @@ class PiecewiseAffine(meta.Augmenter):
                 if input_dtype.kind == "b":
                     image_warped = image_warped > 0.5
                 else:
+                    # fill skimage.transform.warp output nan values with cval
+                    image_warped = np.where(np.isnan(image_warped), cval, image_warped)
+
                     # warp seems to change everything to float64, including
                     # uint8, making this necessary
                     image_warped = iadt.restore_dtypes_(
