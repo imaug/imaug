@@ -75,6 +75,7 @@ import warnings
 import six.moves as sm
 import numpy as np
 import skimage.filters
+import skimage
 
 import imgaug as ia
 from ..imgaug import _numbajit
@@ -93,6 +94,8 @@ _MISSING_PACKAGE_ERROR_MSG = (
     "https://github.com/bethgelab/imagecorruptions for the repository "
     "of the package."
 )
+
+SK_VERSION = {k:int(v) for k,v in zip(['major', 'minor'], skimage.__version__.split('.')[:2])}
 
 
 # Added in 0.4.0.
@@ -479,9 +482,14 @@ def _apply_glass_blur_imgaug(x, severity=1):
 
     sigma, max_delta, iterations = c
 
+    if SK_VERSION['major'] >= 0 and SK_VERSION['minor'] >= 19:
+        kwargs = {'channel_axis': -1}
+    else: # pre scikit-image 0.19
+        kwargs = {'multichannel': True}
+
     x = (
         skimage.filters.gaussian(
-            np.array(x) / 255., sigma=sigma, multichannel=True
+            np.array(x) / 255., sigma=sigma, **kwargs
         ) * 255
     ).astype(np.uint)
     x_shape = x.shape
@@ -502,7 +510,7 @@ def _apply_glass_blur_imgaug(x, severity=1):
     )
 
     return np.clip(
-        skimage.filters.gaussian(x / 255., sigma=sigma, multichannel=True),
+        skimage.filters.gaussian(x / 255., sigma=sigma, **kwargs),
         0, 1
     ) * 255
 
