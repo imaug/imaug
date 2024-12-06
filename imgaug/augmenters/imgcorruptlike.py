@@ -69,6 +69,7 @@ Added in 0.4.0.
 """
 from __future__ import print_function, division, absolute_import
 
+import functools
 import warnings
 
 import six.moves as sm
@@ -353,7 +354,12 @@ def apply_impulse_noise(x, severity=1, seed=None):
         Corrupted image.
 
     """
-    return _call_imgcorrupt_func("impulse_noise", seed, False, x, severity)
+    return functools.partial(
+        _call_imgcorrupt_func,
+        "impulse_noise",
+        seed,
+        False,
+     )(x, severity, seed)
 
 
 def apply_speckle_noise(x, severity=1, seed=None):

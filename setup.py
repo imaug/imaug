@@ -14,14 +14,14 @@ INSTALL_REQUIRES = [
     "scipy",
     "Pillow",
     "matplotlib",
-    #"scikit-image>=0.17", # test errors due to broken random control in imagecorruptions
-    #"scikit-image>=0.14.2,<0.18", # only possible with numpy < 1.24", # AttributeError: module 'numpy' has no attribute 'bool'.
-    "scikit-image>=0.17,<0.19",
+    "scikit-image>=0.17,<0.20",
     "opencv-python-headless<4",
     "opencv-python<4",
     "imageio",
     "Shapely",
-    "imagecorruptions",
+    # TODO(erjel): Ask for new version with included fixes on PyPi
+    #imagecorruptions>=1.1.3
+    "imagecorruptions @ git+https://github.com/erjel/imagecorruptions.git@5e71ecc0df85b567ebe48a8a3749fe5b832db91e",
 ]
 
 ALT_INSTALL_REQUIRES = {

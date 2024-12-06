@@ -5154,7 +5154,7 @@ class TestPiecewiseAffine(unittest.TestCase):
             observed = aug.augment_image(img)
             if np.sum([observed[:, :] == [10, 10, 10]]) > 0:
                 found += 1
-        breakpoint()
+
         assert found > 0
 
     def test_cval_should_be_ignored_by_heatmaps(self):
