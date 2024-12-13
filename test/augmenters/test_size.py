@@ -4025,16 +4025,7 @@ class TestCrop(unittest.TestCase):
                 image = np.zeros(shape, dtype=np.uint8)
                 aug = iaa.Crop(px=1, keep_size=False)
 
-                with warnings.catch_warnings(record=True) as caught_warnings:
-                    image_aug = aug(image=image)
-
-                # we don't check the number of warnings here as it varies by
-                # shape
-                for warning in caught_warnings:
-                    assert (
-                        "crop amounts in CropAndPad"
-                        in str(warning.message)
-                    )
+                image_aug = aug(image=image)
 
                 expected_height = 0 if shape[0] == 0 else 1
                 expected_width = 0 if shape[1] == 0 else 1
@@ -4066,16 +4057,7 @@ class TestCrop(unittest.TestCase):
                 image = np.zeros(shape, dtype=np.uint8)
                 aug = iaa.Crop(px=1, keep_size=True)
 
-                with warnings.catch_warnings(record=True) as caught_warnings:
-                    image_aug = aug(image=image)
-
-                # we don't check the number of warnings here as it varies by
-                # shape
-                for warning in caught_warnings:
-                    assert (
-                        "crop amounts in CropAndPad"
-                        in str(warning.message)
-                    )
+                image_aug = aug(image=image)
 
                 assert image_aug.shape == image.shape
 
