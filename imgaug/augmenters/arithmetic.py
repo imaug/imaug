@@ -1442,6 +1442,8 @@ def _invert_uint8_lut_pregenerated_(arr, min_value, max_value, threshold,
 # Added in 0.5.0.
 def _invert_uint8_subtract_(arr, max_value):
     # seems to work with arr.base.shape[0] > 1
+    if arr.size == 0:
+        return arr
     if arr.base is not None and arr.base.shape[0] == 1:
         arr = np.copy(arr)
     if not arr.flags["C_CONTIGUOUS"]:
