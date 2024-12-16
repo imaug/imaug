@@ -22,7 +22,7 @@ INSTALL_REQUIRES = [
     "Shapely",
     # TODO(erjel): Ask for new version with included fixes on PyPi
     #imagecorruptions>=1.1.3
-    "imagecorruptions @ git+https://github.com/erjel/imagecorruptions.git@5e71ecc0df85b567ebe48a8a3749fe5b832db91e",
+    "imagecorruptions @ git+https://github.com/erjel/imagecorruptions.git@f2a76c18d8ddbb9b0056c723d7f89c99c3632f1c",
 ]
 
 ALT_INSTALL_REQUIRES = {
@@ -75,7 +75,7 @@ setup(
     author_email="kontakt@ajung.name",
     url="https://github.com/aleju/imgaug",
     download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
-    python_requires='>3.6',
+    python_requires='>3.6,<3.13', # imagecorruptions require numba -> numba 0.60 requires python <3.13
     install_requires=INSTALL_REQUIRES,
     extras_require={
         'dev': DEV_REQUIRES,
@@ -103,6 +103,10 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Topic :: Software Development :: Libraries :: Python Modules"
