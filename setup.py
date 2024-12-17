@@ -16,8 +16,8 @@ INSTALL_REQUIRES = [
     "Pillow",
     "matplotlib",
     "scikit-image>=0.17",
-    "opencv-python-headless<4",
-    "opencv-python<4",
+    "opencv-python-headless",
+    "opencv-python",
     "imageio",
     "Shapely",
     # TODO(erjel): Ask for new version with included fixes on PyPi
