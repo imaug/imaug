@@ -22,7 +22,7 @@ INSTALL_REQUIRES = [
     "Shapely",
     # TODO(erjel): Ask for new version with included fixes on PyPi
     #imagecorruptions>=1.1.3
-    "imagecorruptions @ git+https://github.com/erjel/imagecorruptions.git@c8297624ffcf48dc81fb84e10ba3429b8592b552",
+    "imagecorruptions @ git+https://github.com/erjel/imagecorruptions.git@b4ba0fd2756a629a82866c6eb645afd04f4ed486",
 ]
 
 ALT_INSTALL_REQUIRES = {
