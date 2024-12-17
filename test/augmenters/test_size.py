@@ -3026,7 +3026,7 @@ class TestPad(unittest.TestCase):
                     iadt.get_value_range_of_dtype(dtype)
 
                 def _isclose(a, b):
-                    atol = 1e-4 if dtype == np.float16 else 1e-8
+                    atol = 1e-4 if np.dtype(dtype) == np.float16 else 1e-8
                     return np.isclose(a, b, atol=atol, rtol=0)
 
                 isize = np.dtype(dtype).itemsize
@@ -4126,7 +4126,7 @@ class TestCrop(unittest.TestCase):
                     iadt.get_value_range_of_dtype(dtype)
 
                 def _isclose(a, b):
-                    atol = 1e-4 if dtype == np.float16 else 1e-8
+                    atol = 1e-4 if np.dtype(dtype) == np.float16 else 1e-8
                     return np.isclose(a, b, atol=atol, rtol=0)
 
                 isize = np.dtype(dtype).itemsize
