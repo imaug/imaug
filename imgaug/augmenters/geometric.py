@@ -4888,7 +4888,6 @@ class _ElasticTfShiftMapGenerator(object):
         # somewhere by 2. It is fastes to multiply the (fewer) alphas, which
         # we will have to multiply the shift maps with anyways.
         alphas *= 2
-
         # Configuration for each chunk.
         # switch dx / dy, flip dx lr, flip dx ud, flip dy lr, flip dy ud
         switch = [False, True]
@@ -4958,9 +4957,8 @@ class _ElasticTfShiftMapGenerator(object):
     # Added in 0.5.0.
     @classmethod
     def _mul_alpha(cls, dx, dy, alpha):
-        # performance drops for cv2.multiply here
-        dx = dx * alpha
-        dy = dy * alpha
+        np.multiply(dx, alpha, out=dx)
+        np.multiply(dy, alpha, out=dy)
         return dx, dy
 
     # Added in 0.5.0.
