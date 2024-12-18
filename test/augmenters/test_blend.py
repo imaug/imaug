@@ -428,7 +428,7 @@ class Test_blend_alpha(unittest.TestCase):
                         assert img_blend.shape == (3, 3, c)
                         assert _allclose(
                             img_blend,
-                            0.75*max_float_dt(v1) + 0.25*max_float_dt(v2)
+                            0.75*v1 + 0.25*v2
                         )
 
                     img_fg = np.full((3, 3, 2), v1, dtype=dtype)
