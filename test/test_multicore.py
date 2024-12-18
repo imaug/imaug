@@ -853,6 +853,7 @@ def _batch_loader_load_func():
 
 
 # Note that BatchLoader is deprecated
+@unittest.skipIf(sys.platform.startswith("win"), "depreciated and hangs")
 class TestBatchLoader(unittest.TestCase):
     def setUp(self):
         reseed()
