@@ -3225,7 +3225,7 @@ class PiecewiseAffine(meta.Augmenter):
                     image_warped = image_warped > 0.5
                 else:
                     # fill skimage.transform.warp output nan values with cval
-                    image_warped = np.where(np.isnan(image_warped), cval, image_warped)
+                    image_warped = np.where(np.isnan(image_warped), cval.astype(input_dtype), image_warped)
 
                     # warp seems to change everything to float64, including
                     # uint8, making this necessary
