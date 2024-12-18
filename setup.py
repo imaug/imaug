@@ -10,8 +10,7 @@ maps in a variety of different ways."""
 
 INSTALL_REQUIRES = [
     "six",
-    #"numpy>=1.21 # opencv 3 does not support numpy 2
-    "numpy>=1.21,<2",
+    "numpy>=1.21",
     "scipy",
     "Pillow",
     "matplotlib",
