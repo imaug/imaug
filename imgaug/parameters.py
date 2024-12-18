@@ -968,7 +968,7 @@ class Deterministic(StochasticParameter):
     --------
     >>> import imgaug.parameters as iap
     >>> param = iap.Deterministic(10)
-    >>> param.draw_sample()
+    >>> param.draw_sample().item()
     10
 
     Will always sample the value 10.

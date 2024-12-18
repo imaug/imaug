@@ -697,13 +697,13 @@ def angle_between_vectors(v1, v2):
 
     Examples
     --------
-    >>> angle_between_vectors(np.float32([1, 0, 0]), np.float32([0, 1, 0]))
+    >>> angle_between_vectors(np.float32([1, 0, 0]), np.float32([0, 1, 0])).item()
     1.570796...
 
-    >>> angle_between_vectors(np.float32([1, 0, 0]), np.float32([1, 0, 0]))
+    >>> angle_between_vectors(np.float32([1, 0, 0]), np.float32([1, 0, 0])).item()
     0.0
 
-    >>> angle_between_vectors(np.float32([1, 0, 0]), np.float32([-1, 0, 0]))
+    >>> angle_between_vectors(np.float32([1, 0, 0]), np.float32([-1, 0, 0])).item()
     3.141592...
 
     """
