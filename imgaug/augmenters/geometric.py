@@ -4799,7 +4799,6 @@ class ElasticTransformation(meta.Augmenter):
             result = np.empty_like(image)
 
             for c in sm.xrange(image.shape[2]):
-                breakpoint()
                 remapped_flat = ndimage.map_coordinates(
                     image[..., c],
                     (y_shifted.flatten(), x_shifted.flatten()),
@@ -4959,7 +4958,7 @@ class _ElasticTfShiftMapGenerator(object):
     @classmethod
     def _mul_alpha(cls, dx, dy, alpha):
         dx = (dx * alpha).astype(dx.dtype)
-        dy = (dx * alpha).astype(dx.dtype)
+        dy = (dy * alpha).astype(dy.dtype)
         return dx, dy
 
     # Added in 0.5.0.
