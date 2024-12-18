@@ -1778,26 +1778,26 @@ class TestPolygon_to_bounding_box(unittest.TestCase):
     def test_square_polygon(self):
         poly = ia.Polygon([(0, 0), (1, 0), (1, 1), (0, 1)])
         bb = poly.to_bounding_box()
-        assert 0 - 1e-8 < bb.x1 < 0 + 1e-8
-        assert 0 - 1e-8 < bb.y1 < 0 + 1e-8
-        assert 1 - 1e-8 < bb.x2 < 1 + 1e-8
-        assert 1 - 1e-8 < bb.y2 < 1 + 1e-8
+        assert 0 - 1e-8 < float(bb.x1) < 0 + 1e-8
+        assert 0 - 1e-8 < float(bb.y1) < 0 + 1e-8
+        assert 1 - 1e-8 < float(bb.x2) < 1 + 1e-8
+        assert 1 - 1e-8 < float(bb.y2) < 1 + 1e-8
 
     def test_triangular_polygon(self):
         poly = ia.Polygon([(0.5, 0), (1, 1), (0, 1)])
         bb = poly.to_bounding_box()
-        assert 0 - 1e-8 < bb.x1 < 0 + 1e-8
-        assert 0 - 1e-8 < bb.y1 < 0 + 1e-8
-        assert 1 - 1e-8 < bb.x2 < 1 + 1e-8
-        assert 1 - 1e-8 < bb.y2 < 1 + 1e-8
+        assert 0 - 1e-8 < float(bb.x1) < 0 + 1e-8
+        assert 0 - 1e-8 < float(bb.y1) < 0 + 1e-8
+        assert 1 - 1e-8 < float(bb.x2) < 1 + 1e-8
+        assert 1 - 1e-8 < float(bb.y2) < 1 + 1e-8
 
     def test_triangular_polygon2(self):
         poly = ia.Polygon([(0.5, 0.5), (2, 0.1), (1, 1)])
         bb = poly.to_bounding_box()
-        assert 0.5 - 1e-8 < bb.x1 < 0.5 + 1e-8
-        assert 0.1 - 1e-8 < bb.y1 < 0.1 + 1e-8
-        assert 2.0 - 1e-8 < bb.x2 < 2.0 + 1e-8
-        assert 1.0 - 1e-8 < bb.y2 < 1.0 + 1e-8
+        assert 0.5 - 1e-8 < float(bb.x1) < 0.5 + 1e-8
+        assert 0.1 - 1e-8 < float(bb.y1) < 0.1 + 1e-8
+        assert 2.0 - 1e-8 < float(bb.x2) < 2.0 + 1e-8
+        assert 1.0 - 1e-8 < float(bb.y2) < 1.0 + 1e-8
 
 
 class TestPolygon_to_line_string(unittest.TestCase):
@@ -1878,8 +1878,8 @@ class TestPolygon_from_shapely(unittest.TestCase):
         poly = poly.change_first_point_by_index(start_idx)
 
         for (x_exp, y_exp), (x_obs, y_obs) in zip(exterior, poly.exterior):
-            assert x_exp - 1e-8 < x_obs < x_exp + 1e-8
-            assert y_exp - 1e-8 < y_obs < y_exp + 1e-8
+            assert (x_exp - 1e-8) < float(x_obs) < (x_exp + 1e-8)
+            assert (y_exp - 1e-8) < float(y_obs) < (y_exp + 1e-8)
 
     def test_polygon_with_zero_points(self):
         poly_shapely = shapely.geometry.Polygon([])
