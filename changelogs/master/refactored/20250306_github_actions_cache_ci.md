@@ -1,6 +1,9 @@
-# Changed `actions/cache`
+# Changed github actions
 
-The previous version 1 is now depreciated. 
-The pipeline now uses version 4. Additionally,
-the caching uses the hash of `setup.py` instead
-of the now deleted `requirements.txt`.
+Version 1 of `actions/cache` is now depreciated. 
+The pipeline switched version 4.
+
+Since `requirements.txt` was deleted, the caching
+not relies on `setup.py` instead.
+
+Python 3.7 is not available on `ubuntu-latest` runners.
