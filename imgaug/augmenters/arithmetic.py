@@ -166,25 +166,18 @@ def _add_scalar_to_uint8_(image, value):
         value = round(value)
     elif ia.is_np_scalar(value) or ia.is_np_array(value):
         is_single_value = (value.size == 1)
-        value = np.round(value) if value.dtype.kind == "f" else value
+        value = np.round(value).astype(int) if value.dtype.kind == "f" else value
     else:
         is_single_value = False
-    is_channelwise = not is_single_value
-
-    if image.ndim == 2 and is_single_value:
-        return cv2.add(image, value, dst=image, dtype=cv2.CV_8U)
 
     input_shape = image.shape
-    image = image.reshape(-1, 1)
-    values = np.array(value)
-    if not is_channelwise:
-        values = np.broadcast_to(values, image.shape)
+
+    if is_single_value and (image.ndim == 2 or (image.ndim == 3 and image.shape[-1] == 1)):
+        values = value       
     else:
-        values = np.tile(values, image.size // len(values))
+        values = np.broadcast_to(value, input_shape)
 
-    image_add = cv2.add(image, values, dst=image, dtype=cv2.CV_8U)
-
-    return image_add.reshape(input_shape)
+    return cv2.add(image, values, dtype=cv2.CV_8U).reshape(input_shape)
 
 
 def _add_scalar_to_non_uint8(image, value):
