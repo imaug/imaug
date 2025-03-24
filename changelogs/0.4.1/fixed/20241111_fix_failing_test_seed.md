@@ -1,0 +1,1 @@
+* Fixed too strict test condition for `_test_image_cbaoi_alignment` for unluck seeds.

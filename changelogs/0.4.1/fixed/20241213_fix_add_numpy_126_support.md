@@ -1,0 +1,1 @@
+* Fixed NumPy 1.26 support in `test/test_random.py`.

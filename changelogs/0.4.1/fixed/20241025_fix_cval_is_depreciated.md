@@ -1,0 +1,1 @@
+* Fixed issue with depreciated `cval` use in `imgaug.pool`.
