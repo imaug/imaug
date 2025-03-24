@@ -66,12 +66,11 @@ def get_install_requirements(main_requires, alternative_requires):
 INSTALL_REQUIRES = get_install_requirements(INSTALL_REQUIRES, ALT_INSTALL_REQUIRES)
 
 setup(
-    name="imgaug",
-    version="0.4.0", # TODO(erjel)
+    name="imaug",
+    version="0.4.1",
     author="imaug",
     author_email="ej_foss@mailbox.org",
     url="https://github.com/imaug/imaug",
-    # TODO(erjel) download_url="https://github.com/aleju/imgaug/archive/0.4.0.tar.gz",
     python_requires='>3.6,<3.13', # imagecorruptions require numba -> numba 0.60 requires python <3.13
     install_requires=INSTALL_REQUIRES,
     extras_require={

@@ -1,0 +1,1 @@
+* Fixed multicore support in ``random.seed` by enforcing int seed dtypes.

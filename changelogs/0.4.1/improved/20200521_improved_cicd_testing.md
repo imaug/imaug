@@ -2,9 +2,10 @@
 
 This patch improves the CI/CD environment by adding
 github actions. The library is now automatically tested
-in Ubuntu with python 2.7, 3.5, 3.6, 3.7 and 3.8,
+in Ubuntu with python ~~2.7, 3.5, 3.6, 3.7 and~~ 3.8,
+3.9, 3.10, 3.11, and 3.12,
 as well as MacOS and Windows with the same python
-versions (except for 2.7 in Windows).
+versions ~~(except for 2.7 in Windows)~~.
 Previously, only Ubuntu with python <=3.7 was
 automatically tested in the CI/CD chain.
 
