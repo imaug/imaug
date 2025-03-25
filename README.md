@@ -177,7 +177,7 @@ repository [imaug-doc](https://github.com/imaug/imaug-doc).
 <a name="recent_changes"/>
 
 ## Recent Changes
-
+* **0.4.1**: Added support for python 3.9, 3.10, 3.11, 3.12 and numpy 2
 * **0.4.0**: Added new augmenters, changed backend to batchwise augmentation,
   support for numpy 1.18 and python 3.8.
 * **0.3.0**: Reworked segmentation map augmentation, adapted to numpy 1.17+
