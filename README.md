@@ -133,7 +133,7 @@ You can deinstall the library again via `conda remove imgaug`.
 -->
 
 ### Installation: pip
-Then install imaug either via [PyPi](https://pypi.org/project/imaug) (can lag behind the GitHub version):
+Install imaug either from [PyPi](https://pypi.org/project/imaug) (can lag behind the GitHub version):
 ```bash
 pip install imaug
 ```
