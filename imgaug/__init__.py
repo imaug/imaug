@@ -13,4 +13,4 @@ import imgaug.parameters as parameters
 import imgaug.dtypes as dtypes
 import imgaug.data as data
 
-__version__ = '0.4.0'
+__version__ = '0.4.1'
