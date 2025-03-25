@@ -21,7 +21,7 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
         # see supported versions at
         # https://raw.githubusercontent.com/actions/python-versions/master/versions-manifest.json
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12', '3.13']
         # test only the latest 3.x on mac
         # test only the latest 3.x on windows
         exclude:
@@ -37,6 +37,8 @@ jobs:
             python-version: '3.11'
           - os: windows-latest
             python-version: '3.7'
+          - os: macos-latest
+            python-version: '3.12'
           - os: windows-latest
             python-version: '3.8'
           - os: windows-latest
@@ -45,6 +47,8 @@ jobs:
             python-version: '3.10'
           - os: windows-latest
             python-version: '3.11'
+          - os: windows-latest
+            python-version: '3.12'
     env:
       OS: ${{ matrix.os }}
       PYTHON: ${{ matrix.python-version }}
