@@ -16,6 +16,11 @@ The package is now running on and tested against Python 3.13.
 
 # Refactored
 
+## Refactored GitHub Actions [#9](https://github.com/imaug/imaug/pull/9)
+
+* Deleted an obsolete Python 3.7 exclude in `test_pull_request.yml`. [#9](https://github.com/imaug/imaug/pull/9)
+
+
 # Fixed
 
 # Improved
