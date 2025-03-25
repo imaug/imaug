@@ -71,7 +71,7 @@ setup(
     author="imaug",
     author_email="ej_foss@mailbox.org",
     url="https://github.com/imaug/imaug",
-    python_requires='>3.6,<3.13', # imagecorruptions require numba -> numba 0.60 requires python <3.13
+    python_requires='>3.6,<3.14',
     install_requires=INSTALL_REQUIRES,
     extras_require={
         'dev': DEV_REQUIRES,
@@ -102,6 +102,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Topic :: Software Development :: Libraries :: Python Modules"
