@@ -133,7 +133,7 @@ You can deinstall the library again via `conda remove imgaug`.
 -->
 
 ### Installation: pip
-Then install imaug either via [PyPi](https://pypi.org/project/imaug) (can lag behind the GitHub version):
+Install imaug either from [PyPi](https://pypi.org/project/imaug) (can lag behind the GitHub version):
 ```bash
 pip install imaug
 ```
@@ -177,7 +177,7 @@ repository [imaug-doc](https://github.com/imaug/imaug-doc).
 <a name="recent_changes"/>
 
 ## Recent Changes
-
+* **0.4.1**: Added support for python 3.9, 3.10, 3.11, 3.12 and numpy 2
 * **0.4.0**: Added new augmenters, changed backend to batchwise augmentation,
   support for numpy 1.18 and python 3.8.
 * **0.3.0**: Reworked segmentation map augmentation, adapted to numpy 1.17+
@@ -1196,68 +1196,83 @@ You can run the tests locally via
 ## Citation
 
 <!--
-TODO(erjel)
 Note: the table only lists people who have their real names (publicly)
 set in their github
 
 List of username-realname matching based on
-https://github.com/imaug/imaug/graphs/contributors ordered by commits:
+https://github.com/imaug/imaug/graphs/contributors ordered in alphabetic order:
 
-wkentaro            Wada, Kentaro
-Erotemic            Crall, Jon
-stnk20              Tanaka, Satoshi
-jgraving            Graving, Jake
-creinders           Reinders, Christoph     (lastname not public on github, guessed from username)
-SarthakYadav        Yadav, Sarthak
-nektor211           ?
+abnera/avn3r        Ayala-Acevedo, Abner
 joybanerjee08       Banerjee, Joy
-gaborvecsei         Vecsei, Gábor
-adamwkraft          Kraft, Adam
-ZhengRui            Rui, Zheng
 Borda               Borovec, Jirka
-vallentin           Vallentin, Christian
-ss18                Zhydenko, Semen
-kilsenp             Pfeiffer, Kilian
-kacper1095          ?
-ismaelfm            Fernández, Ismael
+fchouteau           Chouteau, Florient
+Erotemic            Crall, Jon
 fmder               De Rainville, François-Michel
-fchouteau           ?
-chi-hung            Weng, Chi-Hung
-apatsekin           ?
-abnera              Ayala-Acevedo, Abner
-RephaelMeudec       Meudec, Raphael
+ismaelfm            Fernández, Ismael
+jgraving            Graving, Jake
+erjel               Jelli, Eric
+aleju               Jung, Alexander B.**
+adamwkraft          Kraft, Adam
 Petemir             Laporte, Matias
+RephaelMeudec       Meudec, Raphael
+jduanen             Northcutt, Duane
+kilsenp             Pfeiffer, Kilian
+AlexanderRagnarsson Ragnarsson*, Alexander*
+creinders           Reinders, Christoph
+ZhengRui            Rui, Zheng
+stnk20              Tanaka, Satoshi
+vallentin           Vallentin, Christian
+gaborvecsei         Vecsei, Gábor
+wkentaro            Wada, Kentaro
+chi-hung            Weng, Chi-Hung
+SarthakYadav        Yadav, Sarthak
+ss18                Zhydenko, Semen
+apatsekin           ?
+kacper1095          ?
+nektor211           ?
+u7122029            ?
+
+* guessed from GitHub username
+** original author
+*** second author
+
+Policy: Everyone who passed the original author in number of commits
+gets listed as second author (in alphabetical order).
+All other contributors are listed in alphabetrical order behind those.
 
 -->
 If this library has helped you during your research, feel free to cite it:
 ```latex
 @misc{imaug,
   author = {Jung, Alexander B.
-            and Wada, Kentaro
-            and Crall, Jon
-            and Tanaka, Satoshi
-            and Graving, Jake
-            and Reinders, Christoph
-            and Yadav, Sarthak
-            and Banerjee, Joy
-            and Vecsei, Gábor
-            and Kraft, Adam
-            and Rui, Zheng
-            and Borovec, Jirka
-            and Vallentin, Christian
-            and Zhydenko, Semen
-            and Pfeiffer, Kilian
-            and Cook, Ben
-            and Fernández, Ismael
-            and De Rainville, François-Michel
-            and Weng, Chi-Hung
             and Ayala-Acevedo, Abner
-            and Meudec, Raphael
+            and Banerjee, Joy
+            and Borovec, Jirka
+            and Chouteau, Florient
+            and Crall, Jon
+            and De Rainville, François-Michel
+            and Fernández, Ismael
+            and Graving, Jake
+            and Jelli, Eric
+            and Kraft, Adam
             and Laporte, Matias
-            and others},
+            and Meudec, Raphael
+            and Northcutt, Duane
+            and Pfeiffer, Kilian
+            and Ragnarsson, Alexander
+            and Reinders, Christoph
+            and Rui, Zheng
+            and Tanaka, Satoshi
+            and Vallentin, Christian
+            and Vecsei, Gábor
+            and Wada, Kentaro
+            and Weng, Chi-Hung
+            and Yadav, Sarthak
+            and Zhydenko, Semen
+            and other imaug contributors},
   title = {{imaug}},
   howpublished = {\url{https://github.com/imaug/imaug}},
   year = {2025},
-  note = {Online; accessed 10-Mar-2025}
+  note = {Online; accessed 25-Mar-2025}
 }
 ```
