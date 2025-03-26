@@ -1540,6 +1540,8 @@ def test_draw_grid():
         assert grid.dtype == np.dtype(dtype)
         assert _allclose(grid, expected)
 
+# TODO(erjel): Add ia.imshow test!
+
 
 def test_classes_and_functions_marked_deprecated():
     import imgaug.imgaug as iia
