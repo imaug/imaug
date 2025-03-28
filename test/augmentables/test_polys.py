@@ -859,6 +859,34 @@ class TestPolygon_clip_out_of_image(unittest.TestCase):
         assert isinstance(multipoly_clipped, list)
         assert len(multipoly_clipped) == 0
 
+    def test_polygon_with_point_and_rectangle_inside_image(self):
+        # square with line polygon,
+        # but rectangle with point are inside the image
+        poly = ia.Polygon([
+            (10, 15), (0, 10), # line
+            (10, 15), (10, 5), (20, 5), (20, 15) # square
+        ])
+        multipoly_clipped = poly.clip_out_of_image((10, 20, 3))
+        assert isinstance(multipoly_clipped, list)
+        assert len(multipoly_clipped) == 1
+        assert multipoly_clipped[0].exterior_almost_equals(np.float32([
+            (10, 10), (10,  5), (20,  5), (20, 10) # rectangle
+        ]))
+
+    def test_polygon_with_line_and_rectangle_inside_image(self):
+        # square with line polygon,
+        # but rectangle with line are inside the image
+        poly = ia.Polygon([
+            (10, 15), (0, 5), # line
+            (10, 15), (10, 5), (20, 5), (20, 15) # square
+        ])
+        multipoly_clipped = poly.clip_out_of_image((10, 20, 3))
+        assert isinstance(multipoly_clipped, list)
+        assert len(multipoly_clipped) == 1
+        assert multipoly_clipped[0].exterior_almost_equals(np.float32([
+            (10, 10), (10,  5), (20,  5), (20, 10) # rectangle
+        ]))
+
 
 class TestPolygon_shift_(unittest.TestCase):
     @property
