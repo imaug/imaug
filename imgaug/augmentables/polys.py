@@ -596,6 +596,13 @@ class Polygon(object):
                         shapely.geometry.MultiLineString,
                         shapely.geometry.point.Point,
                         shapely.geometry.MultiPoint)
+
+        if isinstance(multipoly_inter_shapely, shapely.geometry.GeometryCollection):
+            # May contain non-polygon geometrical objects, let's remove them and leave just the polygon objects (if any):
+            multipoly_inter_shapely = shapely.geometry.MultiPolygon(
+                [geom for geom in multipoly_inter_shapely.geoms if isinstance(geom, shapely.geometry.Polygon)]
+            )
+                    
         if isinstance(multipoly_inter_shapely, shapely.geometry.Polygon):
             multipoly_inter_shapely = shapely.geometry.MultiPolygon(
                 [multipoly_inter_shapely])
@@ -608,12 +615,6 @@ class Polygon(object):
             # polygons that become (one or more) lines/points after clipping
             # are here ignored
             multipoly_inter_shapely = shapely.geometry.MultiPolygon([])
-        elif isinstance(multipoly_inter_shapely,
-                        shapely.geometry.GeometryCollection):
-            # Shapely returns GEOMETRYCOLLECTION EMPTY if there is nothing
-            # remaining after the clip.
-            assert multipoly_inter_shapely.is_empty
-            return []
         else:
             raise Exception(
                 "Got an unexpected result of type %s from Shapely for "
