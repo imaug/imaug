@@ -1220,6 +1220,7 @@ kilsenp             Pfeiffer, Kilian
 AlexanderRagnarsson Ragnarsson*, Alexander*
 creinders           Reinders, Christoph
 ZhengRui            Rui, Zheng
+ranshadmi           Shadmi, Ran
 stnk20              Tanaka, Satoshi
 vallentin           Vallentin, Christian
 gaborvecsei         Vecsei, Gábor
@@ -1262,6 +1263,7 @@ If this library has helped you during your research, feel free to cite it:
             and Ragnarsson, Alexander
             and Reinders, Christoph
             and Rui, Zheng
+            and Shadmi, Ran
             and Tanaka, Satoshi
             and Vallentin, Christian
             and Vecsei, Gábor
