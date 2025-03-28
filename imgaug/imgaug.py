@@ -1966,7 +1966,7 @@ def imshow(image, backend=IMSHOW_BACKEND_DEFAULT):
         w = max(w, 6)
 
         fig, ax = plt.subplots(figsize=(w, h), dpi=dpi)
-        fig.canvas.set_window_title("imgaug.imshow(%s)" % (image.shape,))
+        fig.canvas.manager.set_window_title("imgaug.imshow(%s)" % (image.shape,))
         # cmap=gray is automatically only activate for grayscale images
         ax.imshow(image, cmap="gray")
         plt.show()
