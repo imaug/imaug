@@ -24,5 +24,6 @@ The package is now running on and tested against Python 3.13.
 # Fixed
 
 * Fixed old version string. [#11](https://github.com/imaug/imaug/pull/11)
+* Fixed matplotlib's removed `set_window_title` in `imshow`. [#12](https://github.com/imaug/imaug/pull/12)
 
 # Improved
