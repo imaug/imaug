@@ -41,7 +41,7 @@ def main():
         iaa.AffineCv2(scale=1.2),
         iaa.AffineCv2(scale=0.8),
         iaa.AffineCv2(shear=45),
-        iaa.AffineCv2(rotate=45, cval=256),
+        iaa.AffineCv2(rotate=45, cval=255),
         iaa.AffineCv2(translate_px=20, mode=cv2.BORDER_CONSTANT),
         iaa.AffineCv2(translate_px=20, mode=cv2.BORDER_REPLICATE),
         iaa.AffineCv2(translate_px=20, mode=cv2.BORDER_REFLECT),
