@@ -741,12 +741,12 @@ class LowFog(CloudLayer):
             intensity_mean=(220, 240),
             intensity_freq_exponent=(-2.0, -1.7),
             intensity_coarse_scale=2.5,
-            alpha_min=(0.5, 0.7),
+            alpha_min=(0.6, 0.8),
             alpha_multiplier=0.3,
-            alpha_size_px_max=(4, 8),
-            alpha_freq_exponent=(-3.0, -2.5),
-            sparsity=1.0,
-            density_multiplier=(0.5, 0.8),
+            alpha_size_px_max=(3, 8),
+            alpha_freq_exponent=(-3.7, -2.2),
+            sparsity=0.99,
+            density_multiplier=(0.45, 0.88),
             seed=seed, name=name,
             random_state=random_state, deterministic=deterministic
         )
