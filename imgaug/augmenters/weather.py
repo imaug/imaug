@@ -738,18 +738,17 @@ class LowFog(CloudLayer):
                  seed=None, name=None,
                  random_state="deprecated", deterministic="deprecated"):
         super(LowFog, self).__init__(
-            intensity_mean=(220, 240),
-            intensity_freq_exponent=(-2.0, -1.7),
-            intensity_coarse_scale=2.5,
-            alpha_min=(0.6, 0.8),
+            intensity_mean=(220, 255),
+            intensity_freq_exponent=(-2.0, -1.5),
+            intensity_coarse_scale=2,
+            alpha_min=(0.7, 0.9),
             alpha_multiplier=0.3,
-            alpha_size_px_max=(3, 8),
-            alpha_freq_exponent=(-3.7, -2.2),
-            sparsity=0.99,
-            density_multiplier=(0.45, 0.88),
+            alpha_size_px_max=(2, 8),
+            alpha_freq_exponent=(-4.0, -2.0),
+            sparsity=0.9,
+            density_multiplier=(0.4, 0.9),
             seed=seed, name=name,
-            random_state=random_state, deterministic=deterministic
-        )
+            random_state=random_state, deterministic=deterministic)
 
 
 class MediumFog(CloudLayer):
