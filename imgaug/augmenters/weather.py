@@ -598,7 +598,84 @@ class Clouds(meta.SomeOf):
 
 # TODO add vertical gradient alpha to have fog only at skylevel/groundlevel
 # TODO add configurable parameters
-class Fog(CloudLayer):
+# class Fog(CloudLayer):
+#     """Add fog to images.
+
+#     This is a wrapper around :class:`~imgaug.augmenters.weather.CloudLayer`.
+#     It executes a single layer per image with a configuration leading to
+#     fairly dense clouds with low-frequency patterns.
+
+#     This augmenter seems to be fairly robust w.r.t. the image size. Tested
+#     with ``96x128``, ``192x256`` and ``960x1280``.
+
+#     **Supported dtypes**:
+
+#         * ``uint8``: yes; tested
+#         * ``uint16``: no (1)
+#         * ``uint32``: no (1)
+#         * ``uint64``: no (1)
+#         * ``int8``: no (1)
+#         * ``int16``: no (1)
+#         * ``int32``: no (1)
+#         * ``int64``: no (1)
+#         * ``float16``: no (1)
+#         * ``float32``: no (1)
+#         * ``float64``: no (1)
+#         * ``float128``: no (1)
+#         * ``bool``: no (1)
+
+#         - (1) Parameters of this augmenter are optimized for the value range
+#               of ``uint8``. While other dtypes may be accepted, they will lead
+#               to images augmented in ways inappropriate for the respective
+#               dtype.
+
+#     Parameters
+#     ----------
+#     seed : None or int or imgaug.random.RNG or numpy.random.Generator or numpy.random.BitGenerator or numpy.random.SeedSequence or numpy.random.RandomState, optional
+#         See :func:`~imgaug.augmenters.meta.Augmenter.__init__`.
+
+#     name : None or str, optional
+#         See :func:`~imgaug.augmenters.meta.Augmenter.__init__`.
+
+#     random_state : None or int or imgaug.random.RNG or numpy.random.Generator or numpy.random.BitGenerator or numpy.random.SeedSequence or numpy.random.RandomState, optional
+#         Old name for parameter `seed`.
+#         Its usage will not yet cause a deprecation warning,
+#         but it is still recommended to use `seed` now.
+#         Outdated since 0.4.0.
+
+#     deterministic : bool, optional
+#         Deprecated since 0.4.0.
+#         See method ``to_deterministic()`` for an alternative and for
+#         details about what the "deterministic mode" actually does.
+
+#     Examples
+#     --------
+#     >>> import imgaug.augmenters as iaa
+#     >>> aug = iaa.Fog()
+
+#     Create an augmenter that adds fog to images.
+
+#     """
+
+#     def __init__(self,
+#                  seed=None, name=None,
+#                  random_state="deprecated", deterministic="deprecated"):
+#         super(Fog, self).__init__(
+#             intensity_mean=(220, 255),
+#             intensity_freq_exponent=(-2.0, -1.5),
+#             intensity_coarse_scale=2,
+#             alpha_min=(0.7, 0.9),
+#             alpha_multiplier=0.3,
+#             alpha_size_px_max=(2, 8),
+#             alpha_freq_exponent=(-4.0, -2.0),
+#             sparsity=0.9,
+#             density_multiplier=(0.4, 0.9),
+#             seed=seed, name=name,
+#             random_state=random_state, deterministic=deterministic)
+
+
+#code for lowfog 
+class LowFog(CloudLayer):
     """Add fog to images.
 
     This is a wrapper around :class:`~imgaug.augmenters.weather.CloudLayer`.
@@ -651,7 +728,7 @@ class Fog(CloudLayer):
     Examples
     --------
     >>> import imgaug.augmenters as iaa
-    >>> aug = iaa.Fog()
+    >>> aug = iaa.LowFog()
 
     Create an augmenter that adds fog to images.
 
@@ -660,18 +737,77 @@ class Fog(CloudLayer):
     def __init__(self,
                  seed=None, name=None,
                  random_state="deprecated", deterministic="deprecated"):
-        super(Fog, self).__init__(
-            intensity_mean=(220, 255),
-            intensity_freq_exponent=(-2.0, -1.5),
-            intensity_coarse_scale=2,
-            alpha_min=(0.7, 0.9),
-            alpha_multiplier=0.3,
-            alpha_size_px_max=(2, 8),
-            alpha_freq_exponent=(-4.0, -2.0),
-            sparsity=0.9,
-            density_multiplier=(0.4, 0.9),
+        super(LowFog, self).__init__(
+            intensity_mean=(230, 255),
+            intensity_freq_exponent=(-1.8, -1.5),
+            intensity_coarse_scale=1.5,
+            alpha_min=(0.2, 0.4),
+            alpha_multiplier=0.2,
+            alpha_size_px_max=(6, 10),
+            alpha_freq_exponent=(-2.5, -2.0),
+            sparsity=1.2,
+            density_multiplier=(0.2, 0.4),
             seed=seed, name=name,
-            random_state=random_state, deterministic=deterministic)
+            random_state=random_state, deterministic=deterministic
+        )
+
+
+class MediumFog(CloudLayer):
+    """"
+    Examples
+    --------
+    >>> import imgaug.augmenters as iaa
+    >>> aug = iaa.MediumFog()
+
+    Create an augmenter that adds fog to images.
+
+    """
+
+    def __init__(self,
+                 seed=None, name=None,
+                 random_state="deprecated", deterministic="deprecated"):
+        super(MediumFog, self).__init__(
+            intensity_mean=(220, 240),
+            intensity_freq_exponent=(-2.0, -1.7),
+            intensity_coarse_scale=2.5,
+            alpha_min=(0.5, 0.7),
+            alpha_multiplier=0.3,
+            alpha_size_px_max=(4, 8),
+            alpha_freq_exponent=(-3.0, -2.5),
+            sparsity=1.0,
+            density_multiplier=(0.5, 0.8),
+            seed=seed, name=name,
+            random_state=random_state, deterministic=deterministic
+        )
+
+
+class HighFog(CloudLayer):
+    """"
+    Examples
+    --------
+    >>> import imgaug.augmenters as iaa
+    >>> aug = iaa.HighFog()
+
+    Create an augmenter that adds fog to images.
+
+    """
+
+    def __init__(self,
+                 seed=None, name=None,
+                 random_state="deprecated", deterministic="deprecated"):
+        super(HighFog, self).__init__(
+            intensity_mean=(210, 230),
+            intensity_freq_exponent=(-2.3, -2.0),
+            intensity_coarse_scale=3,
+            alpha_min=(0.7, 0.9),
+            alpha_multiplier=0.4,
+            alpha_size_px_max=(2, 6),
+            alpha_freq_exponent=(-3.5, -2.5),
+            sparsity=0.9,
+            density_multiplier=(0.8, 1.0),
+            seed=seed, name=name,
+            random_state=random_state, deterministic=deterministic
+        )
 
 
 # TODO add examples and add these to the overview docs
