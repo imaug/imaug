@@ -738,17 +738,18 @@ class LowFog(CloudLayer):
                  seed=None, name=None,
                  random_state="deprecated", deterministic="deprecated"):
         super(LowFog, self).__init__(
-            intensity_mean=(220, 255),
-            intensity_freq_exponent=(-2.0, -1.5),
-            intensity_coarse_scale=2,
-            alpha_min=(0.7, 0.9),
-            alpha_multiplier=0.3,
-            alpha_size_px_max=(2, 8),
-            alpha_freq_exponent=(-4.0, -2.0),
-            sparsity=0.9,
-            density_multiplier=(0.4, 0.9),
+            intensity_mean=(230, 255),              # high brightness
+            intensity_freq_exponent=(-1.8, -1.5),   # soft patterns
+            intensity_coarse_scale=1.5,
+            alpha_min=(0.6, 0.8),                   # more visible minimum fog
+            alpha_multiplier=0.5,                   # stronger fog overlay
+            alpha_size_px_max=(6, 10),
+            alpha_freq_exponent=(-2.5, -2.0),
+            sparsity=0.8,                           # denser cloud mask
+            density_multiplier=(0.6, 0.8),          # much stronger overall fog
             seed=seed, name=name,
-            random_state=random_state, deterministic=deterministic)
+            random_state=random_state, deterministic=deterministic
+        )
 
 
 class MediumFog(CloudLayer):
