@@ -738,15 +738,15 @@ class LowFog(CloudLayer):
                  seed=None, name=None,
                  random_state="deprecated", deterministic="deprecated"):
         super(LowFog, self).__init__(
-            intensity_mean=(230, 255),
-            intensity_freq_exponent=(-1.8, -1.5),
-            intensity_coarse_scale=1.5,
-            alpha_min=(0.2, 0.4),
-            alpha_multiplier=0.2,
-            alpha_size_px_max=(6, 10),
-            alpha_freq_exponent=(-2.5, -2.0),
-            sparsity=1.2,
-            density_multiplier=(0.2, 0.4),
+            intensity_mean=(220, 240),
+            intensity_freq_exponent=(-2.0, -1.7),
+            intensity_coarse_scale=2.5,
+            alpha_min=(0.5, 0.7),
+            alpha_multiplier=0.3,
+            alpha_size_px_max=(4, 8),
+            alpha_freq_exponent=(-3.0, -2.5),
+            sparsity=1.0,
+            density_multiplier=(0.5, 0.8),
             seed=seed, name=name,
             random_state=random_state, deterministic=deterministic
         )
@@ -767,18 +767,17 @@ class MediumFog(CloudLayer):
                  seed=None, name=None,
                  random_state="deprecated", deterministic="deprecated"):
         super(MediumFog, self).__init__(
-            intensity_mean=(220, 240),
-            intensity_freq_exponent=(-2.0, -1.7),
-            intensity_coarse_scale=2.5,
-            alpha_min=(0.5, 0.7),
+            intensity_mean=(220, 255),
+            intensity_freq_exponent=(-2.0, -1.5),
+            intensity_coarse_scale=2,
+            alpha_min=(0.7, 0.9),
             alpha_multiplier=0.3,
-            alpha_size_px_max=(4, 8),
-            alpha_freq_exponent=(-3.0, -2.5),
-            sparsity=1.0,
-            density_multiplier=(0.5, 0.8),
+            alpha_size_px_max=(2, 8),
+            alpha_freq_exponent=(-4.0, -2.0),
+            sparsity=0.9,
+            density_multiplier=(0.4, 0.9),
             seed=seed, name=name,
-            random_state=random_state, deterministic=deterministic
-        )
+            random_state=random_state, deterministic=deterministic)
 
 
 class HighFog(CloudLayer):
