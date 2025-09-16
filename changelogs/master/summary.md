@@ -10,21 +10,8 @@
 
 # Changed
 
-## Added Python 3.13 support [#8](https://github.com/imaug/imaug/pull/8)
-
-The package is now running on and tested against Python 3.13.
-
 # Refactored
 
-## Refactored GitHub Actions [#9](https://github.com/imaug/imaug/pull/9)
-
-* Deleted an obsolete Python 3.7 exclude in `test_pull_request.yml`. [#9](https://github.com/imaug/imaug/pull/9)
-
-
 # Fixed
-
-* Fixed old version string. [#11](https://github.com/imaug/imaug/pull/11)
-* Fixed matplotlib's removed `set_window_title` in `imshow`. [#12](https://github.com/imaug/imaug/pull/12)
-* Fixed `shapely.geometry.GeometryCollection` handling in `Polygon.clip_out_of_image`. [#13](https://github.com/imaug/imaug/pull/13)
 
 # Improved
