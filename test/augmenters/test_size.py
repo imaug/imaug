@@ -14,7 +14,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 import cv2
 
 import imgaug as ia
@@ -425,7 +424,7 @@ def test_pad():
             if nb_channels is not None:
                 arr = arr[..., np.newaxis]
                 arr = np.tile(arr, (1, 1, nb_channels))
-                for c in sm.xrange(nb_channels):
+                for c in range(nb_channels):
                     arr[..., c] += c
             arr_pad = iaa.pad(arr, top=1, mode="constant", cval=0)
             assert arr_pad.dtype.name == np.dtype(dtype).name
@@ -569,7 +568,7 @@ def test_pad():
             if nb_channels is not None:
                 arr = arr[..., np.newaxis]
                 arr = np.tile(arr, (1, 1, nb_channels))
-                for c in sm.xrange(nb_channels):
+                for c in range(nb_channels):
                     arr[..., c] += c
             arr_pad = iaa.pad(arr, top=1, mode="constant", cval=0)
             assert arr_pad.dtype.name == np.dtype(dtype).name
@@ -1217,7 +1216,7 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize([12, 14])
         seen2d = [False, False]
         seen3d = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in [(12, 12), (14, 14)]
@@ -1239,7 +1238,7 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize((12, 14))
         seen2d = [False, False, False]
         seen3d = [False, False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in [(12, 12), (13, 13), (14, 14)]
@@ -1362,7 +1361,7 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize({"height": [12, 14], "width": 12})
         seen2d = [False, False]
         seen3d = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in [(12, 12), (14, 12)]
@@ -1384,7 +1383,7 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize({"height": 12, "width": [12, 14]})
         seen2d = [False, False]
         seen3d = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in [(12, 12), (12, 14)]
@@ -1406,7 +1405,7 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize({"height": 12, "width": iap.Choice([12, 14])})
         seen2d = [False, False]
         seen3d = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in [(12, 12), (12, 14)]
@@ -1428,7 +1427,7 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize({"height": (12, 14), "width": 12})
         seen2d = [False, False, False]
         seen3d = [False, False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in [(12, 12), (13, 12), (14, 12)]
@@ -1476,7 +1475,7 @@ class TestResize(unittest.TestCase):
         expected_shapes_3d = [
             (self.image3d.shape[0]*2, self.image3d.shape[1]*2, 3),
             (self.image3d.shape[0]*4, self.image3d.shape[1]*4, 3)]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in expected_shapes_2d
@@ -1504,7 +1503,7 @@ class TestResize(unittest.TestCase):
         expected_shapes_3d = [
             (self.image3d.shape[0]*2, self.image3d.shape[1]*2, 3),
             (self.image3d.shape[0]*4, self.image3d.shape[1]*4, 3)]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(self.image2d)
             observed3d = aug.augment_image(self.image3d)
             assert observed2d.shape in expected_shapes_2d
@@ -1528,13 +1527,13 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize((0.76, 1.0))
         not_seen2d = set()
         not_seen3d = set()
-        for size in sm.xrange(3, 4+1):
+        for size in range(3, 4+1):
             not_seen2d.add((size, size))
-        for size in sm.xrange(3, 4+1):
+        for size in range(3, 4+1):
             not_seen3d.add((size, size, 3))
         possible2d = set(list(not_seen2d))
         possible3d = set(list(not_seen3d))
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(image2d)
             observed3d = aug.augment_image(image3d)
             assert observed2d.shape in possible2d
@@ -1554,15 +1553,15 @@ class TestResize(unittest.TestCase):
         aug = iaa.Resize({"height": (0.76, 1.0), "width": (0.76, 1.0)})
         not_seen2d = set()
         not_seen3d = set()
-        for hsize in sm.xrange(3, 4+1):
-            for wsize in sm.xrange(3, 4+1):
+        for hsize in range(3, 4+1):
+            for wsize in range(3, 4+1):
                 not_seen2d.add((hsize, wsize))
-        for hsize in sm.xrange(3, 4+1):
-            for wsize in sm.xrange(3, 4+1):
+        for hsize in range(3, 4+1):
+            for wsize in range(3, 4+1):
                 not_seen3d.add((hsize, wsize, 3))
         possible2d = set(list(not_seen2d))
         possible3d = set(list(not_seen3d))
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed2d = aug.augment_image(image2d)
             observed3d = aug.augment_image(image3d)
             assert observed2d.shape in possible2d
@@ -1874,10 +1873,10 @@ class TestPad(unittest.TestCase):
                 bottom_range = _to_range_tuple(bottom)
                 left_range = _to_range_tuple(left)
 
-                top_values = sm.xrange(top_range[0], top_range[1]+1)
-                right_values = sm.xrange(right_range[0], right_range[1]+1)
-                bottom_values = sm.xrange(bottom_range[0], bottom_range[1]+1)
-                left_values = sm.xrange(left_range[0], left_range[1]+1)
+                top_values = range(top_range[0], top_range[1]+1)
+                right_values = range(right_range[0], right_range[1]+1)
+                bottom_values = range(bottom_range[0], bottom_range[1]+1)
+                left_values = range(left_range[0], left_range[1]+1)
 
                 for top_val in top_values:
                     for right_val in right_values:
@@ -1898,7 +1897,7 @@ class TestPad(unittest.TestCase):
 
                 movements = []
                 movements_det = []
-                for i in sm.xrange(100):
+                for i in range(100):
                     observed = aug.augment_images(self.images)
 
                     matches = [
@@ -1977,7 +1976,7 @@ class TestPad(unittest.TestCase):
 
             movements = []
             movements_det = []
-            for i in sm.xrange(100):
+            for i in range(100):
                 observed = aug.augment_images(self.images)
                 matches = [
                     (1 if np.array_equal(observed,
@@ -2287,7 +2286,7 @@ class TestPad(unittest.TestCase):
         image[0, 1] = 50
 
         seen = [0, 0, 0]
-        for _ in sm.xrange(300):
+        for _ in range(300):
             observed = aug.augment_image(image)
             if observed[0, 2] == 0:
                 seen[0] += 1
@@ -2354,7 +2353,7 @@ class TestPad(unittest.TestCase):
                       keep_size=False)
         image = np.zeros((1, 1), dtype=np.uint8)
         seen = [0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(image)
             if observed[0, 1] == 50:
                 seen[0] += 1
@@ -2372,7 +2371,7 @@ class TestPad(unittest.TestCase):
         image = np.zeros((1, 1), dtype=np.uint8)
 
         seen = [0, 0, 0]
-        for _ in sm.xrange(300):
+        for _ in range(300):
             observed = aug.augment_image(image)
 
             if observed[0, 1] == 50:
@@ -2825,7 +2824,7 @@ class TestPad(unittest.TestCase):
         # test pad by range of percentages
         aug = iaa.Pad(percent=((0, 1.0), 0, 0, 0), keep_size=False)
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(
                 np.zeros((4, 4), dtype=np.uint8) + 255)
             n_padded = 0
@@ -2843,7 +2842,7 @@ class TestPad(unittest.TestCase):
     def test_pad_by_tuple_of_floats_at_right_side_without_keep_size(self):
         aug = iaa.Pad(percent=(0, (0, 1.0), 0, 0), keep_size=False)
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(np.zeros((4, 4), dtype=np.uint8) + 255)
             n_padded = 0
             while np.all(observed[:, -1] == 0):
@@ -2855,7 +2854,7 @@ class TestPad(unittest.TestCase):
     def test_pad_by_list_of_floats_at_top_side_without_keep_size(self):
         aug = iaa.Pad(percent=([0.0, 1.0], 0, 0, 0), keep_size=False)
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(
                 np.zeros((4, 4), dtype=np.uint8) + 255)
             n_padded = 0
@@ -2872,7 +2871,7 @@ class TestPad(unittest.TestCase):
     def test_pad_by_list_of_floats_at_right_side_without_keep_size(self):
         aug = iaa.Pad(percent=(0, [0.0, 1.0], 0, 0), keep_size=False)
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(
                 np.zeros((4, 4), dtype=np.uint8) + 255)
             n_padded = 0
@@ -3174,10 +3173,10 @@ class TestCrop(unittest.TestCase):
                 bottom_range = _to_range_tuple(bottom)
                 left_range = _to_range_tuple(left)
 
-                top_values = sm.xrange(top_range[0], top_range[1]+1)
-                right_values = sm.xrange(right_range[0], right_range[1]+1)
-                bottom_values = sm.xrange(bottom_range[0], bottom_range[1]+1)
-                left_values = sm.xrange(left_range[0], left_range[1]+1)
+                top_values = range(top_range[0], top_range[1]+1)
+                right_values = range(right_range[0], right_range[1]+1)
+                bottom_values = range(bottom_range[0], bottom_range[1]+1)
+                left_values = range(left_range[0], left_range[1]+1)
 
                 images_cropped = []
                 keypoints_cropped = []
@@ -3197,7 +3196,7 @@ class TestCrop(unittest.TestCase):
 
                 movements = []
                 movements_det = []
-                for i in sm.xrange(100):
+                for i in range(100):
                     observed = aug.augment_images(self.images)
 
                     matches = [
@@ -3274,7 +3273,7 @@ class TestCrop(unittest.TestCase):
 
                 movements = []
                 movements_det = []
-                for i in sm.xrange(100):
+                for i in range(100):
                     observed = aug.augment_images(self.images)
                     matches = [
                         (1
@@ -3924,7 +3923,7 @@ class TestCrop(unittest.TestCase):
         aug = iaa.Crop(percent=((0, 0.1), 0, 0, 0), keep_size=False)
         image = np.zeros((40, 40), dtype=np.uint8)
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(image)
             n_cropped = 40 - observed.shape[0]
             seen[n_cropped] += 1
@@ -3939,7 +3938,7 @@ class TestCrop(unittest.TestCase):
         aug = iaa.Crop(percent=(0, (0, 0.1), 0, 0), keep_size=False)
         image = np.zeros((40, 40), dtype=np.uint8) + 255
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(image)
             n_cropped = 40 - observed.shape[1]
             seen[n_cropped] += 1
@@ -3949,7 +3948,7 @@ class TestCrop(unittest.TestCase):
         aug = iaa.Crop(percent=([0.0, 0.1], 0, 0, 0), keep_size=False)
         image = np.zeros((40, 40), dtype=np.uint8) + 255
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(image)
             n_cropped = 40 - observed.shape[0]
             seen[n_cropped] += 1
@@ -3963,7 +3962,7 @@ class TestCrop(unittest.TestCase):
         aug = iaa.Crop(percent=(0, [0.0, 0.1], 0, 0), keep_size=False)
         image = np.zeros((40, 40), dtype=np.uint8) + 255
         seen = [0, 0, 0, 0, 0]
-        for _ in sm.xrange(500):
+        for _ in range(500):
             observed = aug.augment_image(image)
             n_cropped = 40 - observed.shape[1]
             seen[n_cropped] += 1

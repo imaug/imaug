@@ -22,8 +22,6 @@ except ImportError:
     import pickle
 
 import numpy as np
-import six
-import six.moves as sm
 import cv2
 import PIL.Image
 import imageio
@@ -516,7 +514,7 @@ class TestLambda(unittest.TestCase):
         expected = image + 1
         aug = iaa.Lambda(func_images=self.func_images)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_image(image)
 
             assert np.array_equal(observed, expected)
@@ -526,7 +524,7 @@ class TestLambda(unittest.TestCase):
         expected = image + 1
         aug_det = iaa.Lambda(func_images=self.func_images).to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug_det.augment_image(image)
 
             assert np.array_equal(observed, expected)
@@ -554,7 +552,7 @@ class TestLambda(unittest.TestCase):
         heatmaps_arr_aug = self.heatmaps_aug.get_arr()
         aug = iaa.Lambda(func_heatmaps=self.func_heatmaps)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_heatmaps(heatmaps)
 
             assert observed.shape == (3, 3, 3)
@@ -568,7 +566,7 @@ class TestLambda(unittest.TestCase):
         aug_det = iaa.Lambda(func_heatmaps=self.func_heatmaps)\
             .to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug_det.augment_heatmaps(heatmaps)
 
             assert observed.shape == (3, 3, 3)
@@ -581,7 +579,7 @@ class TestLambda(unittest.TestCase):
         segmaps_arr_aug = self.segmentation_maps_aug.get_arr()
         aug = iaa.Lambda(func_segmentation_maps=self.func_segmaps)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_segmentation_maps(segmaps)
 
             assert observed.shape == (3, 3, 3)
@@ -593,7 +591,7 @@ class TestLambda(unittest.TestCase):
         aug_det = iaa.Lambda(func_segmentation_maps=self.func_segmaps)\
             .to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug_det.augment_segmentation_maps(segmaps)
 
             assert observed.shape == (3, 3, 3)
@@ -603,7 +601,7 @@ class TestLambda(unittest.TestCase):
         kpsoi = self.keypoints
         aug = iaa.Lambda(func_keypoints=self.func_keypoints)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_keypoints(kpsoi)
 
             expected = self.keypoints_aug
@@ -614,7 +612,7 @@ class TestLambda(unittest.TestCase):
         aug = iaa.Lambda(func_keypoints=self.func_keypoints)
         aug = aug.to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_keypoints(kpsoi)
 
             expected = self.keypoints_aug
@@ -624,7 +622,7 @@ class TestLambda(unittest.TestCase):
         psois = self.polygons
         aug = iaa.Lambda(func_polygons=self.func_polygons)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_polygons(psois)
 
             expected_psoi = self.polygons_aug
@@ -636,7 +634,7 @@ class TestLambda(unittest.TestCase):
         aug = iaa.Lambda(func_polygons=self.func_polygons)
         aug = aug.to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_polygons(psois)
 
             expected_psoi = self.polygons_aug
@@ -646,7 +644,7 @@ class TestLambda(unittest.TestCase):
         lsois = self.lsoi
         aug = iaa.Lambda(func_line_strings=self.func_line_strings)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_line_strings(lsois)
 
             expected_lsoi = self.lsoi_aug
@@ -658,7 +656,7 @@ class TestLambda(unittest.TestCase):
         aug = iaa.Lambda(func_line_strings=self.func_line_strings)
         aug = aug.to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_line_strings(lsois)
 
             expected_lsoi = self.lsoi_aug
@@ -668,7 +666,7 @@ class TestLambda(unittest.TestCase):
         bbsoi = self.bbsoi
         aug = iaa.Lambda(func_bounding_boxes=self.func_bbs)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_bounding_boxes(bbsoi)
 
             expected = self.bbsoi_aug
@@ -679,7 +677,7 @@ class TestLambda(unittest.TestCase):
         aug = iaa.Lambda(func_bounding_boxes=self.func_bbs)
         aug = aug.to_deterministic()
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_bounding_boxes(bbsoi)
 
             expected = self.bbsoi_aug
@@ -698,7 +696,7 @@ class TestLambda(unittest.TestCase):
 
         aug = iaa.Lambda(func_bounding_boxes=_func_bbs)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_bounding_boxes(bbsoi)
 
             assert np.allclose(
@@ -719,7 +717,7 @@ class TestLambda(unittest.TestCase):
 
         aug = iaa.Lambda(func_bounding_boxes=_func_bbs)
 
-        for _ in sm.xrange(3):
+        for _ in range(3):
             observed = aug.augment_bounding_boxes(bbsoi)
 
             assert np.allclose(
@@ -1945,8 +1943,8 @@ def test_clip_augmented_images_():
         assert np.all(imgs_clipped[:, 0, 1] == 20)
         assert np.all(imgs_clipped[:, 0, 2] == 25)
 
-        images = [np.zeros((1, 3), dtype=np.uint8) for _ in sm.xrange(2)]
-        for i in sm.xrange(len(images)):
+        images = [np.zeros((1, 3), dtype=np.uint8) for _ in range(2)]
+        for i in range(len(images)):
             images[i][0, 0] = 10
             images[i][0, 1] = 20
             images[i][0, 2] = 30
@@ -1954,11 +1952,11 @@ def test_clip_augmented_images_():
                                                   min_value=15, max_value=25)
         assert isinstance(imgs_clipped, list)
         assert np.all([imgs_clipped[i][0, 0] == 15
-                       for i in sm.xrange(len(images))])
+                       for i in range(len(images))])
         assert np.all([imgs_clipped[i][0, 1] == 20
-                       for i in sm.xrange(len(images))])
+                       for i in range(len(images))])
         assert np.all([imgs_clipped[i][0, 2] == 25
-                       for i in sm.xrange(len(images))])
+                       for i in range(len(images))])
 
     assert len(caught_warnings) >= 1
     assert "deprecated" in str(caught_warnings[-1].message)
@@ -1979,8 +1977,8 @@ def test_clip_augmented_images():
         assert np.all(imgs_clipped[:, 0, 1] == 20)
         assert np.all(imgs_clipped[:, 0, 2] == 25)
 
-        images = [np.zeros((1, 3), dtype=np.uint8) for _ in sm.xrange(2)]
-        for i in sm.xrange(len(images)):
+        images = [np.zeros((1, 3), dtype=np.uint8) for _ in range(2)]
+        for i in range(len(images)):
             images[i][0, 0] = 10
             images[i][0, 1] = 20
             images[i][0, 2] = 30
@@ -1988,11 +1986,11 @@ def test_clip_augmented_images():
                                                  min_value=15, max_value=25)
         assert isinstance(imgs_clipped, list)
         assert np.all([imgs_clipped[i][0, 0] == 15
-                       for i in sm.xrange(len(images))])
+                       for i in range(len(images))])
         assert np.all([imgs_clipped[i][0, 1] == 20
-                       for i in sm.xrange(len(images))])
+                       for i in range(len(images))])
         assert np.all([imgs_clipped[i][0, 2] ==
-                       25 for i in sm.xrange(len(images))])
+                       25 for i in range(len(images))])
 
     assert len(caught_warnings) >= 1
     assert "deprecated" in str(caught_warnings[-1].message)
@@ -2355,7 +2353,7 @@ class TestAugmenter(unittest.TestCase):
         aug = iaa.Affine(translate_px={"x": (0, 8)}, order=0, mode="constant",
                          cval=0)
 
-        for i in sm.xrange(10):
+        for i in range(10):
             for is_list in [False, True]:
                 with self.subTest(i=i, is_list=is_list):
                     aug_det = aug.to_deterministic()
@@ -2408,7 +2406,7 @@ class TestAugmenter(unittest.TestCase):
         image = kpsoi.to_keypoint_image(size=1)
         images = np.tile(image[np.newaxis, ...], (20, 1, 1, 1))
 
-        for _ in sm.xrange(50):
+        for _ in range(50):
             images_aug, kpsois_aug = augs(images=images,
                                           keypoints=[kpsoi]*len(images))
 
@@ -2893,7 +2891,7 @@ class TestAugmenter_augment_batches(unittest.TestCase):
             batches = [
                 ia.Batch(images=images,
                          keypoints=[kpsoi.deepcopy()])
-                for _ in sm.xrange(nb_iterations)
+                for _ in range(nb_iterations)
             ]
 
             batches_aug = list(seq.augment_batches(batches, background=bg))
@@ -2993,7 +2991,7 @@ class TestAugmenter_augment_batches(unittest.TestCase):
         image = ia.data.quokka(size=(64, 64))
         batches = [ia.Batch(images=[np.copy(image)],
                             keypoints=[keypoints[0].deepcopy()])
-                   for _ in sm.xrange(nb_iterations)]
+                   for _ in range(nb_iterations)]
         for aug in augs:
             nb_changed = 0
             batches_aug = list(aug.augment_batches(batches, background=True))
@@ -3485,8 +3483,7 @@ class TestAugmenter_draw_grid(unittest.TestCase):
             _ = aug.draw_grid(np.zeros((2,), dtype=np.uint8), rows=2, cols=2)
 
 
-@six.add_metaclass(ABCMeta)
-class _TestAugmenter_augment_cbaois(object):
+class _TestAugmenter_augment_cbaois(object, metaclass=ABCMeta):
     """Class that is used to test augment_polygons() and augment_line_strings().
 
     Originally this was only used for polygons and then made more flexible.
@@ -3598,10 +3595,10 @@ class _TestAugmenter_augment_cbaois(object):
         aug = iaa.Rot90((0, 3), keep_size=False)
         cba = self._Obj([(0, 0), (5, 0), (5, 5)])
         cbaoi = self._ObjOnImage(
-            [cba.deepcopy() for _ in sm.xrange(1)],
+            [cba.deepcopy() for _ in range(1)],
             shape=(10, 11, 3)
         )
-        cbaois = [cbaoi.deepcopy() for _ in sm.xrange(100)]
+        cbaois = [cbaoi.deepcopy() for _ in range(100)]
 
         cbaois_aug1 = self._augfunc(aug, cbaois)
         cbaois_aug2 = self._augfunc(aug, cbaois)
@@ -3649,10 +3646,10 @@ class _TestAugmenter_augment_cbaois(object):
         aug_det = aug.to_deterministic()
         cba = self._Obj([(0, 0), (5, 0), (5, 5)])
         cbaoi = self._ObjOnImage(
-            [cba.deepcopy() for _ in sm.xrange(1)],
+            [cba.deepcopy() for _ in range(1)],
             shape=(10, 11, 3)
         )
-        cbaois = [cbaoi.deepcopy() for _ in sm.xrange(100)]
+        cbaois = [cbaoi.deepcopy() for _ in range(100)]
 
         cbaois_aug1 = self._augfunc(aug_det, cbaois)
         cbaois_aug2 = self._augfunc(aug_det, cbaois)
@@ -3701,7 +3698,7 @@ class _TestAugmenter_augment_cbaois(object):
             [(10-10+kp_offs, 20), (10-10+kp_offs, 10), (10-(-10)+kp_offs, 10)]
         ]
         cbaois = [self._ObjOnImage([cba], shape=image.shape)
-                  for _ in sm.xrange(50)]
+                  for _ in range(50)]
 
         images_aug = aug_det.augment_images([image] * 50)
         cbaois_aug = self._augfunc(aug_det, cbaois)
@@ -3756,7 +3753,7 @@ class _TestAugmenter_augment_cbaois(object):
         aug = iaa.Affine(translate_px={"x": (0, 8)}, order=0, mode="constant",
                          cval=0)
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             for is_list in [False, True]:
                 aug_det = aug.to_deterministic()
                 inputs = images
@@ -4419,7 +4416,7 @@ class TestAugmenter_augment(unittest.TestCase):
         ls = [(0, 0), (1, 0), (1, 1)]
 
         seen = []
-        for _ in sm.xrange(10):
+        for _ in range(10):
             batch_aug = aug.augment(image=image, heatmaps=heatmaps,
                                     segmentation_maps=segmaps, keypoints=kps,
                                     bounding_boxes=bbs, polygons=polygons,
@@ -4457,7 +4454,7 @@ class TestAugmenter_augment(unittest.TestCase):
         ls = [(0, 0), (1, 0), (1, 1)]
 
         seen = []
-        for _ in sm.xrange(10):
+        for _ in range(10):
             batch_aug = aug.augment(image=image, heatmaps=heatmaps,
                                     segmentation_maps=segmaps, keypoints=kps,
                                     bounding_boxes=bbs, polygons=polygons,
@@ -5067,7 +5064,7 @@ class TestAugmenter_copy_random_state(unittest.TestCase):
         images_aug_target = target_cprs.augment_images(images)
 
         assert target_cprs.random_state.equals(source_alt.random_state)
-        for i in sm.xrange(3):
+        for i in range(3):
             assert target_cprs[i].random_state.equals(
                 source_alt[i].random_state)
         assert np.array_equal(images_aug_source, images_aug_target)
@@ -5748,7 +5745,7 @@ class TestSequential(unittest.TestCase):
         last_aug = None
         nb_changed_aug = 0
 
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(self.images)
             if i == 0:
                 last_aug = observed_aug
@@ -5805,7 +5802,7 @@ class TestSequential(unittest.TestCase):
                               [0, 3]])
 
         seen = [False, False]
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             observed = aug.augment_images([image])[0]
             if np.array_equal(observed, image_12):
                 seen[0] = True
@@ -5833,7 +5830,7 @@ class TestSequential(unittest.TestCase):
                                              [0.0, 1.0, 0.0],
                                              [0.0, 1.0, 1.0]])
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = aug.augment_heatmaps([
                 ia.HeatmapsOnImage(heatmaps_arr, shape=(3, 3, 3))])[0]
             if np.allclose(observed.get_arr(), heatmaps_arr_expected1):
@@ -5862,7 +5859,7 @@ class TestSequential(unittest.TestCase):
                                           [0, 1, 0],
                                           [0, 1, 1]])
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = aug.augment_segmentation_maps([
                 SegmentationMapsOnImage(segmaps_arr, shape=(3, 3, 3))])[0]
             if np.array_equal(observed.get_arr(), segmaps_arr_expected1):
@@ -5903,7 +5900,7 @@ class TestSequential(unittest.TestCase):
         seq = iaa.Sequential([aug_1, aug_2], random_order=True)
 
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = seq.augment_keypoints(kpsoi)
             if np.allclose(observed.to_xy_array(), kpsoi_12.to_xy_array()):
                 seen[0] = True
@@ -5940,7 +5937,7 @@ class TestSequential(unittest.TestCase):
         seq = iaa.Sequential([aug_1, aug_2], random_order=True)
 
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = seq.augment_polygons(cbaoi)
             if np.allclose(observed.items[0].coords, cba_12.coords):
                 seen[0] = True
@@ -5977,7 +5974,7 @@ class TestSequential(unittest.TestCase):
         seq = iaa.Sequential([aug_1, aug_2], random_order=True)
 
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = seq.augment_line_strings(cbaoi)
             if np.allclose(observed.items[0].coords, cba_12.coords):
                 seen[0] = True
@@ -6016,7 +6013,7 @@ class TestSequential(unittest.TestCase):
         seq = iaa.Sequential([aug_1, aug_2], random_order=True)
 
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = seq.augment_bounding_boxes(bbsoi)
             if np.allclose(observed.to_xyxy_array(),
                            bbsoi_12.to_xyxy_array()):
@@ -6297,7 +6294,7 @@ class TestSomeOf(unittest.TestCase):
 
         nb_iterations = 1000
         nb_observed = [0, 0, 0, 0]
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(zeros)
             s = observed[0, 0, 0]
             if s == 0:
@@ -6493,7 +6490,7 @@ class TestSomeOf(unittest.TestCase):
         zeros = np.ones((1, 1, 1), dtype=np.uint8)
 
         nb_observed = [0, 0]
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(zeros)
             s = np.sum(observed)
             if s == (1*2)+100:
@@ -6527,7 +6524,7 @@ class TestSomeOf(unittest.TestCase):
 
         aug = iaa.SomeOf((0, 2), children=augs)
         seen = [False, False, False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             aug_det = aug.to_deterministic()
             img_aug = aug_det.augment_image(img)
             cbaoi_aug = getattr(aug_det, augf_name)(cbaoi)
@@ -6616,7 +6613,7 @@ class TestSomeOf(unittest.TestCase):
         ])
         expected_shapes = [(4, 8, 3), (6, 8, 3)]
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             observed = aug.augment_images(np.uint8([image] * 4))
             assert isinstance(observed, list)
             assert np.all([img.shape in expected_shapes for img in observed])
@@ -6645,7 +6642,7 @@ class TestSomeOf(unittest.TestCase):
         ])
         expected_shapes = [(8, 8, 3)]
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             observed = aug.augment_images(np.uint8([image] * 4))
             assert ia.is_np_array(observed)
             assert np.all([img.shape in expected_shapes for img in observed])
@@ -6783,12 +6780,12 @@ class TestSomeOf(unittest.TestCase):
                 image = np.zeros((3, 3), dtype=bool)
                 image[0, 0] = True
                 expected = [np.zeros((3, 3), dtype=bool)
-                            for _ in sm.xrange(3)]
+                            for _ in range(3)]
                 expected[0][0, 2] = True
                 expected[1][2, 0] = True
                 expected[2][2, 2] = True
 
-                for _ in sm.xrange(10):
+                for _ in range(10):
                     image_aug = aug.augment_image(image)
 
                     assert image_aug.dtype.name == image.dtype.name
@@ -6814,12 +6811,12 @@ class TestSomeOf(unittest.TestCase):
                 image = np.zeros((3, 3), dtype=dtype)
                 image[0, 0] = value
                 expected = [np.zeros((3, 3), dtype=dtype)
-                            for _ in sm.xrange(3)]
+                            for _ in range(3)]
                 expected[0][0, 2] = value
                 expected[1][2, 0] = value
                 expected[2][2, 2] = value
 
-                for _ in sm.xrange(10):
+                for _ in range(10):
                     image_aug = aug.augment_image(image)
 
                     assert image_aug.dtype.name == dtype
@@ -6848,12 +6845,12 @@ class TestSomeOf(unittest.TestCase):
                     image = np.zeros((3, 3), dtype=dtype)
                     image[0, 0] = value
                     expected = [np.zeros((3, 3), dtype=dtype)
-                                for _ in sm.xrange(3)]
+                                for _ in range(3)]
                     expected[0][0, 2] = value
                     expected[1][2, 0] = value
                     expected[2][2, 2] = value
 
-                    for _ in sm.xrange(10):
+                    for _ in range(10):
                         image_aug = aug.augment_image(image)
 
                         assert image_aug.dtype.name == dtype
@@ -6925,7 +6922,7 @@ class TestOneOf(unittest.TestCase):
 
         results = {1: 0, 2: 0, 3: 0}
         nb_iterations = 1000
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             result = aug.augment_image(zeros)
             s = int(np.sum(result))
             results[s] += 1
@@ -7325,7 +7322,7 @@ class TestSometimes(unittest.TestCase):
         nb_iterations = 500
         nb_images_if_branch = 0
         nb_images_else_branch = 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(self.images)
             if i == 0:
                 last_aug = observed_aug
@@ -7357,7 +7354,7 @@ class TestSometimes(unittest.TestCase):
         last_aug_det = None
         nb_changed_aug_det = 0
         nb_iterations = 20
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug_det = aug_det.augment_images(self.images)
             if i == 0:
                 last_aug_det = observed_aug_det
@@ -7382,7 +7379,7 @@ class TestSometimes(unittest.TestCase):
         nb_iterations = 250
         nb_if_branch = 0
         nb_else_branch = 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             cbaoi_aug = getattr(aug, augf_name)(cbaoi)
 
             # use allclose() instead of coords_almost_equals() for efficiency
@@ -7427,7 +7424,7 @@ class TestSometimes(unittest.TestCase):
         nb_iterations = 500
         nb_images_if_branch = 0
         nb_images_else_branch = 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(self.images)
             if i == 0:
                 last_aug = observed_aug
@@ -7459,7 +7456,7 @@ class TestSometimes(unittest.TestCase):
         last_aug_det = None
         nb_changed_aug_det = 0
         nb_iterations = 10
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug_det = aug_det.augment_images(self.images)
             if i == 0:
                 last_aug_det = observed_aug_det
@@ -7484,7 +7481,7 @@ class TestSometimes(unittest.TestCase):
         nb_iterations = 250
         nb_if_branch = 0
         nb_else_branch = 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             cbaoi_aug = getattr(aug, augf_name)(cbaoi)
 
             # use allclose() instead of coords_almost_equals() for efficiency
@@ -7546,7 +7543,7 @@ class TestSometimes(unittest.TestCase):
             then_list=iaa.Add(10))
 
         seen = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = aug.augment_images(images)
             uq = np.unique(np.uint8(observed))
             assert len(uq) == 1
@@ -7734,7 +7731,7 @@ class TestSometimes(unittest.TestCase):
             iaa.Crop((1, 0, 1, 0), keep_size=False)
         )
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             observed = aug.augment_images(
                 np.uint8([image, image, image, image]))
             assert isinstance(observed, list) or ia.is_np_array(observed)
@@ -7770,7 +7767,7 @@ class TestSometimes(unittest.TestCase):
             iaa.Crop(((4, 8), 0, (4, 8), 0), keep_size=False)
         )
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             observed = aug.augment_images(
                 np.uint8([image, image, image, image]))
             assert isinstance(observed, list) or ia.is_np_array(observed)
@@ -7804,7 +7801,7 @@ class TestSometimes(unittest.TestCase):
             iaa.Crop((1, 0, 1, 0), keep_size=True)
         )
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             observed = aug.augment_images(
                 np.uint8([image, image, image, image]))
             assert ia.is_np_array(observed)
@@ -7840,7 +7837,7 @@ class TestSometimes(unittest.TestCase):
             iaa.Crop(((4, 8), 0, (4, 8), 0), keep_size=True)
         )
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             observed = aug.augment_images(
                 np.uint8([image, image, image, image]))
             assert ia.is_np_array(observed)
@@ -7913,11 +7910,11 @@ class TestSometimes(unittest.TestCase):
         aug = iaa.Sometimes(0.5, iaa.Fliplr(1.0), iaa.Flipud(1.0))
         image = np.zeros((3, 3), dtype=bool)
         image[0, 0] = True
-        expected = [np.zeros((3, 3), dtype=bool) for _ in sm.xrange(2)]
+        expected = [np.zeros((3, 3), dtype=bool) for _ in range(2)]
         expected[0][0, 2] = True
         expected[1][2, 0] = True
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             image_aug = aug.augment_image(image)
 
             assert image_aug.dtype.name == image.dtype.name
@@ -7942,11 +7939,11 @@ class TestSometimes(unittest.TestCase):
                 value = max_value
                 image = np.zeros((3, 3), dtype=dtype)
                 image[0, 0] = value
-                expected = [np.zeros((3, 3), dtype=dtype) for _ in sm.xrange(2)]
+                expected = [np.zeros((3, 3), dtype=dtype) for _ in range(2)]
                 expected[0][0, 2] = value
                 expected[1][2, 0] = value
                 seen = [False, False]
-                for _ in sm.xrange(100):
+                for _ in range(100):
                     image_aug = aug.augment_image(image)
 
                     assert image_aug.dtype.name == dtype
@@ -7975,11 +7972,11 @@ class TestSometimes(unittest.TestCase):
             with self.subTest(dtype=dtype):
                 image = np.zeros((3, 3), dtype=dtype)
                 image[0, 0] = value
-                expected = [np.zeros((3, 3), dtype=dtype) for _ in sm.xrange(2)]
+                expected = [np.zeros((3, 3), dtype=dtype) for _ in range(2)]
                 expected[0][0, 2] = value
                 expected[1][2, 0] = value
                 seen = [False, False]
-                for _ in sm.xrange(100):
+                for _ in range(100):
                     image_aug = aug.augment_image(image)
 
                     assert image_aug.dtype.name == dtype
@@ -8543,7 +8540,7 @@ class TestChannelShuffle(unittest.TestCase):
             np.uint8([1, 0]).reshape((1, 1, 2))
         ]
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             img_aug = aug.augment_image(img)
             if np.array_equal(img_aug, expected[0]):
                 seen[0] = True
@@ -8558,7 +8555,7 @@ class TestChannelShuffle(unittest.TestCase):
     def test_p_is_0(self):
         aug = iaa.ChannelShuffle(p=0)
         img = np.uint8([0, 1]).reshape((1, 1, 2))
-        for _ in sm.xrange(20):
+        for _ in range(20):
             img_aug = aug.augment_image(img)
             assert np.array_equal(img_aug, img)
 
@@ -8570,7 +8567,7 @@ class TestChannelShuffle(unittest.TestCase):
             np.uint8([2, 1, 0]).reshape((1, 1, 3))
         ]
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             img_aug = aug.augment_image(img)
             if np.array_equal(img_aug, expected[0]):
                 seen[0] = True
@@ -8687,11 +8684,11 @@ class TestChannelShuffle(unittest.TestCase):
 
         image = np.zeros((3, 3, 2), dtype=bool)
         image[0, 0, 0] = True
-        expected = [np.zeros((3, 3, 2), dtype=bool) for _ in sm.xrange(2)]
+        expected = [np.zeros((3, 3, 2), dtype=bool) for _ in range(2)]
         expected[0][0, 0, 0] = True
         expected[1][0, 0, 1] = True
         seen = [False, False]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             image_aug = aug.augment_image(image)
 
             assert image_aug.dtype.name == image.dtype.name
@@ -8718,11 +8715,11 @@ class TestChannelShuffle(unittest.TestCase):
                 image[0, 0, 0] = value
                 expected = [np.zeros((3, 3, 2), dtype=dtype)
                             for _
-                            in sm.xrange(2)]
+                            in range(2)]
                 expected[0][0, 0, 0] = value
                 expected[1][0, 0, 1] = value
                 seen = [False, False]
-                for _ in sm.xrange(100):
+                for _ in range(100):
                     image_aug = aug.augment_image(image)
 
                     assert image_aug.dtype.name == dtype
@@ -8753,11 +8750,11 @@ class TestChannelShuffle(unittest.TestCase):
                 image[0, 0, 0] = value
                 expected = [np.zeros((3, 3, 2), dtype=dtype)
                             for _
-                            in sm.xrange(2)]
+                            in range(2)]
                 expected[0][0, 0, 0] = value
                 expected[1][0, 0, 1] = value
                 seen = [False, False]
-                for _ in sm.xrange(100):
+                for _ in range(100):
                     image_aug = aug.augment_image(image)
 
                     assert image_aug.dtype.name == dtype

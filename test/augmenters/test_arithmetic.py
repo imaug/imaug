@@ -16,7 +16,6 @@ except ImportError:
 
 import numpy as np
 import cv2
-import six.moves as sm
 
 import imgaug as ia
 from imgaug import augmenters as iaa
@@ -1357,7 +1356,7 @@ class TestAdd(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -1387,7 +1386,7 @@ class TestAdd(unittest.TestCase):
         # test channelwise with probability
         aug = iaa.Add(value=iap.Choice([0, 1]), per_channel=0.5)
         seen = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             observed = aug.augment_image(np.zeros((1, 1, 20), dtype=np.uint8))
             assert observed.shape == (1, 1, 20)
 
@@ -1534,7 +1533,7 @@ class TestAdd(unittest.TestCase):
             assert image_aug.dtype.type == dtype
             assert np.all(image_aug == min_value)
 
-            for _ in sm.xrange(10):
+            for _ in range(10):
                 image = np.full((1, 1, 3), 20, dtype=dtype)
                 aug = iaa.Add(iap.Uniform(-10, 10))
                 image_aug = aug.augment_image(image)
@@ -1622,7 +1621,7 @@ class TestAdd(unittest.TestCase):
             assert image_aug.dtype.type == dtype
             assert _allclose(image_aug, min_value)
 
-            for _ in sm.xrange(10):
+            for _ in range(10):
                 image = np.full((50, 1, 3), 0, dtype=dtype)
                 aug = iaa.Add(iap.Uniform(-10, 10))
                 image_aug = aug.augment_image(image)
@@ -1825,7 +1824,7 @@ class TestAddElementwise(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -1851,11 +1850,11 @@ class TestAddElementwise(unittest.TestCase):
         nb_same = 0
         nb_different = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_flat = observed_aug.flatten()
             last = None
-            for j in sm.xrange(observed_aug_flat.size):
+            for j in range(observed_aug_flat.size):
                 if last is not None:
                     v = observed_aug_flat[j]
                     if v - 0.0001 <= last <= v + 0.0001:
@@ -1877,7 +1876,7 @@ class TestAddElementwise(unittest.TestCase):
         # test channelwise with probability
         aug = iaa.AddElementwise(value=iap.Choice([0, 1]), per_channel=0.5)
         seen = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             observed = aug.augment_image(np.zeros((20, 20, 3), dtype=np.uint8))
             sums = np.sum(observed, axis=2)
             values = np.unique(sums)
@@ -2025,7 +2024,7 @@ class TestAddElementwise(unittest.TestCase):
             assert image_aug.dtype.type == dtype
             assert np.all(image_aug == min_value)
 
-            for _ in sm.xrange(10):
+            for _ in range(10):
                 image = np.full((5, 5, 3), 20, dtype=dtype)
                 aug = iaa.AddElementwise(iap.Uniform(-10, 10))
                 image_aug = aug.augment_image(image)
@@ -2115,7 +2114,7 @@ class TestAddElementwise(unittest.TestCase):
             assert image_aug.dtype.type == dtype
             assert _allclose(image_aug, min_value)
 
-            for _ in sm.xrange(10):
+            for _ in range(10):
                 image = np.full((50, 1, 3), 0, dtype=dtype)
                 aug = iaa.AddElementwise(iap.Uniform(-10, 10))
                 image_aug = aug.augment_image(image)
@@ -2203,7 +2202,7 @@ class AdditiveGaussianNoise(unittest.TestCase):
         images = np.ones((1, 1, 1, 1), dtype=np.uint8) * 128
         nb_iterations = 1000
         values = []
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             images_aug = aug.augment_images(images)
             values.append(images_aug[0, 0, 0, 0])
         values = np.array(values)
@@ -2218,7 +2217,7 @@ class AdditiveGaussianNoise(unittest.TestCase):
         images = np.ones((1, 1, 1, 1), dtype=np.uint8) * 128
         nb_iterations = 1000
         values = []
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             images_aug = aug.augment_images(images)
             values.append(images_aug[0, 0, 0, 0] - 128)
         values = np.array(values)
@@ -2236,7 +2235,7 @@ class AdditiveGaussianNoise(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -2259,7 +2258,7 @@ class AdditiveGaussianNoise(unittest.TestCase):
         aug = iaa.AdditiveGaussianNoise(loc=iap.Choice([-20, 20]), scale=0.0001 * 255)
         images = np.ones((1, 1, 1, 1), dtype=np.uint8) * 128
         seen = [0, 0]
-        for i in sm.xrange(200):
+        for i in range(200):
             observed = aug.augment_images(images)
             mean = np.mean(observed)
             diff_m20 = abs(mean - (128-20))
@@ -2285,7 +2284,7 @@ class AdditiveGaussianNoise(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -2308,7 +2307,7 @@ class AdditiveGaussianNoise(unittest.TestCase):
         aug = iaa.AdditiveGaussianNoise(loc=0, scale=iap.Choice([1, 20]))
         images = np.ones((1, 20, 20, 1), dtype=np.uint8) * 128
         seen = [0, 0, 0]
-        for i in sm.xrange(200):
+        for i in range(200):
             observed = aug.augment_images(images)
             std = np.std(observed.astype(np.int32) - 128)
             diff_1 = abs(std - 1)
@@ -2756,7 +2755,7 @@ class TestDropout(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -2777,7 +2776,7 @@ class TestDropout(unittest.TestCase):
         images = np.ones((1, 20, 20, 1), dtype=np.uint8) * 255
         nb_seen = [0, 0, 0, 0]
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
 
             n_dropped = np.sum(observed_aug == 0)
@@ -2798,7 +2797,7 @@ class TestDropout(unittest.TestCase):
         aug = iaa.Dropout(p=iap.Binomial(1-iap.Choice([0.0, 0.5])))
         images = np.ones((1, 20, 20, 1), dtype=np.uint8) * 255
         seen = [0, 0, 0]
-        for i in sm.xrange(400):
+        for i in range(400):
             observed = aug.augment_images(images)
             p = np.mean(observed == 0)
             if 0.4 < p < 0.6:
@@ -2854,7 +2853,7 @@ class TestCoarseDropout(unittest.TestCase):
         base_img = np.ones((16, 16, 1), dtype=np.uint8) * 100
         aug = iaa.CoarseDropout(p=0.5, size_px=1, size_percent=None, per_channel=False, min_size=1)
         averages = []
-        for _ in sm.xrange(50):
+        for _ in range(50):
             observed = aug.augment_image(base_img)
             averages.append(np.average(observed))
         assert all([v in [0, 100] for v in averages])
@@ -2864,7 +2863,7 @@ class TestCoarseDropout(unittest.TestCase):
         base_img = np.ones((16, 16, 1), dtype=np.uint8) * 100
         aug = iaa.CoarseDropout(p=0.5, size_px=None, size_percent=0.001, per_channel=False, min_size=1)
         averages = []
-        for _ in sm.xrange(50):
+        for _ in range(50):
             observed = aug.augment_image(base_img)
             averages.append(np.average(observed))
         assert all([v in [0, 100] for v in averages])
@@ -2874,7 +2873,7 @@ class TestCoarseDropout(unittest.TestCase):
         aug = iaa.CoarseDropout(p=0.5, size_px=1, size_percent=None, per_channel=True, min_size=1)
         base_img = np.ones((4, 4, 3), dtype=np.uint8) * 100
         found = False
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = aug.augment_image(base_img)
             avgs = np.average(observed, axis=(0, 1))
             if len(set(avgs)) >= 2:
@@ -2887,7 +2886,7 @@ class TestCoarseDropout(unittest.TestCase):
         aug = iaa.CoarseDropout(p=iap.Binomial(1-iap.Choice([0.0, 0.5])), size_px=50)
         images = np.ones((1, 100, 100, 1), dtype=np.uint8) * 255
         seen = [0, 0, 0]
-        for i in sm.xrange(400):
+        for i in range(400):
             observed = aug.augment_images(images)
             p = np.mean(observed == 0)
             if 0.4 < p < 0.6:
@@ -3164,7 +3163,7 @@ class TestDropout2d(unittest.TestCase):
         image_2c = np.full((1, 1, 2), 255, dtype=np.uint8)
         image_3c = np.full((1, 1, 3), 255, dtype=np.uint8)
         images = [image_2c if i % 2 == 0 else image_3c
-                  for i in sm.xrange(100)]
+                  for i in range(100)]
         aug = iaa.Dropout2d(p=1.0, nb_keep_channels=2)
 
         images_aug = aug(images=images)
@@ -3713,7 +3712,7 @@ class TestMultiply(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -3742,7 +3741,7 @@ class TestMultiply(unittest.TestCase):
         # test channelwise with probability
         aug = iaa.Multiply(mul=iap.Choice([0, 2]), per_channel=0.5)
         seen = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             observed = aug.augment_image(np.ones((1, 1, 20), dtype=np.uint8))
             assert observed.shape == (1, 1, 20)
 
@@ -3952,7 +3951,7 @@ class TestMultiply(unittest.TestCase):
 
             # non-uint8 currently don't increase the itemsize
             if dtype.name == "uint8":
-                for _ in sm.xrange(10):
+                for _ in range(10):
                     image = np.full((1, 1, 3), 10, dtype=dtype)
                     aug = iaa.Multiply(iap.Uniform(0.5, 1.5))
                     image_aug = aug.augment_image(image)
@@ -4039,7 +4038,7 @@ class TestMultiply(unittest.TestCase):
             # using tolerances of -100 - 1e-2 and 100 + 1e-2 is not enough for float16, had to be increased to -/+ 1e-1
             # deactivated, because itemsize increase was deactivated
             """
-            for _ in sm.xrange(10):
+            for _ in range(10):
                 image = np.full((1, 1, 3), 10.0, dtype=dtype)
                 aug = iaa.Multiply(iap.Uniform(-10, 10))
                 image_aug = aug.augment_image(image)
@@ -4187,7 +4186,7 @@ class TestMultiplyElementwise(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -4213,11 +4212,11 @@ class TestMultiplyElementwise(unittest.TestCase):
         nb_same = 0
         nb_different = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_flat = observed_aug.flatten()
             last = None
-            for j in sm.xrange(observed_aug_flat.size):
+            for j in range(observed_aug_flat.size):
                 if last is not None:
                     v = observed_aug_flat[j]
                     if v - 0.0001 <= last <= v + 0.0001:
@@ -4240,7 +4239,7 @@ class TestMultiplyElementwise(unittest.TestCase):
         # test channelwise with probability
         aug = iaa.MultiplyElementwise(mul=iap.Choice([0, 1]), per_channel=0.5)
         seen = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             observed = aug.augment_image(np.ones((20, 20, 3), dtype=np.uint8))
             assert observed.shape == (20, 20, 3)
 
@@ -4455,7 +4454,7 @@ class TestMultiplyElementwise(unittest.TestCase):
 
             # partially deactivated, because itemsize increase was deactivated
             if dtype.name == "uint8":
-                for _ in sm.xrange(10):
+                for _ in range(10):
                     image = np.full((5, 5, 3), 10, dtype=dtype)
                     aug = iaa.MultiplyElementwise(iap.Uniform(0.5, 1.5))
                     image_aug = aug.augment_image(image)
@@ -4546,7 +4545,7 @@ class TestMultiplyElementwise(unittest.TestCase):
             # using tolerances of -100 - 1e-2 and 100 + 1e-2 is not enough for float16, had to be increased to -/+ 1e-1
             # deactivated, because itemsize increase was deactivated
             """
-            for _ in sm.xrange(10):
+            for _ in range(10):
                 image = np.full((50, 1, 3), 10.0, dtype=dtype)
                 aug = iaa.MultiplyElementwise(iap.Uniform(-10, 10))
                 image_aug = aug.augment_image(image)
@@ -4647,7 +4646,7 @@ class TestReplaceElementwise(unittest.TestCase):
 
         nb_iterations = 100
         nb_diff_all = 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(img)
             nb_diff = np.sum(img != observed)
             nb_diff_all += nb_diff
@@ -4660,7 +4659,7 @@ class TestReplaceElementwise(unittest.TestCase):
         img = np.zeros((20, 20, 1), dtype=np.uint8)
 
         seen = [0, 0, 0]
-        for i in sm.xrange(400):
+        for i in range(400):
             observed = aug.augment_image(img)
             p = np.mean(observed)
             if 0.1 < p < 0.3:
@@ -4713,7 +4712,7 @@ class TestReplaceElementwise(unittest.TestCase):
         # test channelwise with probability
         aug = iaa.ReplaceElementwise(mask=iap.Choice([0, 1]), replacement=1, per_channel=0.5)
         seen = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             observed = aug.augment_image(np.zeros((20, 20, 3), dtype=np.uint8))
             assert observed.shape == (20, 20, 3)
 
@@ -5004,7 +5003,7 @@ class TestCoarseSaltAndPepper(unittest.TestCase):
         base_img = np.zeros((100, 100, 1), dtype=np.uint8) + 128
         ps1 = []
         ps2 = []
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed1 = aug1.augment_image(base_img)
             observed2 = aug2.augment_image(base_img)
             p1 = np.mean(observed1 != 128)
@@ -5018,7 +5017,7 @@ class TestCoarseSaltAndPepper(unittest.TestCase):
         aug = iaa.CoarseSaltAndPepper(p=[0.2, 0.5], size_px=100)
         base_img = np.zeros((100, 100, 1), dtype=np.uint8) + 128
         seen = [0, 0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(base_img)
             p = np.mean(observed != 128)
             diff_020 = abs(0.2 - p)
@@ -5037,7 +5036,7 @@ class TestCoarseSaltAndPepper(unittest.TestCase):
         aug = iaa.CoarseSaltAndPepper(p=(0.0, 1.0), size_px=50)
         base_img = np.zeros((50, 50, 1), dtype=np.uint8) + 128
         ps = []
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(base_img)
             p = np.mean(observed != 128)
             ps.append(p)
@@ -5122,7 +5121,7 @@ class TestCoarseSalt(unittest.TestCase):
         base_img = np.zeros((100, 100, 1), dtype=np.uint8) + 128
         ps1 = []
         ps2 = []
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed1 = aug1.augment_image(base_img)
             observed2 = aug2.augment_image(base_img)
             p1 = np.mean(observed1 != 128)
@@ -5136,7 +5135,7 @@ class TestCoarseSalt(unittest.TestCase):
         aug = iaa.CoarseSalt(p=[0.2, 0.5], size_px=100)
         base_img = np.zeros((100, 100, 1), dtype=np.uint8) + 128
         seen = [0, 0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(base_img)
             p = np.mean(observed != 128)
             diff_020 = abs(0.2 - p)
@@ -5155,7 +5154,7 @@ class TestCoarseSalt(unittest.TestCase):
         aug = iaa.CoarseSalt(p=(0.0, 1.0), size_px=50)
         base_img = np.zeros((50, 50, 1), dtype=np.uint8) + 128
         ps = []
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(base_img)
             p = np.mean(observed != 128)
             ps.append(p)
@@ -5239,7 +5238,7 @@ class TestCoarsePepper(unittest.TestCase):
         base_img = np.zeros((100, 100, 1), dtype=np.uint8) + 128
         ps1 = []
         ps2 = []
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed1 = aug1.augment_image(base_img)
             observed2 = aug2.augment_image(base_img)
             p1 = np.mean(observed1 != 128)
@@ -5253,7 +5252,7 @@ class TestCoarsePepper(unittest.TestCase):
         aug = iaa.CoarsePepper(p=[0.2, 0.5], size_px=100)
         base_img = np.zeros((100, 100, 1), dtype=np.uint8) + 128
         seen = [0, 0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(base_img)
             p = np.mean(observed != 128)
             diff_020 = abs(0.2 - p)
@@ -5272,7 +5271,7 @@ class TestCoarsePepper(unittest.TestCase):
         aug = iaa.CoarsePepper(p=(0.0, 1.0), size_px=50)
         base_img = np.zeros((50, 50, 1), dtype=np.uint8) + 128
         ps = []
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(base_img)
             p = np.mean(observed != 128)
             ps.append(p)
@@ -5946,7 +5945,7 @@ class TestInvert(unittest.TestCase):
         aug = iaa.Invert(p=0.8)
         img = np.zeros((1, 1, 1), dtype=np.uint8) + 255
         expected = np.zeros((1, 1, 1), dtype=np.uint8)
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(img)
             if np.array_equal(observed, expected):
                 nb_inverted += 1
@@ -5958,7 +5957,7 @@ class TestInvert(unittest.TestCase):
         aug = iaa.Invert(p=iap.Binomial(0.8))
         img = np.zeros((1, 1, 1), dtype=np.uint8) + 255
         expected = np.zeros((1, 1, 1), dtype=np.uint8)
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(img)
             if np.array_equal(observed, expected):
                 nb_inverted += 1
@@ -5977,7 +5976,7 @@ class TestInvert(unittest.TestCase):
         aug = iaa.Invert(p=iap.Binomial(0.8), per_channel=0.7)
         img = np.zeros((1, 1, 20), dtype=np.uint8) + 255
         seen = [0, 0]
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(img)
             uq = np.unique(observed)
             if len(uq) == 1:
@@ -6389,7 +6388,7 @@ def deactivated_test_ContrastNormalization():
     nb_iterations = 1000
     nb_changed = 0
     last = None
-    for i in sm.xrange(nb_iterations):
+    for i in range(nb_iterations):
         observed = iaa.ContrastNormalization(alpha=(0.5, 2.0)).augment_image(zeros + 128 + 40)
         if last is None:
             last = observed
@@ -6410,7 +6409,7 @@ def deactivated_test_ContrastNormalization():
     aug = iaa.ContrastNormalization(alpha=(1.0, 4.0), per_channel=0.7)
     img = np.zeros((1, 1, 100), dtype=np.uint8) + 128 + 10
     seen = [0, 0]
-    for _ in sm.xrange(1000):
+    for _ in range(1000):
         observed = aug.augment_image(img)
         uq = np.unique(observed)
         if len(uq) == 1:
