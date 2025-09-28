@@ -22,5 +22,6 @@
 * Change depreciated `ia.quokka_square` to `ia.data.quokka_square` in 
     * `check_add_to_hue_and_saturation.py`
     * `check_brightness.py`
+    * `check_canny.py`
 
 # Improved
