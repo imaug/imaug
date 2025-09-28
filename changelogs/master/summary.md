@@ -14,4 +14,6 @@
 
 # Fixed
 
+## Correct the `__version__` string [#18](https://github.com/imaug/imaug/pull/18)
+
 # Improved
