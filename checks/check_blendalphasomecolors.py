@@ -1,7 +1,14 @@
 from __future__ import print_function, division, absolute_import
+
+import sys
+from pathlib import Path
+
 import imageio
 import imgaug as ia
 import imgaug.augmenters as iaa
+
+sys.path.append(str(Path(__file__).parent))
+from _downloader import download
 
 
 def main():
@@ -18,25 +25,15 @@ def main():
             iaa.AveragePooling(8)
     ]))
 
-    urls = [
-        ("https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/"
-         "Sarcophilus_harrisii_taranna.jpg/"
-         "320px-Sarcophilus_harrisii_taranna.jpg"),
-        ("https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/"
-         "Vincent_van_Gogh_-_Wheatfield_with_crows_-_Google_Art_Project.jpg/"
-         "320px-Vincent_van_Gogh_-_Wheatfield_with_crows_-_Google_Art_Project"
-         ".jpg"),
-        ("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/"
-         "Galerella_sanguinea_Zoo_Praha_2011-2.jpg/207px-Galerella_sanguinea_"
-         "Zoo_Praha_2011-2.jpg"),
-        ("https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/"
-         "Ambrosius_Bosschaert_the_Elder_%28Dutch_-_Flower_Still_Life_-_"
-         "Google_Art_Project.jpg/307px-Ambrosius_Bosschaert_the_Elder_%28"
-         "Dutch_-_Flower_Still_Life_-_Google_Art_Project.jpg")
+    files = [
+        'data/320px-Vincent_van_Gogh-Wheatfield.jpg',
+        'data/320px-Sarcophilus_harrisii_taranna.jpg',
+        'data/207px-Galerella_sanguinea_Zoo_Praha_2011-2.jpg',
+        'data/307px-Ambrosius_Bosschaert_the_Elder-Flower_Still_Life.jpg',
     ]
 
-    for url in urls:
-        img = imageio.imread(url)
+    for file in files:
+        img = imageio.imread(download(file))
         ia.imshow(ia.draw_grid(aug(images=[img]*25), cols=5, rows=5))
         ia.imshow(ia.draw_grid(aug2(images=[img]*25), cols=5, rows=5))
 

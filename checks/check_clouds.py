@@ -1,15 +1,19 @@
 from __future__ import print_function, division
 
+import sys
+from pathlib import Path
 import imageio
 
 import imgaug as ia
 from imgaug import augmenters as iaa
 
+sys.path.append(str(Path(__file__).parent))
+from _downloader import download
+
 
 def main():
     for size in [0.1, 0.2, 1.0]:
-        image = imageio.imread("https://upload.wikimedia.org/wikipedia/commons/8/89/Kukle%2CCzech_Republic..jpg",
-                               format="jpg")
+        image = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
         image = ia.imresize_single_image(image, size, "cubic")
         print(image.shape)
         augs = [

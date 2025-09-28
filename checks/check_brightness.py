@@ -5,7 +5,7 @@ import imgaug.augmenters as iaa
 
 
 def main():
-    image = ia.quokka_square(size=(100, 100))
+    image = ia.data.quokka_square(size=(100, 100))
 
     for cspace in iaa.WithBrightnessChannels._VALID_COLORSPACES:
         print(cspace, "add")
