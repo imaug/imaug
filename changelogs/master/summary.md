@@ -18,10 +18,13 @@
 * Follow SciPy and scikit-image example by adding pooch caching for example data download from wikipedia for
     * `check_clouds.py`
     * `check_blendalphasomecolors.py`
+    * `check_cartoon.py`
     
 * Change depreciated `ia.quokka_square` to `ia.data.quokka_square` in 
     * `check_add_to_hue_and_saturation.py`
     * `check_brightness.py`
     * `check_canny.py`
+
+* In `check_cartoon.py` remove unnecessary imports and use all listed images. 
 
 # Improved
