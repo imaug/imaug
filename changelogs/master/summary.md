@@ -24,6 +24,7 @@
     * `check_add_to_hue_and_saturation.py`
     * `check_brightness.py`
     * `check_canny.py`
+    * `check_color_temperature.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images. 
 
