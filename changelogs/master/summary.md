@@ -32,6 +32,8 @@
     * `check_multiply_hue_and_saturation.py`
     * `check_noise.py`
 
-* In `check_cartoon.py` remove unnecessary imports and use all listed images. 
+* In `check_cartoon.py` remove unnecessary imports and use all listed images.
+
+* In `check_performance.py` replace non-working format string.
 
 # Improved

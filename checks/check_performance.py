@@ -241,7 +241,7 @@ def main():
                 time_end = time.time()
                 times.append(time_end - time_start)
             times = np.array(times)
-            img_str = "{:20s}".format(keypoints[0].shape)
+            img_str = '{!s:<20}'.format(keypoints[0].shape)
             print("%s | SUM %.5fs | PER ITER avg %.5fs, min %.5fs, max %.5fs" % (
                 img_str, float(np.sum(times)), np.average(times), np.min(times), np.max(times)))
 
@@ -258,7 +258,7 @@ def main():
                 time_end = time.time()
                 times.append(time_end - time_start)
             times = np.array(times)
-            img_str = "{:20s}".format(images.shape)
+            img_str = "{!s:<20}".format(images.shape)
             print("%s | SUM %.5fs | PER ITER avg %.5fs, min %.5fs, max %.5fs" % (
                 img_str, float(np.sum(times)), np.average(times), np.min(times), np.max(times)))
 
