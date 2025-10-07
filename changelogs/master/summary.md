@@ -20,6 +20,7 @@
     * `check_blendalphasomecolors.py`
     * `check_cartoon.py`
     * `check_fast_snowy_landscape.py`
+    * `check_rain.py`
     
 * Change depreciated `ia.quokka_square` to `ia.data.quokka_square` in 
     * `check_add_to_hue_and_saturation.py`
