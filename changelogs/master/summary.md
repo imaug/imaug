@@ -26,6 +26,7 @@
     * `check_brightness.py`
     * `check_canny.py`
     * `check_color_temperature.py`
+    * `check_jigsaw.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images. 
 

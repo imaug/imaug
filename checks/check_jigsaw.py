@@ -5,8 +5,8 @@ import timeit
 
 
 def main():
-    image = ia.quokka_square((200, 200))
-    kpsoi = ia.quokka_keypoints((200, 200), extract="square")
+    image = ia.data.quokka_square((200, 200))
+    kpsoi = ia.data.quokka_keypoints((200, 200), extract="square")
     aug = iaa.Jigsaw(10, 10)
 
     images_aug, kpsois_aug = aug(images=[image] * 16,
