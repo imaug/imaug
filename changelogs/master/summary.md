@@ -31,6 +31,8 @@
     * `check_mean_shift_blur.py`
     * `check_multiply_hue_and_saturation.py`
     * `check_noise.py`
+    * `check_pooling.py`
+    * `check_quantize_uniform_to_n_bits.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images.
 

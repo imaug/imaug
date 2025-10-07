@@ -14,7 +14,7 @@ def main():
 
 
 def run(clazz):
-    image = ia.quokka_square((128, 128))
+    image = ia.data.quokka_square((128, 128))
     aug = clazz(2)
     ia.imshow(
         ia.draw_grid(aug.augment_images([image] * (5*5)))

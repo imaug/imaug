@@ -13,7 +13,7 @@ def main():
                 setup=(
                     "import imgaug as ia; "
                     "import imgaug.augmenters as iaa; "
-                    "image = ia.quokka_square((%d, %d))" % (size, size))
+                    "image = ia.data.quokka_square((%d, %d))" % (size, size))
             )
             time_pil = timeit.timeit(
                 "np.asarray("
@@ -25,12 +25,12 @@ def main():
                     "import PIL.Image; "
                     "import PIL.ImageOps; "
                     "import imgaug as ia; "
-                    "image = ia.quokka_square((%d, %d))" % (size, size))
+                    "image = ia.data.quokka_square((%d, %d))" % (size, size))
             )
             print("[size=%04d, bits=%d] iaa=%.4f pil=%.4f" % (
                 size, nb_bits, time_iaa, time_pil))
 
-    image = ia.quokka_square((128, 128))
+    image = ia.data.quokka_square((128, 128))
     images_q = [iaa.quantize_uniform_to_n_bits(image, nb_bits)
                 for nb_bits
                 in [1, 2, 3, 4, 5, 6, 7, 8]]
