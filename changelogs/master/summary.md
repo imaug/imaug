@@ -27,6 +27,10 @@
     * `check_canny.py`
     * `check_color_temperature.py`
     * `check_jigsaw.py`
+    * `check_kmeans_color_quantization.py`
+    * `check_mean_shift_blur.py`
+    * `check_multiply_hue_and_saturation.py`
+    * `check_noise.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images. 
 

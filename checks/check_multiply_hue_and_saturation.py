@@ -7,7 +7,7 @@ from imgaug import augmenters as iaa
 
 
 def main():
-    image = ia.quokka_square((128, 128))
+    image = ia.data.quokka_square((128, 128))
     images_aug = []
 
     for mul in np.linspace(0.0, 2.0, 10):

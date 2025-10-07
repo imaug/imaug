@@ -51,7 +51,7 @@ def main():
     grid = np.vstack(rows)
     ia.imshow((grid*255).astype(np.uint8))
 
-    images = [ia.quokka_square(size=(128, 128)) for _ in range(16)]
+    images = [ia.data.quokka_square(size=(128, 128)) for _ in range(16)]
     seqs = [
         iaa.SimplexNoiseAlpha(first=iaa.EdgeDetect(1.0)),
         iaa.SimplexNoiseAlpha(first=iaa.EdgeDetect(1.0), per_channel=True),
