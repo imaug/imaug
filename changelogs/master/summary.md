@@ -35,5 +35,6 @@
 * In `check_cartoon.py` remove unnecessary imports and use all listed images.
 
 * In `check_performance.py` replace non-working format string.
+* In `check_polygons_stay_valid_during_augmentation.py` adapt to new min/max seed value locations. 
 
 # Improved
