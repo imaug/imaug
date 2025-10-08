@@ -24,6 +24,8 @@
     * `check_remove_saturation.py`
     * `check_snowflakes.py`
     * `check_snowflakes_layer.py`
+    * `check_voronoi.py`
+    * `check_with_hue_and_saturation.py`
     
 * Change depreciated `ia.quokka_square` to `ia.data.quokka_square` or similar for heatmaps and keypoints in 
     * `check_add_to_hue_and_saturation.py`

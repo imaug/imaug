@@ -4,7 +4,7 @@ import imgaug.augmenters as iaa
 
 
 def main():
-    image = ia.quokka_square(size=(128, 128))
+    image = ia.data.quokka_square(size=(128, 128))
     images = []
 
     for i in range(15):
