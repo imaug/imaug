@@ -23,7 +23,7 @@
     * `check_rain.py`
     * `check_remove_saturation.py`
     
-* Change depreciated `ia.quokka_square` to `ia.data.quokka_square` in 
+* Change depreciated `ia.quokka_square` to `ia.data.quokka_square` or similar for heatmaps and keypoints in 
     * `check_add_to_hue_and_saturation.py`
     * `check_brightness.py`
     * `check_canny.py`
@@ -35,6 +35,7 @@
     * `check_noise.py`
     * `check_pooling.py`
     * `check_quantize_uniform_to_n_bits.py`
+    * `check_rot90.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images.
 
