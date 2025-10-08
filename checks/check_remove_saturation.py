@@ -1,11 +1,7 @@
-import sys
-from pathlib import Path
-
 import imgaug as ia
 import imgaug.augmenters as iaa
 import imageio
 
-sys.path.append(str(Path(__file__).parent))
 from _downloader import download
 
 def main():

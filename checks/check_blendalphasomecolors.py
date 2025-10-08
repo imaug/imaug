@@ -1,13 +1,9 @@
 from __future__ import print_function, division, absolute_import
 
-import sys
-from pathlib import Path
-
 import imageio
 import imgaug as ia
 import imgaug.augmenters as iaa
 
-sys.path.append(str(Path(__file__).parent))
 from _downloader import download
 
 
