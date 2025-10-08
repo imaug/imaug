@@ -5,7 +5,7 @@ import imgaug.augmenters as iaa
 
 
 def main():
-    image = ia.quokka_square((256, 256))
+    image = ia.data.quokka_square((256, 256))
     ia.imshow(
         ia.draw_grid([
             iaa.quantize_uniform(image, 2),

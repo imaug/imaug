@@ -39,6 +39,7 @@
     * `check_quantize_uniform_to_n_bits.py`
     * `check_rot90.py`
     * `check_solarize.py`
+    * `check_uniform_color_quantization.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images.
 
