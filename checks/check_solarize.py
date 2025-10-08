@@ -13,7 +13,7 @@ def main():
                 setup=(
                     "import imgaug as ia; "
                     "import imgaug.augmenters as iaa; "
-                    "image = ia.quokka_square((%d, %d))" % (size, size))
+                    "image = ia.data.quokka_square((%d, %d))" % (size, size))
             )
             time_pil = timeit.timeit(
                 "np.asarray("
@@ -25,12 +25,12 @@ def main():
                     "import PIL.Image; "
                     "import PIL.ImageOps; "
                     "import imgaug as ia; "
-                    "image = ia.quokka_square((%d, %d))" % (size, size))
+                    "image = ia.data.quokka_square((%d, %d))" % (size, size))
             )
             print("[size=%04d, thresh=%03d] iaa=%.4f pil=%.4f" % (
                 size, threshold, time_iaa, time_pil))
 
-    image = ia.quokka_square((128, 128))
+    image = ia.data.quokka_square((128, 128))
     images_aug = iaa.Solarize(1.0)(images=[image] * (5*5))
     ia.imshow(ia.draw_grid(images_aug))
 

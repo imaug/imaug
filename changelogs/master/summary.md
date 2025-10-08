@@ -38,6 +38,7 @@
     * `check_pooling.py`
     * `check_quantize_uniform_to_n_bits.py`
     * `check_rot90.py`
+    * `check_solarize.py`
 
 * In `check_cartoon.py` remove unnecessary imports and use all listed images.
 
