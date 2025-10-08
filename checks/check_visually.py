@@ -24,7 +24,7 @@ def main():
     args = parser.parse_args()
 
     images = [
-        ia.quokka_square(size=(128, 128)),
+        ia.data.quokka_square(size=(128, 128)),
         ia.imresize_single_image(data.astronaut(), (128, 128))
     ]
 
@@ -196,6 +196,7 @@ def main():
                 bbs_aug = aug_det.augment_bounding_boxes([bbs] * 16)
                 imgs_aug_drawn = [kps_aug_one.draw_on_image(img_aug) for img_aug, kps_aug_one in zip(imgs_aug, kps_aug)]
                 imgs_aug_drawn = [bbs_aug_one.draw_on_image(img_aug) for img_aug, bbs_aug_one in zip(imgs_aug_drawn, bbs_aug)]
+                # TODO(fails)
                 grid.append(np.hstack(imgs_aug_drawn))
             ia.imshow(np.vstack(grid))
 

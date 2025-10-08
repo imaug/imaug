@@ -48,4 +48,13 @@
 * In `check_performance.py` replace non-working format string.
 * In `check_polygons_stay_valid_during_augmentation.py` adapt to new min/max seed value locations. 
 
+## Fixes needed:
+* flip_performance
+* fog
+* multicore_pool
+* randaugment
+* checks/check_visually.py
+* checks/check_withchannels.py
+* 
+
 # Improved

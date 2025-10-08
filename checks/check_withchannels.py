@@ -39,6 +39,7 @@ def main():
     for children_title, children in children_all:
         for channels in channels_all:
             aug = iaa.WithChannels(channels=channels, children=children)
+            # breaks for dropout []
             img_aug = aug.augment_image(image)
             print("dtype", img_aug.dtype, "averages", np.average(img_aug, axis=tuple(range(0, img_aug.ndim-1))))
 
