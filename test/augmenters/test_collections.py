@@ -95,3 +95,6 @@ class TestRandAugment(unittest.TestCase):
     def test_pickleable(self):
         aug = iaa.RandAugment(m=(0, 10), n=(1, 2))
         runtest_pickleable_uint8_img(aug, iterations=50)
+
+    def test_random_state(self):
+        aug = iaa.RandAugment(n=1, m=30, random_state=1)
