@@ -54,6 +54,7 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 
 * In `check_performance.py` replace non-working format string.
 * In `check_polygons_stay_valid_during_augmentation.py` adapt to new min/max seed value locations.
+* In `check_visually.py` keep image shape consistent for "Sequential" and "Sometimes" checks.
 
 
 ## Fixes needed:

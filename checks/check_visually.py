@@ -182,8 +182,14 @@ def main():
         )
     ]
 
-    augmenters.append(iaa.Sequential([iaa.Sometimes(0.2, aug.copy()) for aug in augmenters], name="Sequential"))
-    augmenters.append(iaa.Sometimes(0.5, [aug.copy() for aug in augmenters], name="Sometimes"))
+    augmenters.append(iaa.Sequential([
+            # Use all augmentations above except resize to keep image shape consistent
+            iaa.Sometimes(0.2, aug.copy()) for aug in augmenters if aug.name != "Resize"
+        ], name="Sequential"))
+    augmenters.append(iaa.Sometimes(0.5, [
+            # Use all augmentations above except resize to keep image shape consistent
+            aug.copy() for aug in augmenters if aug.name != "Resize"
+        ], name="Sometimes"))
 
     for augmenter in augmenters:
         if args.only is None or augmenter.name in [v.strip() for v in args.only.split(",")]:
@@ -196,7 +202,6 @@ def main():
                 bbs_aug = aug_det.augment_bounding_boxes([bbs] * 16)
                 imgs_aug_drawn = [kps_aug_one.draw_on_image(img_aug) for img_aug, kps_aug_one in zip(imgs_aug, kps_aug)]
                 imgs_aug_drawn = [bbs_aug_one.draw_on_image(img_aug) for img_aug, bbs_aug_one in zip(imgs_aug_drawn, bbs_aug)]
-                # TODO(fails)
                 grid.append(np.hstack(imgs_aug_drawn))
             ia.imshow(np.vstack(grid))
 
