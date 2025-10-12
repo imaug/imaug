@@ -26,6 +26,7 @@ overwritten. Additionally, a new test case is added to check the new behavior.
     * `check_blendalphasomecolors.py`
     * `check_cartoon.py`
     * `check_fast_snowy_landscape.py`
+    * `check_fog.py`
     * `check_rain.py`
     * `check_remove_saturation.py`
     * `check_snowflakes.py`
@@ -57,7 +58,6 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 
 ## Fixes needed:
 * flip_performance
-* fog
 * multicore_pool
 * checks/check_visually.py
 * checks/check_withchannels.py
