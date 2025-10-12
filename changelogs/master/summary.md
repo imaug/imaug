@@ -9,6 +9,12 @@
 # Overview
 
 # Changed
+## RandAugment random_state handling [?]
+The class `RandAugment` handled the parameter `random_state` inconsistently for
+its parent class `meta.Sequential`. This resulted in assertion errors once it
+was set. Instead of overwriting `seed` and keeping the provided `random_state`,
+the new version resets `random_state` to `'depreciated'` once `seed` is
+overwritten. Additionally, a new test case is added to check the new behavior.   
 
 # Refactored
 
@@ -46,13 +52,13 @@
 * In `check_cartoon.py` remove unnecessary imports and use all listed images.
 
 * In `check_performance.py` replace non-working format string.
-* In `check_polygons_stay_valid_during_augmentation.py` adapt to new min/max seed value locations. 
+* In `check_polygons_stay_valid_during_augmentation.py` adapt to new min/max seed value locations.
+
 
 ## Fixes needed:
 * flip_performance
 * fog
 * multicore_pool
-* randaugment
 * checks/check_visually.py
 * checks/check_withchannels.py
 * 
