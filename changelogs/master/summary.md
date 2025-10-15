@@ -60,8 +60,11 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 ## Fixes needed:
 * flip_performance
 * multicore_pool
-* checks/check_visually.py
-* checks/check_withchannels.py
-* 
 
 # Improved
+
+## Handling of views in `_multiply_elementwise_to_uint8_`[?]:
+The elementwise multiplication with `cv2.multiply` breaks if a
+RGB image is sliced in the channel dimension and used as destination.
+The error only seems to occur if the view's base shape has a singular first
+dimension. Therefore a true copy of the image is used as destination instead.
