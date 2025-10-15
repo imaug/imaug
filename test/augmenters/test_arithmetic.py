@@ -322,6 +322,22 @@ class Test__multiply_scalar_to_uint8_cv2_mul_(unittest.TestCase):
         assert observed.dtype.name == "uint8"
 
 
+class Test_multiply_elementwise_to_uint8(unittest.TestCase):
+    def test_image_is_view(self):
+        image = ia.data.quokka(extract="square", size=(64, 64))
+
+        image_cp = np.copy(image)[..., [0]]
+        assert image_cp.flags["OWNDATA"] is False
+        assert image_cp.flags["C_CONTIGUOUS"] is True
+        multipliers = np.ones_like(image_cp, dtype=np.int32)
+
+        observed = _multiply_elementwise_to_uint8_(image_cp,
+                                                   multipliers)
+
+        expected = image[..., [0]]
+        assert np.array_equal(observed, expected)
+
+
 class Test_multiply_elementwise_to_non_uint8(unittest.TestCase):
     def test_image_is_hw(self):
         image = np.full((4, 3), 10, dtype=np.uint8)
