@@ -782,11 +782,18 @@ def _multiply_elementwise_to_uint8_(image, multipliers):
         )
     )
 
-    # views seem to be fine here
+    # views seem to be fine as cv2.multiply inputs
     if image.flags["C_CONTIGUOUS"] is False:
         image = np.ascontiguousarray(image)
 
-    result = cv2.multiply(image, multipliers, dst=image, dtype=cv2.CV_8U)
+    # views seem fine as cv2.multiply destinations
+    destination = image
+    # except views with dim sizes smaller than the trailing base dim sizes
+    # i.e. image.base.shape = (1, 64, 64) and image.shape = (64, 64, 1)
+    if not image.base is None and image.base.shape[0] == 1:
+        destination = image.copy()
+
+    result = cv2.multiply(image, multipliers, dst=destination, dtype=cv2.CV_8U)
 
     return result
 

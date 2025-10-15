@@ -9,7 +9,7 @@
 # Overview
 
 # Changed
-## RandAugment random_state handling [?]
+## `RandAugment` `random_state` handling [?]
 The class `RandAugment` handled the parameter `random_state` inconsistently for
 its parent class `meta.Sequential`. This resulted in assertion errors once it
 was set. Instead of overwriting `seed` and keeping the provided `random_state`,
