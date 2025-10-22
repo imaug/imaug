@@ -91,8 +91,8 @@ def main():
         else COMMANDS_VERTICAL_FLIPS)
 
     number = 10000
-    for dt in ["uint8", "uint16", #"uint64",
-               "int8", "int16", "int32", #"int64",
+    for dt in ["uint8", "uint16",
+               "int8", "int16", "int32",
                "float16", "float32", "float64", "float128"]:
         print("")
         print("----------")
