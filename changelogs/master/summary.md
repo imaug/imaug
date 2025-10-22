@@ -55,10 +55,13 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 * In `check_performance.py` replace non-working format string.
 * In `check_polygons_stay_valid_during_augmentation.py` adapt to new min/max seed value locations.
 * In `check_visually.py` keep image shape consistent for "Sequential" and "Sometimes" checks.
+* Multiple fixes in `check_flip_performance.py`:
+    * `cv2.flip` does not support `bool` and `uint32` data types anymore.
+    * `cv2.flip` does not support `uint64` and `int64`, as well as Fortran-style output arrays.
+    * `cv2.flip` returns NumPy arrays without a `get` attribute.
 
 
 ## Fixes needed:
-* flip_performance
 * multicore_pool
 
 # Improved
