@@ -59,10 +59,7 @@ overwritten. Additionally, a new test case is added to check the new behavior.
     * `cv2.flip` does not support `bool` and `uint32` data types anymore.
     * `cv2.flip` does not support `uint64` and `int64`, as well as Fortran-style output arrays.
     * `cv2.flip` returns NumPy arrays without a `get` attribute.
-
-
-## Fixes needed:
-* multicore_pool
+* In `check_multicore_pool.py` move local functions outside the main definition for multiprocessing. 
 
 # Improved
 
