@@ -37,15 +37,15 @@ COMMANDS_HORIZONTAL_FLIPS = [
      "arr = cv2.flip(arr, 1, dst=arr); "
      "arr = np.ascontiguousarray(arr); "
      "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
-    ("fort cv2_",
-     "arr = np.asfortranarray(arr); "
-     "arr = cv2.flip(arr, 1, dst=arr); "
-     "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
-    ("fort cv2_ contig",
-     "arr = np.asfortranarray(arr); "
-     "arr = cv2.flip(arr, 1, dst=arr); "
-     "arr = np.ascontiguousarray(arr); "
-     "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
+    #("fort cv2_",
+    # "arr = np.asfortranarray(arr); "
+    # "arr = cv2.flip(arr, 1, dst=arr); "
+    # "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
+    #("fort cv2_ contig",
+    # "arr = np.asfortranarray(arr); "
+    # "arr = cv2.flip(arr, 1, dst=arr); "
+    # "arr = np.ascontiguousarray(arr); "
+    # "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
     ("cv2_ get",
      "arr = cv2.flip(arr, 1, dst=arr); "
      "arr = arr.get(); "
@@ -55,17 +55,17 @@ COMMANDS_HORIZONTAL_FLIPS = [
      "arr = arr.get(); "
      "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "
      "arr = np.ascontiguousarray(arr); "),
-    ("fort cv2_ get",
-     "arr = np.asfortranarray(arr); "
-     "arr = cv2.flip(arr, 1, dst=arr); "
-     "arr = arr.get(); "
-     "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
-    ("fort cv2_ get contig",
-     "arr = np.asfortranarray(arr); "
-     "arr = cv2.flip(arr, 1, dst=arr); "
-     "arr = arr.get(); "
-     "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "
-     "arr = np.ascontiguousarray(arr); ")
+    #("fort cv2_ get",
+    # "arr = np.asfortranarray(arr); "
+    # "arr = cv2.flip(arr, 1, dst=arr); "
+    # "arr = arr.get(); "
+    # "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "),
+    #("fort cv2_ get contig",
+    # "arr = np.asfortranarray(arr); "
+    # "arr = cv2.flip(arr, 1, dst=arr); "
+    # "arr = arr.get(); "
+    # "arr = arr if arr.ndim == 3 else arr[..., np.newaxis]; "
+    # "arr = np.ascontiguousarray(arr); ")
 ]
 
 COMMANDS_VERTICAL_FLIPS = []
@@ -91,9 +91,8 @@ def main():
         else COMMANDS_VERTICAL_FLIPS)
 
     number = 10000
-    for dt in ["bool",
-               "uint8", "uint16", "uint32", "uint64",
-               "int8", "int16", "int32", "int64",
+    for dt in ["uint8", "uint16", #"uint64",
+               "int8", "int16", "int32", #"int64",
                "float16", "float32", "float64", "float128"]:
         print("")
         print("----------")
