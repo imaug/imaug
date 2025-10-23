@@ -9,7 +9,7 @@
 # Overview
 
 # Changed
-## `RandAugment` `random_state` handling [?]
+## `RandAugment` `random_state` handling [#19](https://github.com/imaug/imaug/pull/19)
 The class `RandAugment` handled the parameter `random_state` inconsistently for
 its parent class `meta.Sequential`. This resulted in assertion errors once it
 was set. Instead of overwriting `seed` and keeping the provided `random_state`,
@@ -20,7 +20,7 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 
 # Fixed
 
-## Verified checks [?]
+## Verified checks [#19](https://github.com/imaug/imaug/pull/19)
 * Follow SciPy and scikit-image example by adding pooch caching for example data download from wikipedia for
     * `check_clouds.py`
     * `check_blendalphasomecolors.py`
@@ -65,7 +65,7 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 
 # Improved
 
-## Handling of views in `_multiply_elementwise_to_uint8_`[?]:
+## Handling of views in `_multiply_elementwise_to_uint8_`[#19](https://github.com/imaug/imaug/pull/19)
 The elementwise multiplication with `cv2.multiply` breaks if a
 RGB image is sliced in the channel dimension and used as destination.
 The error only seems to occur if the view's base shape has a singular first
