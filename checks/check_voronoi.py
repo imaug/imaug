@@ -7,7 +7,7 @@ import imgaug.augmenters as iaa
 
 
 def main():
-    image = ia.quokka_square((256, 256))
+    image = ia.data.quokka_square((256, 256))
 
     reggrid_sampler = iaa.DropoutPointsSampler(
         iaa.RegularGridPointsSampler(n_rows=50, n_cols=50),

@@ -1,14 +1,14 @@
 from __future__ import print_function, division
-
 import imageio
 
 import imgaug as ia
 from imgaug import augmenters as iaa
 
+from _downloader import download
+
 
 def main():
-    image = imageio.imread("https://upload.wikimedia.org/wikipedia/commons/8/89/Kukle%2CCzech_Republic..jpg",
-                           format="jpg")
+    image = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
     augs = [
         ("iaa.FastSnowyLandscape(64, 1.5)", iaa.FastSnowyLandscape(64, 1.5)),
         ("iaa.FastSnowyLandscape(128, 1.5)", iaa.FastSnowyLandscape(128, 1.5)),

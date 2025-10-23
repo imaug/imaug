@@ -52,7 +52,7 @@ def create_random_polygon(height, width, seed):
     if poly.is_valid:
         return poly
 
-    new_seed = rs.randint(ia.SEED_MIN_VALUE, ia.SEED_MAX_VALUE)
+    new_seed = rs.randint(ia.random.SEED_MIN_VALUE, ia.random.SEED_MAX_VALUE)
     return create_random_polygon(height, width, new_seed)
 
 

@@ -4,11 +4,11 @@ import imageio
 
 import imgaug as ia
 from imgaug import augmenters as iaa
+from _downloader import download
 
 
 def main():
-    image = imageio.imread("https://upload.wikimedia.org/wikipedia/commons/8/89/Kukle%2CCzech_Republic..jpg",
-                           format="jpg")
+    image = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
     augs = [
         ("iaa.SnowflakesLayer()", iaa.SnowflakesLayer(
             density=0.05, density_uniformity=0.5, flake_size=0.9, flake_size_uniformity=0.5,

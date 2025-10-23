@@ -24,22 +24,21 @@ class PoolWithMarkedWorker(multicore.Pool):
                 image[::4, ::4, :] = [255, 255, 255]
         return multicore.Pool._worker(batch_idx, batch)
 
+def func_images(images, random_state, parents, hooks):
+    time.sleep(0.2)
+    return images
+
+def func_heatmaps(heatmaps, random_state, parents, hooks):
+    return heatmaps
+
+def func_keypoints(keypoints_on_images, random_state, parents, hooks):
+    return keypoints_on_images
 
 def main():
     augseq = iaa.Sequential([
         iaa.Fliplr(0.5),
         iaa.CoarseDropout(p=0.1, size_percent=0.1)
     ])
-
-    def func_images(images, random_state, parents, hooks):
-        time.sleep(0.2)
-        return images
-
-    def func_heatmaps(heatmaps, random_state, parents, hooks):
-        return heatmaps
-
-    def func_keypoints(keypoints_on_images, random_state, parents, hooks):
-        return keypoints_on_images
 
     augseq_slow = iaa.Sequential([
         iaa.Fliplr(0.5),

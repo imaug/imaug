@@ -24,7 +24,7 @@ def main():
     args = parser.parse_args()
 
     images = [
-        ia.quokka_square(size=(128, 128)),
+        ia.data.quokka_square(size=(128, 128)),
         ia.imresize_single_image(data.astronaut(), (128, 128))
     ]
 
@@ -182,8 +182,14 @@ def main():
         )
     ]
 
-    augmenters.append(iaa.Sequential([iaa.Sometimes(0.2, aug.copy()) for aug in augmenters], name="Sequential"))
-    augmenters.append(iaa.Sometimes(0.5, [aug.copy() for aug in augmenters], name="Sometimes"))
+    augmenters.append(iaa.Sequential([
+            # Use all augmentations above except resize to keep image shape consistent
+            iaa.Sometimes(0.2, aug.copy()) for aug in augmenters if aug.name != "Resize"
+        ], name="Sequential"))
+    augmenters.append(iaa.Sometimes(0.5, [
+            # Use all augmentations above except resize to keep image shape consistent
+            aug.copy() for aug in augmenters if aug.name != "Resize"
+        ], name="Sometimes"))
 
     for augmenter in augmenters:
         if args.only is None or augmenter.name in [v.strip() for v in args.only.split(",")]:

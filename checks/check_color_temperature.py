@@ -5,7 +5,7 @@ import imgaug.augmenters as iaa
 
 
 def main():
-    image = ia.quokka_square()
+    image = ia.data.quokka_square()
     images_aug = []
     for kelvin in np.linspace(1000, 10000, 64):
         images_aug.append(iaa.ChangeColorTemperature(kelvin)(image=image))

@@ -30,7 +30,7 @@ def main():
     print("--------")
     print("Image + Keypoints")
     print("--------")
-    kps = ia.quokka_keypoints(0.25)
+    kps = ia.data.quokka_keypoints(0.25)
     for name, aug in augs:
         print(name, "...")
         aug_det = aug.to_deterministic()
@@ -43,7 +43,7 @@ def main():
     print("--------")
     print("Image + Heatmaps (low res)")
     print("--------")
-    hms = ia.quokka_heatmap(0.10)
+    hms = ia.data.quokka_heatmap(0.10)
     for name, aug in augs:
         print(name, "...")
         aug_det = aug.to_deterministic()
