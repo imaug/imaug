@@ -20,7 +20,7 @@ jobs:
         os: [ubuntu-latest]
         # see supported versions at
         # https://raw.githubusercontent.com/actions/python-versions/master/versions-manifest.json
-        python-version: [3.13]
+        python-version: [3.14]
     env:
       OS: ${{ matrix.os }}
       PYTHON: ${{ matrix.python-version }}

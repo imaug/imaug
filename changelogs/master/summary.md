@@ -14,7 +14,11 @@ The class `RandAugment` handled the parameter `random_state` inconsistently for
 its parent class `meta.Sequential`. This resulted in assertion errors once it
 was set. Instead of overwriting `seed` and keeping the provided `random_state`,
 the new version resets `random_state` to `'depreciated'` once `seed` is
-overwritten. Additionally, a new test case is added to check the new behavior.   
+overwritten. Additionally, a new test case is added to check the new behavior.
+
+## Add Python 3.14 to CI pipeline [?]
+Add Python 3.14 testing to `test_master.yml`, `test_pull_requests.yml`, and `build_wheels.yml`
+GitHub Action files.
 
 # Refactored
 
