@@ -264,8 +264,9 @@ def blend_alpha_(image_fg, image_bg, alpha, eps=1e-2):
 # Added in 0.5.0.
 def _blend_alpha_uint8_single_alpha_(image_fg, image_bg, alpha, inplace):
     # here we are not guarantueed that inputs have ndim=3, can be ndim=2
+    image_fg = _normalize_cv2_input_arr_(image_fg)
     result = cv2.addWeighted(
-        _normalize_cv2_input_arr_(image_fg),
+        image_fg,
         alpha,
         _normalize_cv2_input_arr_(image_bg),
         beta=(1 - alpha),
