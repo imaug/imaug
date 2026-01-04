@@ -14,7 +14,12 @@ The class `RandAugment` handled the parameter `random_state` inconsistently for
 its parent class `meta.Sequential`. This resulted in assertion errors once it
 was set. Instead of overwriting `seed` and keeping the provided `random_state`,
 the new version resets `random_state` to `'depreciated'` once `seed` is
-overwritten. Additionally, a new test case is added to check the new behavior.   
+overwritten. Additionally, a new test case is added to check the new behavior.
+
+## `_blend_alpha_uint8_single_alpha_` always returns copies [#23](https://github.com/imaug/imaug/pull/23)
+The inplace modification of `image_fg` caused errors when applied on non-C-contiguous views.
+Thus, the function was changed such that it always returns copies, even when called with `inplace=True`.
+It was verfied that calling functions do not rely on inplace modifications for proper functionality.
 
 # Refactored
 
@@ -62,6 +67,14 @@ overwritten. Additionally, a new test case is added to check the new behavior.
 * In `check_multicore_pool.py` move local functions outside the main definition for multiprocessing.
 
 ## Correct the `__version__` string [#18](https://github.com/imaug/imaug/pull/18)
+
+## Handling of non-c-contiguous views in `_blend_alpha_uint8_single_alpha_`[#23](https://github.com/imaug/imaug/pull/23)
+The calling functions of `_blend_alpha_uint8_single_alpha_` do not always guarantee C-contiguous arrays base 
+arrays (i.e. which own their data). This leads to problems when the function sets the `inplace`
+parameter to `True`. In this case the `_normalize_cv2_input_arr_` makes sure that `image_fg` is a C-contiguous
+base array when used as CV2 input, but does not change it when used as CV2 destination. This fix makes sure that
+also the destination array matches the CV2 requirements, while sacrificing the (real) inplace modification of 
+`image_fg`.
 
 # Improved
 
