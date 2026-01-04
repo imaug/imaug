@@ -33,19 +33,6 @@ from imgaug.augmentables.segmaps import SegmentationMapsOnImage
 from imgaug.augmentables.batches import _BatchInAugmentation
 
 
-class Test_blend_alpha_(unittest.TestCase):
-    def setUp(self):
-        reseed()
-
-    def test_with_non_c_contigonous_forground_image(self):
-        shape = (3,3,3)
-        img_fg = np.arange(np.prod(shape), dtype=np.uint8)
-        img_fg = img_fg.reshape(shape)[..., -1:]
-        img_bg = np.full((3, 3, 1), 255, dtype=np.uint8)
-        img_blend = blend.blend_alpha_(img_fg, img_bg, 0.2)
-        assert img_blend.shape == (3, 3, 1)
-
-
 class Test_blend_alpha(unittest.TestCase):
     def setUp(self):
         reseed()
@@ -1149,7 +1136,7 @@ class TestBlendAlpha(unittest.TestCase):
             seed=3)
         runtest_pickleable_uint8_img(aug, iterations=10)
 
-    def test_non_c_contiguous_forground_aug(self):
+    def test_non_c_contiguous_foreground_aug(self):
         aug = iaa.Alpha((0.0, 1.0), iaa.AllChannelsHistogramEqualization())
         results = aug.augment_image(self.image)
 
