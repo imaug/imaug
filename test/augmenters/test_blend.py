@@ -1136,6 +1136,10 @@ class TestBlendAlpha(unittest.TestCase):
             seed=3)
         runtest_pickleable_uint8_img(aug, iterations=10)
 
+    def test_non_c_contiguous_foreground_aug(self):
+        aug = iaa.Alpha((0.0, 1.0), iaa.AllChannelsHistogramEqualization())
+        results = aug.augment_image(self.image)
+
 
 class _DummyMaskParameter(iap.StochasticParameter):
     def __init__(self, inverted=False):
