@@ -1,11 +1,10 @@
 from __future__ import print_function, division, absolute_import
 
 import imageio
+
 import imgaug as ia
 import imgaug.augmenters as iaa
-
-from _downloader import download
-
+from imgaug._downloader import download
 
 def main():
     aug = iaa.BlendAlphaMask(

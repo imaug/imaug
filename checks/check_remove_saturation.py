@@ -1,8 +1,8 @@
-import imgaug as ia
-import imgaug.augmenters as iaa
 import imageio
 
-from _downloader import download
+import imgaug as ia
+import imgaug.augmenters as iaa
+from imgaug._downloader import download
 
 def main():
     files = [

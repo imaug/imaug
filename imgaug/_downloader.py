@@ -4,12 +4,16 @@ try:
     import pooch
 except ModuleNotFoundError:
     raise ModuleNotFoundError(
-        "This check downloads online files. In order to keep the load on "
+        "This module downloads online files. In order to keep the load on "
         "the external servers minimal, the installation of an optional "
         "dependency, pooch, is required."
     )
 
+# NOTE: All images are from wikipedia and are property of the respective authors. 
+
 registry = {
+    'data/cityscapes5.png': "79c7a11f185dab0114d6474852b165dd36818269df66061b1b7e06078829393a",
+    'data/cityscapes5-annotation.png': "5bc5685da9404247df0be9e7569b080ec3f33a241d4d7adb74a1d98ae207445d",
     'data/Kukle_Czech_Republic.jpg': "261d05b7479abff17af7762777aee1ccfa72959038a11af3457decb6ef443852",
     'data/320px-Sarcophilus_harrisii_taranna.jpg': "6d15eea0afe42ccd7a74b64545f1cbb32ea21f4b715ec1a3eb89420bd6deeec4",
     'data/320px-Vincent_van_Gogh-Wheatfield.jpg': "aa3ad2e2d21b624c8439d267e9bb49db65f9bb4d73e20977dae0ed2adfd56fed",
@@ -32,12 +36,15 @@ registry = {
     'data/1024px-Pahalgam_Valley.jpg': "154ffbb23c53431ceb6567681986c8ab76f37b71f0fcdb4af24330639b4d50d4",
     'data/1024px-Iglesia_de_Nuestra_Señora_de_La_Blanca.jpg': "37682593507d49140e6cf52fa04f2b3d38f2d2ca46a0de4e3d3dffb0a601e69f",
     'data/1024px-Salad_platter.jpg': "e3bd71241fabe6e35fb19864fb808e662301c5adbf1bee5084aacf8ac1889242",
-
-
+    'data/1280px-Vincent_van_Gogh-Wheatfield.jpg': "b14b0709ecaf6620407c457030c5b2dd70a48cc75d29f7e5870ccbce48dfa1b1",
 
 
 }
 urls = {
+    'data/cityscapes5.png':
+        "https://raw.githubusercontent.com/aleju/imgaug-doc/refs/heads/master/images/annotated/cityscapes5.png",
+    'data/cityscapes5-annotation.png':
+        "https://raw.githubusercontent.com/aleju/imgaug-doc/refs/heads/master/images/annotated/cityscapes5-annotation.png",
     'data/Kukle_Czech_Republic.jpg':
         "https://upload.wikimedia.org/wikipedia/commons/8/89/Kukle%2CCzech_Republic..jpg",
     'data/320px-Vincent_van_Gogh-Wheatfield.jpg': 
@@ -82,6 +89,8 @@ urls = {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Iglesia_de_Nuestra_Se%C3%B1ora_de_La_Blanca%2C_Cardej%C3%B3n%2C_Espa%C3%B1a%2C_2012-09-01%2C_DD_02.JPG/1024px-Iglesia_de_Nuestra_Se%C3%B1ora_de_La_Blanca%2C_Cardej%C3%B3n%2C_Espa%C3%B1a%2C_2012-09-01%2C_DD_02.JPG",
     'data/1024px-Salad_platter.jpg':
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Salad_platter.jpg/1024px-Salad_platter.jpg",
+    'data/1280px-Vincent_van_Gogh-Wheatfield.jpg':
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Vincent_Van_Gogh_-_Wheatfield_with_Crows.jpg/1280px-Vincent_Van_Gogh_-_Wheatfield_with_Crows.jpg",
 }
 
 

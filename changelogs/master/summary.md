@@ -21,6 +21,11 @@ The inplace modification of `image_fg` caused errors when applied on non-C-conti
 Thus, the function was changed such that it always returns copies, even when called with `inplace=True`.
 It was verfied that calling functions do not rely on inplace modifications for proper functionality.
 
+## Moved image `_downloader.py` from `checks` to `imgaug` [#21](https://github.com/imaug/imaug/pull/21)
+For creating the example images for the documentation it is necessary to download online sample images
+similar to the workflow for the checks. Instead of copy the `download` function for the documentation, 
+the function was moved to serve as a general utility function for the library.
+
 # Refactored
 
 # Fixed
