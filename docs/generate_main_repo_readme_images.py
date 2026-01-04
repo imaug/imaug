@@ -1,6 +1,7 @@
 from __future__ import print_function, division
 import imgaug as ia
 from imgaug import augmenters as iaa
+from imgaug._downloader import download
 import numpy as np
 import imageio
 import tempfile
@@ -18,9 +19,6 @@ np.random.seed(44)
 ia.seed(44)
 
 IMAGES_DIR = "readme_images"
-INPUT_IMAGES_DIR = os.path.join(os.path.realpath(os.path.dirname(__file__)),
-                                "images", "input_images")
-
 
 def main():
     #draw_small_overview()
@@ -655,13 +653,13 @@ def draw_per_augmenter_videos():
     heatmap = ia.quokka_heatmap(size=(h, w), extract="square")
     segmap = ia.quokka_segmentation_map(size=(h, w), extract="square")
 
-    image_landscape = imageio.imread("https://upload.wikimedia.org/wikipedia/commons/8/89/Kukle%2CCzech_Republic..jpg", format="jpg")
-    # os.path.join(os.path.dirname(os.path.abspath(__file__)), "landscape.jpg")
+    image_landscape = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
     image_landscape = ia.imresize_single_image(image_landscape, (96, 128))
-    image_valley = imageio.imread(os.path.join(INPUT_IMAGES_DIR, "Pahalgam_Valley.jpg"))
+    image_valley = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
     image_valley = ia.imresize_single_image(image_valley, (96, 128))
-    image_vangogh = imageio.imread(os.path.join(INPUT_IMAGES_DIR, "1280px-Vincent_Van_Gogh_-_Wheatfield_with_Crows.jpg"))
+    image_vangogh = imageio.imread(download('data/1280px-Vincent_van_Gogh-Wheatfield.jpg'))
     image_vangogh = ia.imresize_single_image(image_vangogh, (96, 128))
+
 
     print("[draw_per_augmenter_videos] Initializing...")
     descriptors = []

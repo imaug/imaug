@@ -8,12 +8,9 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 import imgaug.augmenters.meta as meta
 import imgaug.parameters as iap
+from imgaug._downloader import download
 
 from .utils import run_and_save_augseq
-
-FILE_DIR = os.path.realpath(os.path.dirname(__file__))
-INPUT_IMAGES_DIR = os.path.join(FILE_DIR, "..", "..", "images",
-                                "input_images")
 
 
 def main():
@@ -21,12 +18,9 @@ def main():
 
 
 def chapter_augmenters_cartoon():
-    image1 = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "1024px-Barack_Obama_family_portrait_2011.jpg"))
-    image2 = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "Pahalgam_Valley.jpg"))
-    image3 = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "1024px-Salad_platter.jpg"))
+    image1 = imageio.imread(download('data/1024px-Barack_Obama_family_portrait_2011.jpg'))
+    image2 = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
+    image3 = imageio.imread(download('data/1024px-Salad_platter.jpg'))
 
     image1 = ia.imresize_single_image(image1, 0.25)
     image2 = ia.imresize_single_image(image2, 0.25)

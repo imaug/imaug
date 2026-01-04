@@ -8,12 +8,9 @@ import imageio
 
 import imgaug as ia
 import imgaug.augmenters as iaa
+from imgaug._downloader import download
 
 from .utils import run_and_save_augseq
-
-
-FILE_DIR = os.path.realpath(os.path.dirname(__file__))
-INPUT_IMAGES_DIR = os.path.join(FILE_DIR, "..", "..", "images", "input_images")
 
 
 def main():
@@ -344,9 +341,7 @@ def chapter_augmenters_grayscale():
 def chapter_augmenters_changecolortemperature():
     fn_start = "color/changecolortemperature"
 
-    image = imageio.imread(
-        os.path.join(INPUT_IMAGES_DIR,
-                     "Pahalgam_Valley.jpg"))
+    image = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
     image = ia.imresize_single_image(image, 0.2)
 
     aug = iaa.ChangeColorTemperature((1100, 10000))

@@ -27,6 +27,14 @@ similar to the workflow for the checks. Instead of copy the `download` function 
 the function was moved to serve as a general utility function for the library.
 
 # Refactored
+## Add cached downloader to example image creation for documentation [#21](https://github.com/imaug/imaug/pull/21)
+Added `pooch` caching for online data to the example creation scripts
+* `generate_main_repo_readme_images.py`
+* `gen_v040_changelog_images.py`
+* `gen_overview_artistic.py`
+* `gen_overview_blend.py`
+* `gen_overview_color.py`
+* `gen_overview_weather.py`
 
 # Fixed
 

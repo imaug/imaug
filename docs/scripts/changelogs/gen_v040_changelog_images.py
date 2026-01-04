@@ -6,6 +6,7 @@ import numpy as np
 
 import imgaug as ia
 import imgaug.augmenters as iaa
+from imgaug._downloader import download
 
 FILE_DIR = os.path.abspath(os.path.dirname(__file__))
 ROOT_DIR = os.path.abspath(os.path.join(FILE_DIR, "..", ".."))
@@ -110,10 +111,9 @@ def generate_solarize():
 def generate_cartoon():
     ia.seed(1)
 
-    image1 = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "Pahalgam_Valley.jpg"))
-    image2 = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "1024px-Salad_platter.jpg"))
+    image1 = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
+    image2 = imageio.imread(download('data/1024px-Salad_platter.jpg'))
+
     image1 = iaa.Resize(
         {"width": 256, "height": "keep-aspect-ratio"}
     )(image=image1)
@@ -165,8 +165,7 @@ def generate_add_to_brightness():
 def generate_change_color_temperature():
     ia.seed(1)
 
-    image = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "Pahalgam_Valley.jpg"))
+    image = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
     image = ia.imresize_single_image(image, 0.12)
     images_aug = [image]
     for kelvin in np.linspace(1000, 5000, 7):
@@ -358,8 +357,7 @@ def generate_pillike():
 def generate_rain():
     ia.seed(2)
 
-    image = imageio.imread(os.path.join(
-        INPUT_IMAGES_DIR, "Pahalgam_Valley.jpg"))
+    image = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
     image = iaa.Resize(
         {"width": 256, "height": "keep-aspect-ratio"}
     )(image=image)
@@ -439,12 +437,7 @@ def generate_blending():
 
     # somecolors + removesaturation
     ia.seed(1)
-    image_gogh = imageio.imread(
-        os.path.join(
-            INPUT_IMAGES_DIR,
-            "1280px-Vincent_Van_Gogh_-_Wheatfield_with_Crows.jpg"
-        )
-    )
+    image_gogh = imageio.imread(download('data/1280px-Vincent_van_Gogh-Wheatfield.jpg'))
     image_gogh = iaa.Resize(
         {"width": 256, "height": "keep-aspect-ratio"}
     )(image=image_gogh)
@@ -461,9 +454,8 @@ def generate_blending():
 
 
 def load_cityscapes_data():
-    image_fp = os.path.join(IMAGES_DIR, "annotated", "cityscapes5.png")
-    image_fp_anno = os.path.join(IMAGES_DIR, "annotated",
-                                 "cityscapes5-annotation.png")
+    image_fp = download("data/cityscapes5.png")
+    image_fp_anno = download("data/cityscapes5-annotation.png")
     image = imageio.imread(image_fp)[:, :, 0:3]
     image_anno = imageio.imread(image_fp_anno)[:, :, 0:3]
     print(image.shape, image_anno.shape)

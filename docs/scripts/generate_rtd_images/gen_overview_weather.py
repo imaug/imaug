@@ -4,13 +4,12 @@ import imageio
 
 import imgaug as ia
 import imgaug.augmenters as iaa
+from imgaug._downloader import download
 
 from .utils import run_and_save_augseq, save
 
-LANDSCAPE_IMAGE = imageio.imread(
-    "https://upload.wikimedia.org/wikipedia/commons/8/89/"
-    "Kukle%2CCzech_Republic..jpg",
-    format="jpg")
+LANDSCAPE_IMAGE = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
+
 # 960x1280 -> 96x128
 LANDSCAPE_IMAGE = ia.imresize_single_image(LANDSCAPE_IMAGE, 0.1)
 

@@ -7,6 +7,7 @@ import imageio
 import imgaug as ia
 import imgaug.augmenters as iaa
 import imgaug.parameters as iap
+from imgaug._downloader import download
 
 from . import utils
 from .utils import run_and_save_augseq, DOCS_IMAGES_BASE_PATH
@@ -185,10 +186,7 @@ def chapter_augmenters_blendalphafrequencynoise():
 
 def chapter_augmenters_blendalphasomecolors():
     fn_start = "blend/blendalphasomecolors"
-    image = imageio.imread(
-        os.path.join(DOCS_IMAGES_BASE_PATH,
-                     "input_images",
-                     "1280px-Vincent_Van_Gogh_-_Wheatfield_with_Crows.jpg"))
+    image = imageio.imread(download('data/1280px-Vincent_van_Gogh-Wheatfield.jpg'))
 
     # ca. 15% of original size
     image = ia.imresize_single_image(image, (92, 192))
