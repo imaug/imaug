@@ -20,8 +20,6 @@ import numpy as np
 # with skimage.segmentation for whatever reason
 import skimage.segmentation
 import skimage.measure
-import six
-import six.moves as sm
 
 import imgaug as ia
 from . import meta
@@ -439,12 +437,12 @@ def _replace_segments_numba_collect_avg_colors(
     average_colors = np.zeros((nb_segments, nb_channels), dtype=np.float64)
 
     counters = np.zeros((nb_segments,), dtype=np.int32)
-    for seg_id in sm.xrange(nb_segments):
+    for seg_id in range(nb_segments):
         if not replace_flags[seg_id % nb_flags]:
             counters[seg_id] = -1
 
-    for y in sm.xrange(height):
-        for x in sm.xrange(width):
+    for y in range(height):
+        for x in range(width):
             seg_id = segments[y, x]
             count = counters[seg_id]
 
@@ -469,8 +467,8 @@ def _replace_segments_numba_apply_avg_cols_(
     height, width = image.shape[0:2]
     nb_flags = len(replace_flags)
 
-    for y in sm.xrange(height):
-        for x in sm.xrange(width):
+    for y in range(height):
+        for x in range(width):
             seg_id = segments[y, x]
             if replace_flags[seg_id % nb_flags]:
                 image[y, x, :] = average_colors[seg_id]
@@ -1231,8 +1229,7 @@ class RelativeRegularGridVoronoi(Voronoi):
             random_state=random_state, deterministic=deterministic)
 
 
-@six.add_metaclass(ABCMeta)
-class IPointsSampler(object):
+class IPointsSampler(object, metaclass=ABCMeta):
     """Interface for all point samplers.
 
     Point samplers return coordinate arrays of shape ``Nx2``.

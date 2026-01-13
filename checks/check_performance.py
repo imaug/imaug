@@ -9,7 +9,6 @@ from imgaug import augmenters as iaa
 import numpy as np
 import time
 import random
-import six.moves as sm
 
 """
 ---------------------------
@@ -212,7 +211,7 @@ def main():
     )
 
     kps = []
-    for _ in sm.xrange(20):
+    for _ in range(20):
         x = random.randint(0, 31)
         y = random.randint(0, 31)
         kps.append(ia.Keypoint(x=x, y=y))
@@ -220,9 +219,9 @@ def main():
     small_keypoints_one = kps.on((4, 4, 3))
     medium_keypoints_one = kps.on((32, 32, 3))
     large_keypoints_one = kps.on((256, 256, 3))
-    small_keypoints = [small_keypoints_one.deepcopy() for _ in sm.xrange(16)]
-    medium_keypoints = [medium_keypoints_one.deepcopy() for _ in sm.xrange(16)]
-    large_keypoints = [large_keypoints_one.deepcopy() for _ in sm.xrange(16)]
+    small_keypoints = [small_keypoints_one.deepcopy() for _ in range(16)]
+    medium_keypoints = [medium_keypoints_one.deepcopy() for _ in range(16)]
+    large_keypoints = [large_keypoints_one.deepcopy() for _ in range(16)]
 
     small_images = np.random.randint(0, 255, (16, 4, 4, 3)).astype(np.uint8)
     medium_images = np.random.randint(0, 255, (16, 32, 32, 3)).astype(np.uint8)
@@ -235,7 +234,7 @@ def main():
         print("[Augmenter: %s]" % (augmenter.name,))
         for keypoints in [small_keypoints, medium_keypoints, large_keypoints]:
             times = []
-            for i in sm.xrange(100):
+            for i in range(100):
                 time_start = time.time()
                 _img_aug = augmenter.augment_keypoints(keypoints)
                 time_end = time.time()
@@ -252,7 +251,7 @@ def main():
         print("[Augmenter: %s]" % (augmenter.name,))
         for images in [small_images, medium_images, large_images]:
             times = []
-            for i in sm.xrange(100):
+            for i in range(100):
                 time_start = time.time()
                 _img_aug = augmenter.augment_images(images)
                 time_end = time.time()

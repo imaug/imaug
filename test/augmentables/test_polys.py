@@ -14,7 +14,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 import shapely
 import shapely.geometry
 
@@ -3591,7 +3590,7 @@ class Test_ConcavePolygonRecoverer(unittest.TestCase):
         points_fit = cpr._fit_best_valid_polygon(
             points, random_state=rng.copy())
         # doing this without the list(.) wrappers fails on python2.7
-        assert list(points_fit) == list(sm.xrange(len(points)))
+        assert list(points_fit) == list(range(len(points)))
 
         # square-like, but top line has one point in its center which's
         # y-coordinate is below the bottom line

@@ -22,7 +22,6 @@ from __future__ import print_function, division, absolute_import
 from abc import ABCMeta, abstractmethod
 
 import numpy as np
-import six
 import cv2
 
 import imgaug as ia
@@ -2528,8 +2527,7 @@ class BlendAlphaBoundingBoxes(BlendAlphaMask):
             random_state=random_state, deterministic=deterministic)
 
 
-@six.add_metaclass(ABCMeta)
-class IBatchwiseMaskGenerator(object):
+class IBatchwiseMaskGenerator(object, metaclass=ABCMeta):
     """Interface for classes generating masks for batches.
 
     Child classes are supposed to receive a batch and generate an iterable

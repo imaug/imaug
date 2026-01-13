@@ -15,8 +15,6 @@ except ImportError:
 
 import numpy as np
 import cv2
-import six
-import six.moves as sm
 import skimage.draw
 import skimage.measure
 try:
@@ -331,7 +329,7 @@ def is_string(val):
         ``True`` if the variable is a string. Otherwise ``False``.
 
     """
-    return isinstance(val, six.string_types)
+    return isinstance(val, str)
 
 
 def is_single_bool(val):
@@ -1101,7 +1099,7 @@ def imresize_many_images(images, sizes=None, interpolation=None):
         if nb_channels is not None and nb_channels > 512:
             channels = [
                 cv2.resize(image[..., c], (width_target, height_target),
-                           interpolation=inter) for c in sm.xrange(nb_channels)]
+                           interpolation=inter) for c in range(nb_channels)]
             result_img = np.stack(channels, axis=-1)
         else:
             result_img = cv2.resize(
@@ -1869,8 +1867,8 @@ def draw_grid(images, rows=None, cols=None):
     dtype = images.dtype if is_np_array(images) else images[0].dtype
     grid = np.zeros((height, width, nb_channels), dtype=dtype)
     cell_idx = 0
-    for row_idx in sm.xrange(rows):
-        for col_idx in sm.xrange(cols):
+    for row_idx in range(rows):
+        for col_idx in range(cols):
             if cell_idx < nb_images:
                 image = images[cell_idx]
                 cell_y1 = cell_height * row_idx

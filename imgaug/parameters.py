@@ -14,8 +14,6 @@ from functools import reduce, wraps
 from operator import mul as mul_op
 
 import numpy as np
-import six
-import six.moves as sm
 import scipy
 import scipy.stats
 import imageio
@@ -533,8 +531,7 @@ def show_distributions_grid(params, rows=None, cols=None,
     )
 
 
-@six.add_metaclass(ABCMeta)
-class StochasticParameter(object):
+class StochasticParameter(object, metaclass=ABCMeta):
     """Abstract parent class for all stochastic parameters.
 
     Stochastic parameters are here all parameters from which values are
@@ -793,7 +790,7 @@ class StochasticParameter(object):
         import matplotlib.pyplot as plt
 
         points = []
-        for _ in sm.xrange(size[0]):
+        for _ in range(size[0]):
             points.append(self.draw_samples(size[1:]).flatten())
         points = np.concatenate(points)
 
@@ -812,7 +809,7 @@ class StochasticParameter(object):
         if title is not False:
             # split long titles - otherwise matplotlib generates errors
             title_fragments = [title[i:i+50]
-                               for i in sm.xrange(0, len(title), 50)]
+                               for i in range(0, len(title), 50)]
             ax.set_title("\n".join(title_fragments))
         fig.tight_layout(pad=0)
 
@@ -3029,7 +3026,7 @@ class IterativeNoiseAggregator(StochasticParameter):
         rngs_iterations = rngs[1].duplicate(iterations)
 
         result = np.zeros(size, dtype=np.float32)
-        for i in sm.xrange(iterations):
+        for i in range(iterations):
             noise_iter = self.other_param.draw_samples(
                 size, random_state=rngs_iterations[i])
 
@@ -3307,7 +3304,7 @@ class SimplexNoise(StochasticParameter):
         upscale_methods = self.upscale_method.draw_samples(
             (iterations,), random_state=rngs[0])
         result = np.zeros((height, width), dtype=np.float32)
-        for i in sm.xrange(iterations):
+        for i in range(iterations):
             noise_iter = self._draw_samples_iteration(
                 height, width, rngs[1+i], upscale_methods[i])
             if aggregation_method == "avg":
@@ -3350,8 +3347,8 @@ class SimplexNoise(StochasticParameter):
         w_small = max(w_small, 1)
 
         noise = np.zeros((h_small, w_small), dtype=np.float32)
-        for y in sm.xrange(h_small):
-            for x in sm.xrange(w_small):
+        for y in range(h_small):
+            for x in range(w_small):
                 noise[y, x] = generator.noise2d(y=y, x=x)
 
         # TODO this was previously (noise+0.5)/2, which was wrong as the noise

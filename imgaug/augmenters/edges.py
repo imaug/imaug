@@ -16,7 +16,6 @@ from abc import ABCMeta, abstractmethod
 
 import numpy as np
 import cv2
-import six
 
 import imgaug as ia
 from imgaug.imgaug import _normalize_cv2_input_arr_
@@ -28,8 +27,7 @@ from .. import dtypes as iadt
 
 # TODO this should be placed in some other file than edges.py as it could be
 #      re-used wherever a binary image is the result
-@six.add_metaclass(ABCMeta)
-class IBinaryImageColorizer(object):
+class IBinaryImageColorizer(object, metaclass=ABCMeta):
     """Interface for classes that convert binary masks to color images."""
 
     @abstractmethod

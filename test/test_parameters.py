@@ -16,7 +16,6 @@ except ImportError:
 import matplotlib
 matplotlib.use('Agg')  # fix execution of tests involving matplotlib on travis
 import numpy as np
-import six.moves as sm
 import skimage
 import skimage.data
 import skimage.morphology
@@ -1242,7 +1241,7 @@ class TestBinomial(unittest.TestCase):
 
     def test_p_is_list(self):
         param = iap.Binomial(iap.Choice([0.25, 0.75]))
-        for _ in sm.xrange(10):
+        for _ in range(10):
             samples = param.draw_samples((1000,))
             p = np.sum(samples) / samples.size
             assert (
@@ -1255,7 +1254,7 @@ class TestBinomial(unittest.TestCase):
 
         last_p = 0.5
         diffs = []
-        for _ in sm.xrange(30):
+        for _ in range(30):
             samples = param.draw_samples((1000,))
             p = np.sum(samples).astype(np.float32) / samples.size
             diffs.append(abs(p - last_p))
@@ -1382,10 +1381,10 @@ class TestChoice(unittest.TestCase):
         )
 
     def test_sample_without_replacing(self):
-        param = iap.Choice([1+i for i in sm.xrange(100)], replace=False)
+        param = iap.Choice([1+i for i in range(100)], replace=False)
 
         samples = param.draw_samples((50,))
-        seen = [0 for _ in sm.xrange(100)]
+        seen = [0 for _ in range(100)]
         for sample in samples:
             seen[sample-1] += 1
 
@@ -1663,7 +1662,7 @@ class TestNormal(unittest.TestCase):
         param = iap.Normal(iap.Choice([-100, 100]), 1)
 
         seen = [0, 0]
-        for _ in sm.xrange(1000):
+        for _ in range(1000):
             samples = param.draw_samples((100,))
             exp = np.mean(samples)
 
@@ -1770,7 +1769,7 @@ class TestTruncatedNormal(unittest.TestCase):
                                     low=-1000, high=1000)
 
         seen = [0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             samples = param.draw_samples((5,))
             observed = np.mean(samples)
 
@@ -1874,7 +1873,7 @@ class TestLaplace(unittest.TestCase):
         param = iap.Laplace(iap.Choice([-100, 100]), 1)
 
         seen = [0, 0]
-        for _ in sm.xrange(1000):
+        for _ in range(1000):
             samples = param.draw_samples((100,))
             exp = np.mean(samples)
 
@@ -1971,7 +1970,7 @@ class TestChiSquare(unittest.TestCase):
         param = iap.ChiSquare(iap.Choice([1, 10]))
 
         seen = [0, 0]
-        for _ in sm.xrange(1000):
+        for _ in range(1000):
             samples = param.draw_samples((100,))
             exp = np.mean(samples)
 
@@ -2061,7 +2060,7 @@ class TestWeibull(unittest.TestCase):
         expected_first = scipy.special.gamma(1 + 1/1)
         expected_second = scipy.special.gamma(1 + 1/0.5)
         seen = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples = param.draw_samples((50000,))
             observed = np.mean(samples)
 
@@ -2323,7 +2322,7 @@ class TestBeta(unittest.TestCase):
         expected_first = self._mean(0.5, 0.5)
         expected_second = self._mean(2, 0.5)
         seen = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples = param.draw_samples((10000,))
             observed = np.mean(samples)
 
@@ -2465,7 +2464,7 @@ class TestDeterministic(unittest.TestCase):
 
     def test_argument_is_stochastic_parameter(self):
         seen = [0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             param = iap.Deterministic(iap.Choice([0, 1]))
             seen[param.value] += 1
 
@@ -2712,7 +2711,7 @@ class TestFromLowerResolution(unittest.TestCase):
 
         seen_components = [0, 0]
         seen_pixels = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples1 = param1.draw_samples((16, 16, 1))
             samples2 = param2.draw_samples((16, 16, 1))
             _, num1 = skimage.morphology.label(samples1, connectivity=1,
@@ -2737,7 +2736,7 @@ class TestFromLowerResolution(unittest.TestCase):
 
         seen_components = [0, 0]
         seen_pixels = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             samples1 = param1.draw_samples((16, 16, 1))
             samples2 = param2.draw_samples((16, 16, 1))
             _, num1 = skimage.morphology.label(samples1, connectivity=1,
@@ -2764,7 +2763,7 @@ class TestFromLowerResolution(unittest.TestCase):
 
         seen_components = [0, 0]
         seen_pixels = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples1 = param1.draw_samples((16, 16, 1))
             samples2 = param2.draw_samples((16, 16, 1))
             _, num1 = skimage.morphology.label(samples1, connectivity=1,
@@ -2797,7 +2796,7 @@ class TestFromLowerResolution(unittest.TestCase):
 
         seen_components = [0, 0]
         seen_pixels = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples1 = param1.draw_samples((16, 16, 1))
             samples2 = param2.draw_samples((16, 16, 1))
             _, num1 = skimage.morphology.label(samples1, connectivity=1,
@@ -2822,7 +2821,7 @@ class TestFromLowerResolution(unittest.TestCase):
 
         seen_components = [0, 0]
         seen_pixels = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples1 = param1.draw_samples((16, 16, 1))
             samples2 = param2.draw_samples((16, 16, 1))
             _, num1 = skimage.morphology.label(samples1, connectivity=1,
@@ -2849,7 +2848,7 @@ class TestFromLowerResolution(unittest.TestCase):
 
         seen_components = [0, 0]
         seen_pixels = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples1 = param1.draw_samples((16, 16, 1))
             samples2 = param2.draw_samples((16, 16, 1))
             _, num1 = skimage.morphology.label(samples1, connectivity=1,
@@ -2881,7 +2880,7 @@ class TestFromLowerResolution(unittest.TestCase):
             method=iap.Choice(["nearest", "linear"]))
 
         seen = [0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             samples = param.draw_samples((16, 16, 1))
             nb_in_between = np.sum(
                 np.logical_and(0.05 < samples, samples < 0.95))
@@ -3996,7 +3995,7 @@ class TestRandomSign(unittest.TestCase):
         param = iap.RandomSign(iap.Deterministic(1))
 
         seen = [0, 0]
-        for _ in sm.xrange(1000):
+        for _ in range(1000):
             sample = param.draw_sample()
             assert sample.shape == tuple()
             if sample == 1:
@@ -4266,7 +4265,7 @@ class TestIterativeNoiseAggregator(unittest.TestCase):
 
     def test_value_is_stochastic_avg_or_max_100_iter_evaluate_counts(self):
         seen = [0, 0, 0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             param = iap.IterativeNoiseAggregator(
                 iap.Choice([0, 50]),
                 iterations=100,
@@ -4297,7 +4296,7 @@ class TestIterativeNoiseAggregator(unittest.TestCase):
             aggregation_method="avg")
 
         diffs = []
-        for _ in sm.xrange(100):
+        for _ in range(100):
             samples = param.draw_samples((1, 1))
             diff = abs(samples[0, 0] - 0.0)
             diffs.append(diff)
@@ -4312,7 +4311,7 @@ class TestIterativeNoiseAggregator(unittest.TestCase):
     def test_value_is_stochastic_max_list_as_iter_evaluate_counts(self):
         # iterations as list
         seen = [0, 0]
-        for _ in sm.xrange(400):
+        for _ in range(400):
             param = iap.IterativeNoiseAggregator(
                 iap.Choice([0, 50]),
                 iterations=[1, 100],
@@ -4473,7 +4472,7 @@ class TestSigmoid(unittest.TestCase):
         expected_first = 5
         expected_second = 1 / (1 + np.exp(-(5 * 1 + 0 - 0.5)))
         seen = [0, 0]
-        for _ in sm.xrange(1000):
+        for _ in range(1000):
             sample = param.draw_sample()
             diff_first = abs(sample - expected_first)
             diff_second = abs(sample - expected_second)
@@ -4498,7 +4497,7 @@ class TestSigmoid(unittest.TestCase):
         expected_first = 1 / (1 + np.exp(-(1 * 1 + 0 - 0.5)))
         expected_second = 1 / (1 + np.exp(-(10 * 1 + 0 - 0.5)))
         seen = [0, 0]
-        for _ in sm.xrange(1000):
+        for _ in range(1000):
             sample = param.draw_sample()
             diff_first = abs(sample - expected_first)
             diff_second = abs(sample - expected_second)

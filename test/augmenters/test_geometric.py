@@ -15,7 +15,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 import skimage.morphology
 import cv2
 
@@ -430,8 +429,8 @@ class TestAffine_scale(unittest.TestCase):
     def scale_zoom_in_outer_pixels(self):
         base_img = self.base_img
         outer_pixels = ([], [])
-        for i in sm.xrange(base_img.shape[0]):
-            for j in sm.xrange(base_img.shape[1]):
+        for i in range(base_img.shape[0]):
+            for j in range(base_img.shape[1]):
                 if i != j:
                     outer_pixels[0].append(i)
                     outer_pixels[1].append(j)
@@ -736,8 +735,8 @@ class TestAffine_scale(unittest.TestCase):
     @property
     def scale_zoom_out_outer_pixels(self):
         outer_pixels = ([], [])
-        for y in sm.xrange(4):
-            xs = sm.xrange(4) if y in [0, 3] else [0, 3]
+        for y in range(4):
+            xs = range(4) if y in [0, 3] else [0, 3]
             for x in xs:
                 outer_pixels[0].append(y)
                 outer_pixels[1].append(x)
@@ -863,7 +862,7 @@ class TestAffine_scale(unittest.TestCase):
         last_aug = None
         nb_changed_aug = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             if i == 0:
                 last_aug = observed_aug
@@ -889,7 +888,7 @@ class TestAffine_scale(unittest.TestCase):
         last_aug_det = None
         nb_changed_aug_det = 0
         nb_iterations = 10
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
                 last_aug_det = observed_aug_det
@@ -920,7 +919,7 @@ class TestAffine_scale(unittest.TestCase):
                                 1.6, 1.7],
                          order=0)
 
-        for iter in sm.xrange(40):
+        for iter in range(40):
             images_aug, kpsois_aug = aug(images=images, keypoints=kpsois)
 
             assert kpsois_aug[1].empty
@@ -1470,7 +1469,7 @@ class TestAffine_translate(unittest.TestCase):
         nb_changed_aug = 0
         nb_iterations = 1000
         centers_aug = self.image.astype(np.int32) * 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(self.images)
             if i == 0:
                 last_aug = observed_aug
@@ -1495,7 +1494,7 @@ class TestAffine_translate(unittest.TestCase):
         nb_changed_aug_det = 0
         nb_iterations = 10
         centers_aug_det = self.image.astype(np.int32) * 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug_det = aug_det.augment_images(self.images)
             if i == 0:
                 last_aug_det = observed_aug_det
@@ -1779,7 +1778,7 @@ class TestAffine_rotate(unittest.TestCase):
         nb_changed_aug = 0
         nb_iterations = 1000
         pixels_sums_aug = self.image.astype(np.int32) * 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(self.images)
             if i == 0:
                 last_aug = observed_aug
@@ -1814,7 +1813,7 @@ class TestAffine_rotate(unittest.TestCase):
         nb_changed_aug_det = 0
         nb_iterations = 10
         pixels_sums_aug_det = self.image.astype(np.int32) * 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug_det = aug_det.augment_images(self.images)
             if i == 0:
                 last_aug_det = observed_aug_det
@@ -1952,7 +1951,7 @@ class TestAffine_cval(unittest.TestCase):
         last_aug = None
         nb_changed_aug = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(self.images)
 
             if i == 0:
@@ -1972,7 +1971,7 @@ class TestAffine_cval(unittest.TestCase):
         last_aug_det = None
         nb_changed_aug_det = 0
         nb_iterations = 10
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug_det = aug_det.augment_images(self.images)
 
             if i == 0:
@@ -2125,7 +2124,7 @@ class TestAffine_fit_output(unittest.TestCase):
         nb_iterations = 50
         for backend in ["auto", "cv2", "skimage"]:
             with self.subTest(backend=backend):
-                for _ in sm.xrange(nb_iterations):
+                for _ in range(nb_iterations):
                     aug = iaa.Affine(rotate=(0, 364), fit_output=True,
                                      backend=backend)
                     img = np.zeros((80, 80), dtype=np.uint8)
@@ -2153,7 +2152,7 @@ class TestAffine_fit_output(unittest.TestCase):
         nb_iterations = 50
         for backend in ["auto", "cv2", "skimage"]:
             with self.subTest(backend=backend):
-                for _ in sm.xrange(nb_iterations):
+                for _ in range(nb_iterations):
                     aug = iaa.Affine(rotate=(0, 364), fit_output=True,
                                      backend=backend)
                     img = np.zeros((80, 80), dtype=np.uint8)
@@ -2237,7 +2236,7 @@ class TestAffine_fit_output(unittest.TestCase):
         nb_iterations = 50
         for backend in ["auto", "cv2", "skimage"]:
             with self.subTest(backend=backend):
-                for _ in sm.xrange(nb_iterations):
+                for _ in range(nb_iterations):
                     aug = iaa.Affine(rotate=(0, 364), fit_output=True,
                                      backend=backend)
                     img = np.zeros((80, 80), dtype=np.uint8)
@@ -2266,7 +2265,7 @@ class TestAffine_fit_output(unittest.TestCase):
         nb_iterations = 50
         for backend in ["auto", "cv2", "skimage"]:
             with self.subTest(backend=backend):
-                for _ in sm.xrange(nb_iterations):
+                for _ in range(nb_iterations):
                     aug = iaa.Affine(rotate=(0, 364), fit_output=True,
                                      backend=backend)
                     img = np.zeros((80, 80), dtype=np.uint8)
@@ -2517,7 +2516,7 @@ class TestAffine_alignment(unittest.TestCase):
         kpsoi_rot = [(5, 2), (5, 10-2)]
         img_aug_indices = []
         kpsois_aug_indices = []
-        for _ in sm.xrange(40):
+        for _ in range(40):
             aug_det = aug.to_deterministic()
             imgs_aug = aug_det.augment_images([img, img])
             kpsois_aug = aug_det.augment_keypoints([kpsoi, kpsoi])
@@ -2559,7 +2558,7 @@ class TestAffine_alignment(unittest.TestCase):
 
         img_aug_indices = []
         cbaois_aug_indices = []
-        for _ in sm.xrange(40):
+        for _ in range(40):
             aug_det = aug.to_deterministic()
             imgs_aug = aug_det.augment_images([img, img])
             cbaois_aug = getattr(aug_det, augf_name)([cbaoi, cbaoi])
@@ -3365,8 +3364,8 @@ def test_AffineCv2():
         images = np.array([base_img])
         images_list = [base_img]
         outer_pixels = ([], [])
-        for i in sm.xrange(base_img.shape[0]):
-            for j in sm.xrange(base_img.shape[1]):
+        for i in range(base_img.shape[0]):
+            for j in range(base_img.shape[1]):
                 if i != j:
                     outer_pixels[0].append(i)
                     outer_pixels[1].append(j)
@@ -3557,8 +3556,8 @@ def test_AffineCv2():
         images = np.array([image])
         images_list = [image]
         outer_pixels = ([], [])
-        for y in sm.xrange(4):
-            xs = sm.xrange(4) if y in [0, 3] else [0, 3]
+        for y in range(4):
+            xs = range(4) if y in [0, 3] else [0, 3]
             for x in xs:
                 outer_pixels[0].append(y)
                 outer_pixels[1].append(x)
@@ -3612,7 +3611,7 @@ def test_AffineCv2():
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -3827,7 +3826,7 @@ def test_AffineCv2():
         nb_iterations = 1000
         centers_aug = np.copy(image).astype(np.int32) * 0
         centers_aug_det = np.copy(image).astype(np.int32) * 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -4011,7 +4010,7 @@ def test_AffineCv2():
         nb_iterations = 1000
         pixels_sums_aug = np.copy(image).astype(np.int32) * 0
         pixels_sums_aug_det = np.copy(image).astype(np.int32) * 0
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -4097,7 +4096,7 @@ def test_AffineCv2():
         nb_changed_aug_det = 0
         nb_iterations = 1000
         averages = []
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -5020,17 +5019,17 @@ class TestPiecewiseAffine(unittest.TestCase):
                 aug1.augment_image(self.image)
                 * (~self.mask).astype(np.float32)
             )
-            for _ in sm.xrange(3)
+            for _ in range(3)
         ])
         avg2 = np.average([
             np.average(
                 aug2.augment_image(self.image)
                 * (~self.mask).astype(np.float32)
             )
-            for _ in sm.xrange(3)
+            for _ in range(3)
         ])
         seen = [0, 0]
-        for _ in sm.xrange(15):
+        for _ in range(15):
             observed = aug.augment_image(self.image)
 
             avg = np.average(observed * (~self.mask).astype(np.float32))
@@ -5057,7 +5056,7 @@ class TestPiecewiseAffine(unittest.TestCase):
 
     def _compute_std_ygrad_in_mask(self, aug, image, mask, nb_iterations):
         stds = []
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             observed = aug.augment_image(image)
 
             stds.append(
@@ -5085,7 +5084,7 @@ class TestPiecewiseAffine(unittest.TestCase):
         std2 = self._compute_std_ygrad_in_mask(aug2, self.image, self.mask, 3)
 
         seen = [0, 0]
-        for _ in sm.xrange(20):
+        for _ in range(20):
             observed = aug.augment_image(self.image)
 
             std = self._compute_observed_std_ygrad_in_mask(observed, self.mask)
@@ -5124,7 +5123,7 @@ class TestPiecewiseAffine(unittest.TestCase):
         std2 = self._compute_std_ygrad_in_mask(aug2, image, mask, 3)
 
         seen = [0, 0]
-        for _ in sm.xrange(20):
+        for _ in range(20):
             observed = aug.augment_image(image)
 
             std = self._compute_observed_std_ygrad_in_mask(observed, mask)
@@ -5791,8 +5790,8 @@ class TestPerspectiveTransform(unittest.TestCase):
 
         observed = aug.augment_images(imgs)
 
-        for img_idx in sm.xrange(2):
-            for c in sm.xrange(3):
+        for img_idx in range(2):
+            for c in range(3):
                 observed_i = observed[img_idx, :, :, c]
                 expected = imgs[img_idx,
                                 int(30*0.2):int(30*0.8),
@@ -5872,7 +5871,7 @@ class TestPerspectiveTransform(unittest.TestCase):
         kpsoi = ia.KeypointsOnImage(kps, shape=img.shape)
         aug = iaa.PerspectiveTransform(scale=(0.05, 0.15), keep_size=True)
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             aug_det = aug.to_deterministic()
             imgs_aug = aug_det.augment_images([img, img])
             kpsois_aug = aug_det.augment_keypoints([kpsoi, kpsoi])
@@ -5973,7 +5972,7 @@ class TestPerspectiveTransform(unittest.TestCase):
 
         cbaoi = cbaoi_class([cba_class(points)], shape=img.shape)
         aug = iaa.PerspectiveTransform(scale=0.1, keep_size=True)
-        for _ in sm.xrange(10):
+        for _ in range(10):
             aug_det = aug.to_deterministic()
             imgs_aug = aug_det.augment_images([img] * 4)
             cbaois_aug = getattr(aug_det, augf_name)([cbaoi] * 4)
@@ -6136,7 +6135,7 @@ class TestPerspectiveTransform(unittest.TestCase):
         bbsoi = ia.BoundingBoxesOnImage(bbs, shape=img.shape)
         aug = iaa.PerspectiveTransform(scale=(0.05, 0.2), keep_size=True)
 
-        for _ in sm.xrange(30):
+        for _ in range(30):
             imgs_aug, bbsois_aug = aug(
                 images=[img, img, img, img],
                 bounding_boxes=[bbsoi, bbsoi, bbsoi, bbsoi])
@@ -6414,7 +6413,7 @@ class TestPerspectiveTransform(unittest.TestCase):
         image[50-5:, 50-5:, 2] = 255
         image[50-5:, 0:5, 3] = 255
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             image_aug = aug(image=image)
 
             h, w = image_aug.shape[0:2]
@@ -6446,7 +6445,7 @@ class TestPerspectiveTransform(unittest.TestCase):
         image = np.zeros((49, 49, 3), dtype=np.uint8)
         image = iaa.pad(image, top=1, right=1, bottom=1, left=1, cval=128)
 
-        for _ in sm.xrange(10):
+        for _ in range(10):
             image_aug, segmap_aug = aug(image=image, segmentation_maps=segmap)
 
             h, w = segmap_aug.arr.shape[0:2]
@@ -6475,7 +6474,7 @@ class TestPerspectiveTransform(unittest.TestCase):
             (0, 50)
         ], shape=(50, 50, 3))
 
-        for i in sm.xrange(10):
+        for i in range(10):
             kpsoi_aug = aug(keypoints=kpsoi)
 
             h, w = kpsoi_aug.shape[0:2]
@@ -6535,7 +6534,7 @@ class TestPerspectiveTransform(unittest.TestCase):
         for shape in shapes:
             for keep_size in [False, True]:
                 with self.subTest(shape=shape, keep_size=keep_size):
-                    for _ in sm.xrange(3):
+                    for _ in range(3):
                         image = np.zeros(shape, dtype=np.uint8)
                         aug = iaa.PerspectiveTransform(scale=0.01)
 
@@ -6902,7 +6901,7 @@ class TestElasticTransformation(unittest.TestCase):
             observed = aug.augment_image(img_c)
 
             assert observed.shape == (250, 250, nb_channels)
-            for c in sm.xrange(1, nb_channels):
+            for c in range(1, nb_channels):
                 assert np.array_equal(observed[..., c], observed[..., 0])
 
     def test_heatmaps(self):
@@ -7020,7 +7019,7 @@ class TestElasticTransformation(unittest.TestCase):
         aug = iaa.ElasticTransformation(alpha=iap.Choice([0.001, 5.0]),
                                         sigma=0.25)
         seen = [0, 0]
-        for _ in sm.xrange(100):
+        for _ in range(100):
             observed = aug.augment_image(self.image)
             diff = np.average(
                 np.abs(
@@ -7043,7 +7042,7 @@ class TestElasticTransformation(unittest.TestCase):
                                                 sigma=iap.Choice([0.001, 5.0]),
                                                 order=order)
                 seen = [0, 0]
-                for _ in sm.xrange(100):
+                for _ in range(100):
                     observed = aug.augment_image(self.image)
 
                     observed_std_hori = np.std(
@@ -7311,13 +7310,13 @@ class TestElasticTransformation(unittest.TestCase):
         image = np.zeros((height, width), dtype=np.uint8)
 
         points = []
-        for w in sm.xrange(0, 2+width_steps):
+        for w in range(0, 2+width_steps):
             if w not in [0, width_steps+2-1]:
                 x = width_step_size * w
                 y = height_step_size
                 points.append((x, y))
                 image[y-s:y+s+1, x-s:x+s+1] = 255
-        for w in sm.xrange(2+width_steps-1, 0, -1):
+        for w in range(2+width_steps-1, 0, -1):
             if w not in [0, width_steps+2-1]:
                 x = width_step_size * w
                 y = height_step_size*2
@@ -7665,7 +7664,7 @@ class TestElasticTransformation(unittest.TestCase):
         for shape in shapes:
             for keep_size in [False, True]:
                 with self.subTest(shape=shape, keep_size=keep_size):
-                    for _ in sm.xrange(3):
+                    for _ in range(3):
                         image = np.zeros(shape, dtype=np.uint8)
                         aug = iaa.ElasticTransformation(alpha=2.0, sigma=2.0)
 
@@ -8795,7 +8794,7 @@ class TestRot90(unittest.TestCase):
         for shape in shapes:
             for keep_size in [False, True]:
                 with self.subTest(shape=shape, keep_size=keep_size):
-                    for _ in sm.xrange(10):
+                    for _ in range(10):
                         image = np.zeros(shape, dtype=np.uint8)
                         aug = iaa.Rot90([0, 2], keep_size=keep_size)
 
@@ -8816,7 +8815,7 @@ class TestRot90(unittest.TestCase):
 
         for shape in shapes:
             with self.subTest(shape=shape):
-                for _ in sm.xrange(10):
+                for _ in range(10):
                     image = np.zeros(shape, dtype=np.uint8)
                     aug = iaa.Rot90([1, 3], keep_size=False)
 
@@ -8839,7 +8838,7 @@ class TestRot90(unittest.TestCase):
 
         for shape in shapes:
             with self.subTest(shape=shape):
-                for _ in sm.xrange(10):
+                for _ in range(10):
                     image = np.zeros(shape, dtype=np.uint8)
                     aug = iaa.Rot90([1, 3], keep_size=True)
 
@@ -10156,7 +10155,7 @@ class TestJigsaw(unittest.TestCase):
 
         for shape in shapes:
             with self.subTest(shape=shape):
-                for _ in sm.xrange(3):
+                for _ in range(3):
                     image = np.zeros(shape, dtype=np.uint8)
                     aug = iaa.Jigsaw(nb_rows=2, nb_cols=2, max_steps=2)
 

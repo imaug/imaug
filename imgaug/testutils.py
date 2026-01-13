@@ -16,7 +16,6 @@ import importlib
 import functools
 
 import numpy as np
-import six.moves as sm
 # unittest.mock is not available in 2.7 (though unittest2 might contain it?)
 try:
     import unittest.mock as mock
@@ -79,10 +78,10 @@ def create_random_images(size):
 
 def create_random_keypoints(size_images, nb_keypoints_per_img):
     result = []
-    for _ in sm.xrange(size_images[0]):
+    for _ in range(size_images[0]):
         kps = []
         height, width = size_images[1], size_images[2]
-        for _ in sm.xrange(nb_keypoints_per_img):
+        for _ in range(nb_keypoints_per_img):
             x = np.random.randint(0, width-1)
             y = np.random.randint(0, height-1)
             kps.append(ia.Keypoint(x=x, y=y))

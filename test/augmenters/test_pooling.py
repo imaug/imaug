@@ -14,7 +14,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 
 import imgaug as ia
 import imgaug.random as iarandom
@@ -457,7 +456,7 @@ class _TestPoolingAugmentersBase(object):
         cbaoi_batch = [cbaoi, cbaoi, cbaoi_empty, cbaoi]
 
         nb_iterations = 10
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             aug_det = aug.to_deterministic()
             images_aug = aug_det.augment_images(images_batch)
             cbaois_aug = getattr(aug_det, augf_name)(cbaoi_batch)

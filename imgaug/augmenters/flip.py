@@ -11,7 +11,6 @@ from __future__ import print_function, division, absolute_import
 
 import numpy as np
 import cv2
-import six.moves as sm
 
 from imgaug.imgaug import _normalize_cv2_input_arr_
 from . import meta
@@ -743,7 +742,7 @@ def _fliplr_cv2(arr):
         channels = [
             cv2.flip(_normalize_cv2_input_arr_(arr[..., c]), 1)
             for c
-            in sm.xrange(arr.shape[-1])
+            in range(arr.shape[-1])
         ]
         result = np.stack(channels, axis=-1)
     else:

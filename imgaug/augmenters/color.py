@@ -31,8 +31,6 @@ from abc import ABCMeta, abstractmethod
 
 import numpy as np
 import cv2
-import six
-import six.moves as sm
 
 import imgaug as ia
 from imgaug.imgaug import _normalize_cv2_input_arr_
@@ -2561,7 +2559,7 @@ class AddToHueAndSaturation(meta.Augmenter):
                  np.zeros((256*2, 256), dtype=dtype))
         value_range = np.arange(0, 256, dtype=np.int16)
         # this could be done slightly faster by vectorizing the loop
-        for i in sm.xrange(-255, 255+1):
+        for i in range(-255, 255+1):
             table_hue = np.mod(value_range + i, 180)
             table_saturation = np.clip(value_range + i, 0, 255)
             table[0][255+i, :] = table_hue
@@ -3090,8 +3088,7 @@ class ChangeColorTemperature(meta.Augmenter):
         return [self.kelvin, self.from_colorspace]
 
 
-@six.add_metaclass(ABCMeta)
-class _AbstractColorQuantization(meta.Augmenter):
+class _AbstractColorQuantization(meta.Augmenter, metaclass=ABCMeta):
     def __init__(self,
                  counts=(2, 16),  # number of bits or colors
                  counts_value_range=(2, None),

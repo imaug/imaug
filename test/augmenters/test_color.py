@@ -15,7 +15,6 @@ except ImportError:
 import copy as copylib
 
 import numpy as np
-import six.moves as sm
 import cv2
 
 import imgaug as ia
@@ -524,7 +523,7 @@ class TestWithBrightnessChannels(unittest.TestCase):
             children=child,
             to_colorspace=[iaa.CSPACE_HSV, iaa.CSPACE_HLS])
 
-        images = [np.copy(image) for _ in sm.xrange(100)]
+        images = [np.copy(image) for _ in range(100)]
 
         _ = aug(images=images)
         images_aug1 = child.last_batch.images
@@ -1679,7 +1678,7 @@ class TestAddToHueAndSaturation(unittest.TestCase):
 
         nb_iterations = 300
         seen = dict([(i, 0) for i, _ in enumerate(expected_imgs)])
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             observed = aug.augment_image(base_img)
             for i, expected_img in enumerate(expected_imgs):
                 if np.allclose(observed, expected_img):
@@ -1887,7 +1886,7 @@ class TestGrayscale(unittest.TestCase):
                                       - base_img_float.flatten())
         nb_iterations = 1000
         distances = []
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             observed = aug.augment_image(base_img).astype(np.float64) / 255.0
             distance = np.linalg.norm(
                 observed.flatten() - base_img_float.flatten()) / distance_max
@@ -2057,7 +2056,7 @@ class TestKMeansColorQuantization(unittest.TestCase):
 
         # call i, args, argument 1
         n_colors = [mock_quantize_func.call_args_list[i][0][1]
-                    for i in sm.xrange(n_images)]
+                    for i in range(n_images)]
         assert all([2 <= n_colors_i <= 1000 for n_colors_i in n_colors])
         assert len(set(n_colors)) > 1
 
@@ -2380,7 +2379,7 @@ class Test_quantize_kmeans(unittest.TestCase):
         # simulate multiple calls, each one of them should produce the
         # same quantization
         images_quantized = []
-        for _ in sm.xrange(20):
+        for _ in range(20):
             images_quantized.append(iaa.quantize_kmeans(image, 20))
 
         for image_quantized in images_quantized[1:]:

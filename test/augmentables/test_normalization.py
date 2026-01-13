@@ -13,7 +13,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 
 import imgaug as ia
 import imgaug.augmentables.normalization as normalization
@@ -838,7 +837,7 @@ class TestNormalization(unittest.TestCase):
                 assert after[0][0].dtype.name == dt.name
                 assert np.allclose(after[0][0], coords1_arr)
 
-                before = [[coords1_arr.astype(dt) for _ in sm.xrange(5)]]
+                before = [[coords1_arr.astype(dt) for _ in range(5)]]
                 after = _norm_and_invert(before, images=images)
                 assert isinstance(after, list)
                 assert len(after) == 1
@@ -1017,7 +1016,7 @@ class TestNormalization(unittest.TestCase):
                 assert after[0][0].dtype.name == dt.name
                 assert np.allclose(after[0][0], coords1_arr)
 
-                before = [[coords1_arr.astype(dt) for _ in sm.xrange(5)]]
+                before = [[coords1_arr.astype(dt) for _ in range(5)]]
                 after = _norm_and_invert(before, images=images)
                 assert isinstance(after, list)
                 assert len(after) == 1
@@ -2419,7 +2418,7 @@ class TestNormalization(unittest.TestCase):
 
             polygons_norm = normalization.normalize_polygons(
                 [[
-                    np.copy(coords1_arr).astype(dt) for _ in sm.xrange(5)
+                    np.copy(coords1_arr).astype(dt) for _ in range(5)
                 ]],
                 shapes=np.zeros((1, 1, 1, 3), dtype=np.uint8)
             )

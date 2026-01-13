@@ -30,8 +30,6 @@ import functools
 import sys
 
 import numpy as np
-import six
-import six.moves as sm
 
 import imgaug as ia
 from imgaug.augmentables.batches import (Batch, UnnormalizedBatch,
@@ -219,8 +217,7 @@ class _maybe_deterministic_ctx(object):  # pylint: disable=invalid-name
             self.random_state.state = self.old_state
 
 
-@six.add_metaclass(ABCMeta)
-class Augmenter(object):
+class Augmenter(object, metaclass=ABCMeta):
     """
     Base class for Augmenter objects.
     All augmenters derive from this class.
@@ -2272,7 +2269,7 @@ class Augmenter(object):
             "Expected 'n' to be None or >=1, got %s." % (n,))
         if n is None:
             return self.to_deterministic(1)[0]
-        return [self._to_deterministic() for _ in sm.xrange(n)]
+        return [self._to_deterministic() for _ in range(n)]
 
     def _to_deterministic(self):
         """Convert this augmenter from a stochastic to a deterministic one.
@@ -3137,7 +3134,7 @@ class Sequential(Augmenter, list):
             if self.random_order:
                 order = random_state.permutation(len(self))
             else:
-                order = sm.xrange(len(self))
+                order = range(len(self))
 
             for index in order:
                 batch = self[index].augment_batch_(
