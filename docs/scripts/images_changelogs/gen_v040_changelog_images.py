@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import tempfile
 
 import imageio
@@ -8,13 +9,11 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 from imgaug._downloader import download
 
-FILE_DIR = os.path.abspath(os.path.dirname(__file__))
-ROOT_DIR = os.path.abspath(os.path.join(FILE_DIR, "..", ".."))
-IMAGES_DIR = os.path.join(ROOT_DIR, "images")
-OUT_DIR = os.path.join(IMAGES_DIR, "changelogs", "0.4.0")
-
-INPUT_IMAGES_DIR = os.path.join(FILE_DIR, "..", "..", "images",
-                                "input_images")
+FILE_DIR = Path(__file__)
+ROOT_DIR = FILE_DIR.parent.parent.parent
+IMAGES_DIR = ROOT_DIR / "images"
+OUT_DIR = IMAGES_DIR / "changelogs" / "0.4.0"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def main():

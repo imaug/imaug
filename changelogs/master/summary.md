@@ -130,3 +130,4 @@ Moved and reorganized scripts for the example data generation and its outputs.
 * `docs/scripts/images_documentation/collect_dtype_support.py` outputs to `docs/images/dtype_support/*.png`
 * `docs/scripts/images_documentation/gen_*.py` outputs to `docs/images/**/*.jpg`
 * `docs/scripts/tables_performance/*.py` outputs to `docs/measure_performance_results/results_*.pickle`
+* `docs/scripts/images_changelogs/gen_v040_changelog_images.py` outputs to `docs/images/changelogs/0.4.0/*.jpg`
