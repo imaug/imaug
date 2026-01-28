@@ -111,3 +111,4 @@ venv.bak/
 
 # output images
 images/dtype_support/*.png
+images/**/*.jpg

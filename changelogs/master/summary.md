@@ -128,3 +128,4 @@ the additional parameter `delete_on_close=False`.
 ## Store all generated documentation images in a single folder[#21](https://github.com/imaug/imaug/pull/21)
 Moved and reorganized scripts for the example data generation and its outputs.
 * `docs/scripts/images_documentation/collect_dtype_support.py` outputs to `docs/images/dtype_support/*.png`
+* `docs/scripts/images_documentation/gen_*.py` outputs to `docs/images/**/*.jpg`
