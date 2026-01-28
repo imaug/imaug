@@ -30,6 +30,7 @@ the function was moved to serve as a general utility function for the library.
 The dependency `dashtable.html2rst` depends on `beautifulsoup4` as optional dependency.
 
 # Refactored
+
 ## Add cached downloader to example image creation for documentation [#21](https://github.com/imaug/imaug/pull/21)
 Added `pooch` caching for online data to the example creation scripts
 * `generate_main_repo_readme_images.py`
@@ -38,6 +39,10 @@ Added `pooch` caching for online data to the example creation scripts
 * `gen_overview_blend.py`
 * `gen_overview_color.py`
 * `gen_overview_weather.py`
+
+## Change `utils` import in all scripts for rtd example images [#21](https://github.com/imaug/imaug/pull/21)
+Without a `imaug-docs` package there are no realtive imports allowed. Thus the utilities need to be imported
+by a standard local import call.
 
 # Fixed
 

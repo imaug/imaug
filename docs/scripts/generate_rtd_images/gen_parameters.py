@@ -3,7 +3,7 @@ import numpy as np
 import imgaug as ia
 from imgaug import parameters as iap
 
-from .utils import save, grid
+from utils import save, grid
 
 PARAMETERS_DEFAULT_SIZE = (350, 350)
 

@@ -6,7 +6,7 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 import imgaug.parameters as iap
 
-from .utils import run_and_save_augseq
+from utils import run_and_save_augseq
 
 
 def main():

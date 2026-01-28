@@ -6,7 +6,7 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 from imgaug._downloader import download
 
-from .utils import run_and_save_augseq, save
+from utils import run_and_save_augseq, save
 
 LANDSCAPE_IMAGE = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
 

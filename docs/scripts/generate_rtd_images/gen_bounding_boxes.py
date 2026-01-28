@@ -1,6 +1,6 @@
 from __future__ import print_function, division
 
-from .utils import save, grid
+from utils import save, grid
 
 
 def main():

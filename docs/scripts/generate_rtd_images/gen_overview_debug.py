@@ -8,7 +8,7 @@ import imageio
 import imgaug as ia
 import imgaug.augmenters as iaa
 
-from . import utils
+import utils
 
 
 def main():

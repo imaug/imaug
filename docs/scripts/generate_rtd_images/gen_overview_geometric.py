@@ -5,7 +5,7 @@ import numpy as np
 import imgaug as ia
 import imgaug.augmenters as iaa
 
-from .utils import run_and_save_augseq, checkerboard, save
+from utils import run_and_save_augseq, checkerboard, save
 
 
 def main():

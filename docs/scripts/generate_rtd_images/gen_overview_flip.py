@@ -3,7 +3,7 @@ from __future__ import print_function, division
 import imgaug as ia
 import imgaug.augmenters as iaa
 
-from .utils import run_and_save_augseq
+from utils import run_and_save_augseq
 
 
 def main():

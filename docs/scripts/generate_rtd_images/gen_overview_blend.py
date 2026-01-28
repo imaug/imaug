@@ -9,8 +9,8 @@ import imgaug.augmenters as iaa
 import imgaug.parameters as iap
 from imgaug._downloader import download
 
-from . import utils
-from .utils import run_and_save_augseq, DOCS_IMAGES_BASE_PATH
+import utils
+from utils import run_and_save_augseq, DOCS_IMAGES_BASE_PATH
 
 
 def main():

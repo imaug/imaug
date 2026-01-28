@@ -10,7 +10,7 @@ import imgaug as ia
 import imgaug.augmenters as iaa
 from imgaug._downloader import download
 
-from .utils import run_and_save_augseq
+from utils import run_and_save_augseq
 
 
 def main():

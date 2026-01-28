@@ -3,7 +3,8 @@ from __future__ import print_function, division
 import numpy as np
 
 from imgaug import parameters as iap
-from .utils import save, grid
+
+from utils import save, grid
 
 
 def main():

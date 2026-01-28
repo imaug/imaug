@@ -3,8 +3,8 @@ from __future__ import print_function, division
 import imgaug as ia
 import imgaug.augmenters as iaa
 
-from . import utils
-from .utils import run_and_save_augseq
+import utils
+from utils import run_and_save_augseq
 
 
 def main():
