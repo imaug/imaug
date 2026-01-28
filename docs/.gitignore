@@ -112,3 +112,6 @@ venv.bak/
 # output images
 images/dtype_support/*.png
 images/**/*.jpg
+
+# performance measurments
+measure_performance_results/results_*.pickle

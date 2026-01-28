@@ -52,8 +52,8 @@ def main():
     if not args.save:
         print("[NOTE] will not save data")
 
-    iterations_fast = 75
-    iterations_slow = 40
+    iterations_fast = 10
+    iterations_slow = 2
     batch_sizes = [1, 128]
     backgrounds = [False]
 
@@ -131,7 +131,7 @@ def main():
 
     if args.save:
         current_dir = os.path.dirname(__file__)
-        target_dir = os.path.join(current_dir, "measure_performance_results")
+        target_dir = os.path.join(current_dir, os.pardir, os.pardir,  "measure_performance_results")
         if not os.path.exists(target_dir):
             os.makedirs(target_dir)
         with open(os.path.join(target_dir, "results_images.pickle"), "wb") as f:
@@ -224,7 +224,7 @@ def main():
 
     if args.save:
         current_dir = os.path.dirname(__file__)
-        target_dir = os.path.join(current_dir, "measure_performance_results")
+        target_dir = os.path.join(current_dir, os.pardir, os.pardir, "measure_performance_results")
         if not os.path.exists(target_dir):
             os.makedirs(target_dir)
         with open(os.path.join(target_dir, "results_heatmaps.pickle"), "wb") as f:
@@ -323,7 +323,7 @@ def main():
 
     if args.save:
         current_dir = os.path.dirname(__file__)
-        target_dir = os.path.join(current_dir, "measure_performance_results")
+        target_dir = os.path.join(current_dir, os.pardir, os.pardir, "measure_performance_results")
         if not os.path.exists(target_dir):
             os.makedirs(target_dir)
         with open(os.path.join(target_dir, "results_keypoints.pickle"), "wb") as f:

@@ -213,7 +213,8 @@ EXP_NAME_MAPPING = OrderedDict([
 
 
 def main():
-    dir_path = os.path.join("measure_performance_results", "040")
+    current_dir = os.path.dirname(__file__)
+    dir_path = os.path.join(current_dir, os.pardir, os.pardir, "measure_performance_results")
     with open(os.path.join(dir_path, "results_images.pickle"), "rb") as f:
         measurements_images = pickle.load(f)
 
