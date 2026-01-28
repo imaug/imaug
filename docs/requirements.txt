@@ -9,3 +9,4 @@ imageio
 Shapely
 numpydoc
 dashtable
+beautifulsoup4
