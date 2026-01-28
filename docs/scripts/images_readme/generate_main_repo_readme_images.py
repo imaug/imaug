@@ -1,4 +1,5 @@
 from __future__ import print_function, division
+from pathlib import Path
 import imgaug as ia
 from imgaug import augmenters as iaa
 from imgaug._downloader import download
@@ -18,7 +19,11 @@ except ImportError:
 np.random.seed(44)
 ia.seed(44)
 
-IMAGES_DIR = "readme_images"
+FILE_DIR = Path(__file__)
+ROOT_DIR = FILE_DIR.parent.parent.parent
+IMAGES_DIR = ROOT_DIR / "images"
+IMAGES_DIR = IMAGES_DIR / "readme_images"
+IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 def main():
     #draw_small_overview()

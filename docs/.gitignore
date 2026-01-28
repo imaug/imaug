@@ -112,6 +112,7 @@ venv.bak/
 # output images
 images/dtype_support/*.png
 images/**/*.jpg
+images/readme_images/augmenter_videos/**/*.gif
 
 # performance measurments
 measure_performance_results/results_*.pickle

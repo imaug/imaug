@@ -131,3 +131,4 @@ Moved and reorganized scripts for the example data generation and its outputs.
 * `docs/scripts/images_documentation/gen_*.py` outputs to `docs/images/**/*.jpg`
 * `docs/scripts/tables_performance/*.py` outputs to `docs/measure_performance_results/results_*.pickle`
 * `docs/scripts/images_changelogs/gen_v040_changelog_images.py` outputs to `docs/images/changelogs/0.4.0/*.jpg`
+* `docs/scripts/images_readme/generate_main_repo_readme_images.py` outputs to `docs/images/readme_images/augmenter_videos/**/*.gif`
