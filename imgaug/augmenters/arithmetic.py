@@ -857,11 +857,11 @@ def cutout(image, x1, y1, x2, y2,
         in the interval ``[0.0, 1.0]`` and hence sample values from a
         gaussian within that interval, i.e. from ``N(0.5, std=0.5/3)``.
 
+    Added in 0.4.0.
+
     **Supported dtypes**:
 
     See :func:`~imgaug.augmenters.arithmetic.cutout_`.
-
-    Added in 0.4.0.
 
     Parameters
     ----------

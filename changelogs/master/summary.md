@@ -101,6 +101,13 @@ also the destination array matches the CV2 requirements, while sacrificing the (
 Remove call for `matplotlib.Figure._cachedRenderer` and incorrectly masked regular expression
 pattern.
 
+## Fix incorrect dtype docstrings [#21](https://github.com/imaug/imaug/pull/21)
+The script `collect_dtype_support.py` is very sensitive to incorrectly defined dtype docstrings.
+Pull request [#640](https://github.com/aleju/imgaug/pull/640) introduced a circular look-up definition
+in `imgaug.augmenters.segmentation`for the class `Voronoi`. Another problem was a misplacement of the
+version added docstring in `imgaug.augmenters.arithmetrics` for the function `cutout` in
+[#598](https://github.com/aleju/imgaug/pull/598).
+
 # Improved
 
 ## Handling of views in `_multiply_elementwise_to_uint8_`[#19](https://github.com/imaug/imaug/pull/19)
