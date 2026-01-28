@@ -124,3 +124,7 @@ to relative directory definitions.
 ## Fix tempfile issue for readme image generation script[#21](https://github.com/imaug/imaug/pull/21)
 According to https://stackoverflow.com/a/54768241 Windows struggles with `NamedTemporaryFile` without
 the additional parameter `delete_on_close=False`.
+
+## Store all generated documentation images in a single folder[#21](https://github.com/imaug/imaug/pull/21)
+Moved and reorganized scripts for the example data generation and its outputs.
+* `docs/scripts/images_documentation/collect_dtype_support.py` outputs to `docs/images/dtype_support/*.png`

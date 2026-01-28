@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import re
 from collections import OrderedDict, defaultdict
 import copy as copy_lib
@@ -10,7 +11,10 @@ BLACKLIST = {
     "/external/opensimplex.py",
     "/external/poly_point_isect_py2py3.py"
 }
-WRITE_TO = os.path.join(CURRENT_DIR, "images", "dtype_support", "%s.png")
+OUTPUT_PATH = os.path.join(CURRENT_DIR, os.pardir, os.pardir, "images", "dtype_support")
+if not os.path.exists(OUTPUT_PATH):
+    os.makedirs(OUTPUT_PATH)
+WRITE_TO = os.path.join(OUTPUT_PATH, "%s.png")
 
 EMPTY_LINE_PATTERN = re.compile(r"^[\s\t]*$")
 CLASS_START_PATTERN = re.compile(r"^\s*class [a-zA-Z0-9_.(),\s]+:?[\s]*$")
@@ -43,7 +47,7 @@ def main():
 
 def get_filepaths_to_parse():
     result = []
-    crawl_dir = os.path.join(CURRENT_DIR, "imgaug")
+    crawl_dir = os.path.join(CURRENT_DIR, os.pardir, os.pardir, os.pardir, "imgaug")
     for root, subdirs, files in os.walk(crawl_dir):
         for file in files:
             fp = os.path.join(root, file)
