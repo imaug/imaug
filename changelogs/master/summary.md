@@ -96,3 +96,8 @@ The elementwise multiplication with `cv2.multiply` breaks if a
 RGB image is sliced in the channel dimension and used as destination.
 The error only seems to occur if the view's base shape has a singular first
 dimension. Therefore a true copy of the image is used as destination instead.
+
+## Enable dtype support matrix script on Windows [#21](https://github.com/imaug/imaug/pull/21)
+The original `collect_dtype_support.py` script hard-coded the front-slash directory separator and
+assumed a root suffix. Replaced it with the OS specific separator and make script more robust with respect
+to relative directory definitions.

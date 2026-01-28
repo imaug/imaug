@@ -64,7 +64,7 @@ def parse(fp):
             pos = line.index("#")
             content[i] = line[:pos]
 
-    group = rstripword(fp[len(CURRENT_DIR):], ".py").lstrip("/").replace("/", ".")
+    group = rstripword(fp[len(CURRENT_DIR):], ".py").lstrip(os.sep).replace(os.sep, ".").lstrip('.')
     current_type = ""
     current_name = ""
     is_waiting_for_docstring = False
