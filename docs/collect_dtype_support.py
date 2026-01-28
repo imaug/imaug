@@ -212,7 +212,7 @@ def plot(dtype_supports, save_fp_pattern):
         fig.set_size_inches(w=12, h=5+int(0.5*len(dts_by_groups[group])))
 
         plt.gcf().canvas.draw()
-        points = table.get_window_extent(plt.gcf()._cachedRenderer).get_points()
+        points = table.get_window_extent().get_points()
         points[0, :] -= 10
         points[1, :] += 10
         nbbox = matplotlib.transforms.Bbox.from_extents(points / plt.gcf().dpi)
@@ -369,7 +369,7 @@ class DtypeSupportForOperation(object):
         # Remove comments from scenario docstring, if there are any.
         # this is important, because the comments may also contain formulations
         # like "See XYZ".
-        docstring_no_comments = re.sub("^[\n\s\t]+", "", docstring)
+        docstring_no_comments = re.sub(r"^[\n\s\t]+", "", docstring)
         docstring_no_comments = docstring_no_comments.split("\n\n")[0]
 
         if ("See :func:`" in docstring_no_comments

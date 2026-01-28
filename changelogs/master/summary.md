@@ -89,6 +89,10 @@ base array when used as CV2 input, but does not change it when used as CV2 desti
 also the destination array matches the CV2 requirements, while sacrificing the (real) inplace modification of 
 `image_fg`.
 
+## Multiple fixes in `collect_dtype_support.py` [#21](https://github.com/imaug/imaug/pull/21)
+Remove call for `matplotlib.Figure._cachedRenderer` and incorrectly masked regular expression
+pattern.
+
 # Improved
 
 ## Handling of views in `_multiply_elementwise_to_uint8_`[#19](https://github.com/imaug/imaug/pull/19)
