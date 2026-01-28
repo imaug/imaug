@@ -29,6 +29,9 @@ the function was moved to serve as a general utility function for the library.
 ## Add `beautifulsoup4` as explicit dependency for building the documentation [#21](https://github.com/imaug/imaug/pull/21)
 The dependency `dashtable.html2rst` depends on `beautifulsoup4` as optional dependency.
 
+## Switch from bash to python for collecting example image generation scripts [#21](https://github.com/imaug/imaug/pull/21)
+Replace `gen_all.sh` with `generate_all.py` for better cross platform compatibility.
+
 # Refactored
 
 ## Add cached downloader to example image creation for documentation [#21](https://github.com/imaug/imaug/pull/21)
