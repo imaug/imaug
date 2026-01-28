@@ -105,3 +105,7 @@ dimension. Therefore a true copy of the image is used as destination instead.
 The original `collect_dtype_support.py` script hard-coded the front-slash directory separator and
 assumed a root suffix. Replaced it with the OS specific separator and make script more robust with respect
 to relative directory definitions.
+
+## Fix tempfile issue for readme image generation script[#21](https://github.com/imaug/imaug/pull/21)
+According to https://stackoverflow.com/a/54768241 Windows struggles with `NamedTemporaryFile` without
+the additional parameter `delete_on_close=False`.

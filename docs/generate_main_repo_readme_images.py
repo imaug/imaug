@@ -1689,7 +1689,7 @@ def draw_per_augmenter_videos():
         # we first save and then load the frames that are supposed to be saved here
         # this is done to compare with the already saved frames, because there is a bit of compression involved when
         # saving
-        with tempfile.NamedTemporaryFile(mode="wb") as tempf:
+        with tempfile.NamedTemporaryFile(mode="wb", delete_on_close=False) as tempf:
             imageio.mimwrite(tempf.name, frames, duration=duration, format="gif")
             frames_to_save = imageio.mimread(tempf.name)
 
