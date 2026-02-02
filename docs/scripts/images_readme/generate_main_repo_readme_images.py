@@ -660,7 +660,7 @@ def draw_per_augmenter_videos():
 
     image_landscape = imageio.imread(download('data/Kukle_Czech_Republic.jpg'))
     image_landscape = ia.imresize_single_image(image_landscape, (96, 128))
-    image_valley = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
+    image_valley = imageio.imread(download('data/960px-Pahalgam_Valley.jpg'))
     image_valley = ia.imresize_single_image(image_valley, (96, 128))
     image_vangogh = imageio.imread(download('data/1280px-Vincent_van_Gogh-Wheatfield.jpg'))
     image_vangogh = ia.imresize_single_image(image_vangogh, (96, 128))

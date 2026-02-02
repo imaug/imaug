@@ -341,7 +341,7 @@ def chapter_augmenters_grayscale():
 def chapter_augmenters_changecolortemperature():
     fn_start = "color/changecolortemperature"
 
-    image = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
+    image = imageio.imread(download('data/960px-Pahalgam_Valley.jpg'))
     image = ia.imresize_single_image(image, 0.2)
 
     aug = iaa.ChangeColorTemperature((1100, 10000))
