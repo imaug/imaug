@@ -29,6 +29,7 @@ but also keypoints/landmarks, bounding boxes, heatmaps and segmentation maps.
    source/dtype_support
    source/jupyter_notebooks
    source/api
+   source/readme_images
 
 See :ref:`modindex` for API.
 

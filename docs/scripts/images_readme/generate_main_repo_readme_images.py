@@ -26,7 +26,7 @@ IMAGES_DIR = IMAGES_DIR / "readme_images"
 IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 def main():
-    #draw_small_overview()
+    draw_small_overview()
     #draw_single_sequential_images()
     draw_per_augmenter_videos()
 
@@ -62,6 +62,8 @@ def draw_small_overview():
         iaa.PerspectiveTransform(scale=0.15)
     ])))
 
+    small_overview_dir = IMAGES_DIR / 'small_overview'
+    small_overview_dir.mkdir(parents=True, exist_ok=True)
     for name, aug in augs:
         result = list(aug.augment_batches([batch]))[0]
         image_aug = result.images_aug[0]
@@ -73,11 +75,11 @@ def draw_small_overview():
         image_aug_bbs = result.polygons_aug[0].clip_out_of_image().draw_on_image(
             image_aug_bbs, color=[0, 128, 0], color_points=[0, 128, 0], alpha=0.0,
             alpha_points=1.0, alpha_lines=0.5)
-        imageio.imwrite(os.path.join(IMAGES_DIR, "small_overview", "%s_image.jpg" % (name,)), image_aug, quality=90)
-        imageio.imwrite(os.path.join(IMAGES_DIR, "small_overview", "%s_heatmap.jpg" % (name,)), image_aug_heatmap, quality=90)
-        imageio.imwrite(os.path.join(IMAGES_DIR, "small_overview", "%s_segmap.jpg" % (name,)), image_aug_segmap, quality=90)
-        imageio.imwrite(os.path.join(IMAGES_DIR, "small_overview", "%s_kps.jpg" % (name,)), image_aug_kps, quality=90)
-        imageio.imwrite(os.path.join(IMAGES_DIR, "small_overview", "%s_bbs.jpg" % (name,)), image_aug_bbs, quality=90)
+        imageio.imwrite(os.path.join(small_overview_dir, "%s_image.jpg" % (name,)), image_aug, quality=90)
+        imageio.imwrite(os.path.join(small_overview_dir, "%s_heatmap.jpg" % (name,)), image_aug_heatmap, quality=90)
+        imageio.imwrite(os.path.join(small_overview_dir, "%s_segmap.jpg" % (name,)), image_aug_segmap, quality=90)
+        imageio.imwrite(os.path.join(small_overview_dir, "%s_kps.jpg" % (name,)), image_aug_kps, quality=90)
+        imageio.imwrite(os.path.join(small_overview_dir, "%s_bbs.jpg" % (name,)), image_aug_bbs, quality=90)
 
 
 def draw_single_sequential_images():
