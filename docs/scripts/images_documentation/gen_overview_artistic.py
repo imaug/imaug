@@ -18,9 +18,9 @@ def main():
 
 
 def chapter_augmenters_cartoon():
-    image1 = imageio.imread(download('data/1024px-Barack_Obama_family_portrait_2011.jpg'))
-    image2 = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
-    image3 = imageio.imread(download('data/1024px-Salad_platter.jpg'))
+    image1 = imageio.imread(download('data/960px-Barack_Obama_family_portrait_2011.jpg'))
+    image2 = imageio.imread(download('data/960px-Pahalgam_Valley.jpg'))
+    image3 = imageio.imread(download('data/960px-Salad_platter.jpg'))
 
     image1 = ia.imresize_single_image(image1, 0.25)
     image2 = ia.imresize_single_image(image2, 0.25)

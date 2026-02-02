@@ -110,8 +110,8 @@ def generate_solarize():
 def generate_cartoon():
     ia.seed(1)
 
-    image1 = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
-    image2 = imageio.imread(download('data/1024px-Salad_platter.jpg'))
+    image1 = imageio.imread(download('data/960px-Pahalgam_Valley.jpg'))
+    image2 = imageio.imread(download('data/960px-Salad_platter.jpg'))
 
     image1 = iaa.Resize(
         {"width": 256, "height": "keep-aspect-ratio"}
@@ -164,7 +164,7 @@ def generate_add_to_brightness():
 def generate_change_color_temperature():
     ia.seed(1)
 
-    image = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
+    image = imageio.imread(download('data/960px-Pahalgam_Valley.jpg'))
     image = ia.imresize_single_image(image, 0.12)
     images_aug = [image]
     for kelvin in np.linspace(1000, 5000, 7):
@@ -356,7 +356,7 @@ def generate_pillike():
 def generate_rain():
     ia.seed(2)
 
-    image = imageio.imread(download('data/1024px-Pahalgam_Valley.jpg'))
+    image = imageio.imread(download('data/960px-Pahalgam_Valley.jpg'))
     image = iaa.Resize(
         {"width": 256, "height": "keep-aspect-ratio"}
     )(image=image)
