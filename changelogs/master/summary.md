@@ -111,7 +111,7 @@ in `imgaug.augmenters.segmentation`for the class `Voronoi`. Another problem was 
 version added docstring in `imgaug.augmenters.arithmetrics` for the function `cutout` in
 [#598](https://github.com/aleju/imgaug/pull/598).
 
-## Download image data from Wikipedia in pre-calculated sizes [??]
+## Download image data from Wikipedia in pre-calculated sizes [cb:#1](https://codeberg.org/ericj/imaug/pulls/1)
 All download data come from Wikipedia. It became a little stricter with respect to the 
 URL-based downloadable thumbnail sizes. Adhere to the recommended thumbnail size to prevent
 problems.
