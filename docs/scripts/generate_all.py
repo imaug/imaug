@@ -15,6 +15,7 @@ def main():
     if not args.all:
         exclude_list += [
             "a_measure_performance.py", # Rather time consuming
+            "b_convert_performance_measurements_to_tables.py", # Depends on previous step
         ]
 
     for script in sorted(Path(__file__).parent.glob('**/*.py')):
