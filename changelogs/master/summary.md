@@ -16,6 +16,10 @@ was set. Instead of overwriting `seed` and keeping the provided `random_state`,
 the new version resets `random_state` to `'depreciated'` once `seed` is
 overwritten. Additionally, a new test case is added to check the new behavior.
 
+## Add Python 3.14 to CI pipeline [gh#20](https://github.com/imaug/imaug/pull/20)
+Add Python 3.14 testing to `test_master.yml`, `test_pull_requests.yml`, and `build_wheels.yml`
+GitHub Action files.
+
 ## `_blend_alpha_uint8_single_alpha_` always returns copies [#23](https://github.com/imaug/imaug/pull/23)
 The inplace modification of `image_fg` caused errors when applied on non-C-contiguous views.
 Thus, the function was changed such that it always returns copies, even when called with `inplace=True`.

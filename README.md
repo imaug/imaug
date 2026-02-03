@@ -118,7 +118,7 @@ It converts a set of input images into a new, much larger set of slightly altere
 
 ## Installation
 
-The library supports Python >=3.8;<3.14 .
+The library supports Python >=3.8;<3.15 .
 
 <!---
 ### Installation: Anaconda
