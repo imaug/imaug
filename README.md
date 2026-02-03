@@ -170,8 +170,8 @@ Example ReadTheDocs pages:
 
 More RTD documentation: [imaug.readthedocs.io](http://imaug.readthedocs.io/en/latest/source/examples_basics.html).
 
-All documentation related files of this project are hosted in the
-repository [imaug-doc](https://github.com/imaug/imaug-doc).
+All documentation related files of this project are available in the
+`docs/` sub-directory.
 
 
 <a name="recent_changes"/>
