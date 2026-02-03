@@ -4,8 +4,7 @@ import imageio
 
 import imgaug as ia
 from imgaug import augmenters as iaa
-from _downloader import download
-
+from imgaug._downloader import download
 
 def main():
     for size in [0.1, 0.2, 1.0]:

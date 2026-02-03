@@ -1,15 +1,15 @@
-import imgaug as ia
-import imgaug.augmenters as iaa
 import imageio
 
-from _downloader import download
+import imgaug as ia
+import imgaug.augmenters as iaa
+from imgaug._downloader import download
 
 def main():
     files = [
-        'data/320px-Sarcophilus_harrisii_taranna.jpg',
-        'data/320px-Vincent_van_Gogh-Wheatfield.jpg',
-        'data/207px-Galerella_sanguinea_Zoo_Praha_2011-2.jpg',
-        'data/307px-Ambrosius_Bosschaert_the_Elder-Flower_Still_Life.jpg',
+        'data/330px-Sarcophilus_harrisii_taranna.jpg',
+        'data/330px-Vincent_van_Gogh-Wheatfield.jpg',
+        'data/250px-Galerella_sanguinea_Zoo_Praha_2011-2.jpg',
+        'data/330px-Ambrosius_Bosschaert_the_Elder-Flower_Still_Life.jpg',
     ]
 
     for file in files:

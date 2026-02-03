@@ -1,11 +1,10 @@
 from __future__ import print_function, division, absolute_import
+
 import imageio
 
 import imgaug as ia
 from imgaug import augmenters as iaa
-
-from _downloader import download
-
+from imgaug._downloader import download
 
 def main():
     augs = [

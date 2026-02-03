@@ -7,12 +7,12 @@ submodules:
 build:
   os: ubuntu-22.04
   tools:
-    python: "3.12"
+    python: "3.13"
   commands:
-    - git clone -b fix_doc https://github.com/imaug/imaug-doc.git docs
+    - pip install .
     - pip install -r docs/requirements.txt
+    - python docs/scripts/generate_all.py
     - make -C docs html
-    - ls docs/
     - mkdir -p ${READTHEDOCS_OUTPUT}
     - mv docs/_build/html ${READTHEDOCS_OUTPUT}html
 

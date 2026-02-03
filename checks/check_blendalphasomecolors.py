@@ -1,11 +1,10 @@
 from __future__ import print_function, division, absolute_import
 
 import imageio
+
 import imgaug as ia
 import imgaug.augmenters as iaa
-
-from _downloader import download
-
+from imgaug._downloader import download
 
 def main():
     aug = iaa.BlendAlphaMask(
@@ -22,10 +21,10 @@ def main():
     ]))
 
     files = [
-        'data/320px-Vincent_van_Gogh-Wheatfield.jpg',
-        'data/320px-Sarcophilus_harrisii_taranna.jpg',
-        'data/207px-Galerella_sanguinea_Zoo_Praha_2011-2.jpg',
-        'data/307px-Ambrosius_Bosschaert_the_Elder-Flower_Still_Life.jpg',
+        'data/330px-Vincent_van_Gogh-Wheatfield.jpg',
+        'data/330px-Sarcophilus_harrisii_taranna.jpg',
+        'data/250px-Galerella_sanguinea_Zoo_Praha_2011-2.jpg',
+        'data/330px-Ambrosius_Bosschaert_the_Elder-Flower_Still_Life.jpg',
     ]
 
     for file in files:
