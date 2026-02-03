@@ -27,7 +27,7 @@ IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 def main():
     draw_small_overview()
-    #draw_single_sequential_images()
+    draw_single_sequential_images()
     draw_per_augmenter_videos()
 
 
@@ -390,7 +390,7 @@ def generate_augmenter_url(module, name):
     module = module.lower()
     name = name.lower()
     return (
-        "https://imgaug.readthedocs.io/en/latest/source/"
+        "https://imaug.readthedocs.io/en/latest/source/"
         "overview/%s.html#%s" % (module, name)
     )
 

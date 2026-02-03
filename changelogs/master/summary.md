@@ -32,6 +32,9 @@ The dependency `dashtable.html2rst` depends on `beautifulsoup4` as optional depe
 ## Switch from bash to python for collecting example image generation scripts [#21](https://github.com/imaug/imaug/pull/21)
 Replace `gen_all.sh` with `generate_all.py` for better cross platform compatibility.
 
+## Use readthedocs images for README file instead of github files [#21](https://github.com/imaug/imaug/pull/21)
+Use the images in RTD for github README.md file for smaller repository size. 
+
 # Refactored
 
 ## Add cached downloader to example image creation for documentation [#21](https://github.com/imaug/imaug/pull/21)

@@ -2,6 +2,8 @@
 README images
 ===========================================
 
+.. figure:: ../images/readme_images/small_overview/noop_image.jpg
+.. figure:: ../images/readme_images/small_overview/noop_heatmap.jpg
 .. figure:: ../images/readme_images/small_overview/noop_segmap.jpg
 .. figure:: ../images/readme_images/small_overview/noop_kps.jpg
 .. figure:: ../images/readme_images/small_overview/noop_bbs.jpg
@@ -29,6 +31,8 @@ README images
 .. figure:: ../images/readme_images/small_overview/fliplr_perspective_segmap.jpg
 .. figure:: ../images/readme_images/small_overview/fliplr_perspective_kps.jpg
 .. figure:: ../images/readme_images/small_overview/fliplr_perspective_bbs.jpg
+
+.. figure:: ../images/readme_images/examples_grid.jpg
 
 
 .. figure:: ../images/readme_images/augmenter_videos/meta/identity.gif
