@@ -18,7 +18,7 @@ It converts a set of input images into a new, much larger set of slightly altere
 <tr>
 <td><em>Original Input</em></td>
 <td><img src="https://imaug.readthedocs.io/en/latest/_images/noop_image.jpg" height="83" width="124" alt="input images"></td>
-<td><img src="https://imaug.readthedocs.io/en/latest/_images/noop_heatmap.jpg height="83" width="124" alt="input heatmaps"></td>
+<td><img src="https://imaug.readthedocs.io/en/latest/_images/noop_heatmap.jpg" height="83" width="124" alt="input heatmaps"></td>
 <td><img src="https://imaug.readthedocs.io/en/latest/_images/noop_segmap.jpg" height="83" width="124" alt="input segmentation maps"></td>
 <td><img src="https://imaug.readthedocs.io/en/latest/_images/noop_kps.jpg" height="83" width="124" alt="input keypoints"></td>
 <td><img src="https://imaug.readthedocs.io/en/latest/_images/noop_bbs.jpg" height="83" width="124" alt="input bounding boxes"></td>
