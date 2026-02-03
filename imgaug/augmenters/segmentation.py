@@ -503,7 +503,7 @@ def segment_voronoi(image, cell_coordinates, replace_mask=None):
     if (image size > max_size):
 
         minimum of (
-            ``imgaug.augmenters.segmentation.Voronoi(image size <= max_size)``,
+            ``imgaug.augmenters.segmentation.segment_voronoi(image size <= max_size)``,
             :func:`~imgaug.augmenters.segmentation._ensure_image_max_size`
         )
 

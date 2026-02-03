@@ -21,7 +21,34 @@ The inplace modification of `image_fg` caused errors when applied on non-C-conti
 Thus, the function was changed such that it always returns copies, even when called with `inplace=True`.
 It was verfied that calling functions do not rely on inplace modifications for proper functionality.
 
+## Moved image `_downloader.py` from `checks` to `imgaug` [#21](https://github.com/imaug/imaug/pull/21)
+For creating the example images for the documentation it is necessary to download online sample images
+similar to the workflow for the checks. Instead of copy the `download` function for the documentation, 
+the function was moved to serve as a general utility function for the library.
+
+## Add `beautifulsoup4` as explicit dependency for building the documentation [#21](https://github.com/imaug/imaug/pull/21)
+The dependency `dashtable.html2rst` depends on `beautifulsoup4` as optional dependency.
+
+## Switch from bash to python for collecting example image generation scripts [#21](https://github.com/imaug/imaug/pull/21)
+Replace `gen_all.sh` with `generate_all.py` for better cross platform compatibility.
+
+## Use readthedocs images for README file instead of github files [#21](https://github.com/imaug/imaug/pull/21)
+Use the images in RTD for github README.md file for smaller repository size. 
+
 # Refactored
+
+## Add cached downloader to example image creation for documentation [#21](https://github.com/imaug/imaug/pull/21)
+Added `pooch` caching for online data to the example creation scripts
+* `generate_main_repo_readme_images.py`
+* `gen_v040_changelog_images.py`
+* `gen_overview_artistic.py`
+* `gen_overview_blend.py`
+* `gen_overview_color.py`
+* `gen_overview_weather.py`
+
+## Change `utils` import in all scripts for rtd example images [#21](https://github.com/imaug/imaug/pull/21)
+Without a `imaug-docs` package there are no realtive imports allowed. Thus the utilities need to be imported
+by a standard local import call.
 
 # Fixed
 
@@ -76,6 +103,22 @@ base array when used as CV2 input, but does not change it when used as CV2 desti
 also the destination array matches the CV2 requirements, while sacrificing the (real) inplace modification of 
 `image_fg`.
 
+## Multiple fixes in `collect_dtype_support.py` [#21](https://github.com/imaug/imaug/pull/21)
+Remove call for `matplotlib.Figure._cachedRenderer` and incorrectly masked regular expression
+pattern.
+
+## Fix incorrect dtype docstrings [#21](https://github.com/imaug/imaug/pull/21)
+The script `collect_dtype_support.py` is very sensitive to incorrectly defined dtype docstrings.
+Pull request [#640](https://github.com/aleju/imgaug/pull/640) introduced a circular look-up definition
+in `imgaug.augmenters.segmentation`for the class `Voronoi`. Another problem was a misplacement of the
+version added docstring in `imgaug.augmenters.arithmetrics` for the function `cutout` in
+[#598](https://github.com/aleju/imgaug/pull/598).
+
+## Download image data from Wikipedia in pre-calculated sizes [cb:#1](https://codeberg.org/ericj/imaug/pulls/1)
+All download data come from Wikipedia. It became a little stricter with respect to the 
+URL-based downloadable thumbnail sizes. Adhere to the recommended thumbnail size to prevent
+problems.
+
 # Improved
 
 ## Handling of views in `_multiply_elementwise_to_uint8_`[#19](https://github.com/imaug/imaug/pull/19)
@@ -83,3 +126,20 @@ The elementwise multiplication with `cv2.multiply` breaks if a
 RGB image is sliced in the channel dimension and used as destination.
 The error only seems to occur if the view's base shape has a singular first
 dimension. Therefore a true copy of the image is used as destination instead.
+
+## Enable dtype support matrix script on Windows [#21](https://github.com/imaug/imaug/pull/21)
+The original `collect_dtype_support.py` script hard-coded the front-slash directory separator and
+assumed a root suffix. Replaced it with the OS specific separator and make script more robust with respect
+to relative directory definitions.
+
+## Fix tempfile issue for readme image generation script[#21](https://github.com/imaug/imaug/pull/21)
+According to https://stackoverflow.com/a/54768241 Windows struggles with `NamedTemporaryFile` without
+the additional parameter `delete_on_close=False`.
+
+## Store all generated documentation images in a single folder[#21](https://github.com/imaug/imaug/pull/21)
+Moved and reorganized scripts for the example data generation and its outputs.
+* `docs/scripts/images_documentation/collect_dtype_support.py` outputs to `docs/images/dtype_support/*.png`
+* `docs/scripts/images_documentation/gen_*.py` outputs to `docs/images/**/*.jpg`
+* `docs/scripts/tables_performance/*.py` outputs to `docs/measure_performance_results/results_*.pickle`
+* `docs/scripts/images_changelogs/gen_v040_changelog_images.py` outputs to `docs/images/changelogs/0.4.0/*.jpg`
+* `docs/scripts/images_readme/generate_main_repo_readme_images.py` outputs to `docs/images/readme_images/augmenter_videos/**/*.gif`
