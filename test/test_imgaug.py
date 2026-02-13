@@ -17,7 +17,6 @@ except ImportError:
 import matplotlib
 matplotlib.use('Agg')  # fix execution of tests involving matplotlib on travis
 import numpy as np
-import six.moves as sm
 import cv2
 
 import imgaug as ia
@@ -926,7 +925,7 @@ def test_pool():
             arr_pooled = ia.pool(arr, 2, func)
             assert arr_pooled.shape == (2, 2, 3)
             assert arr_pooled.dtype == np.dtype(dtype)
-            for c in sm.xrange(3):
+            for c in range(3):
                 assert arr_pooled[0, 0, c] == int(func([0, 1, 4, 5])) + c
                 assert arr_pooled[0, 1, c] == int(func([2, 3, 6, 7])) + c
                 assert arr_pooled[1, 0, c] == int(func([8, 9, 12, 13])) + c
@@ -993,7 +992,7 @@ def test_pool():
             arr_pooled = ia.pool(arr, 2, func)
             assert arr_pooled.shape == (2, 2, 3)
             assert arr_pooled.dtype == np.dtype(dtype)
-            for c in sm.xrange(3):
+            for c in range(3):
                 assert arr_pooled[0, 0, c] == func([0, 1, 4, 5]) + c
                 assert arr_pooled[0, 1, c] == func([2, 3, 6, 7]) + c
                 assert arr_pooled[1, 0, c] == func([8, 9, 12, 13]) + c

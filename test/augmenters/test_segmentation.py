@@ -15,7 +15,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 
 from imgaug import augmenters as iaa
 from imgaug import parameters as iap
@@ -140,7 +139,7 @@ class TestSuperpixels(unittest.TestCase):
                     aug = iaa.Superpixels(p_replace=0.5, n_segments=2)
                     seen = {"none": False, "left": False, "right": False,
                             "both": False}
-                    for _ in sm.xrange(100):
+                    for _ in range(100):
                         observed = aug.augment_image(self.base_img)
                         if _eq(observed, self.base_img, 2):
                             seen["none"] = True
@@ -357,7 +356,7 @@ class Test_segment_voronoi(unittest.TestCase):
         ])
         if nb_channels is not None:
             image = np.tile(image[:, :, np.newaxis], (1, 1, nb_channels))
-            for c in sm.xrange(nb_channels):
+            for c in range(nb_channels):
                 image[..., c] += c
         cell_coordinates = np.float32([
             [1.0, 1.0],
@@ -1500,7 +1499,7 @@ class TestUniformPointsSampler(unittest.TestCase):
         images = [np.zeros((10, 10, 1), dtype=np.uint8)]
 
         seen = {1: False, 10: False}
-        for i in sm.xrange(50):
+        for i in range(50):
             points = sampler.sample_points(images, i)[0]
             seen[len(points)] = True
             if np.all(seen.values()):
@@ -1513,7 +1512,7 @@ class TestUniformPointsSampler(unittest.TestCase):
         sampler = iaa.UniformPointsSampler(iap.Choice([1, 10]))
         images = [
             np.zeros((10, 10, 1), dtype=np.uint8)
-            for _ in sm.xrange(50)]
+            for _ in range(50)]
 
         points = sampler.sample_points(images, 1)
         point_counts = set([len(points_i) for points_i in points])

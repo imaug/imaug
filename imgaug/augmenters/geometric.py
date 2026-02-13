@@ -29,7 +29,6 @@ import numpy as np
 from scipy import ndimage
 from skimage import transform as tf
 import cv2
-import six.moves as sm
 
 import imgaug as ia
 from imgaug.imgaug import _normalize_cv2_input_arr_
@@ -318,7 +317,7 @@ def _warp_affine_arr_cv2(arr, matrix, cval, mode, order, output_shape):
                 borderMode=mode,
                 borderValue=tuple([cval[0]])
             )
-            for c in sm.xrange(nb_channels)
+            for c in range(nb_channels)
         ]
         image_warped = np.stack(image_warped, axis=-1)
 
@@ -2707,7 +2706,7 @@ class AffineCv2(meta.Augmenter):
 
         nb_images = len(images)
         result = images
-        for i in sm.xrange(nb_images):
+        for i in range(nb_images):
             height, width = images[i].shape[0], images[i].shape[1]
             shift_x = width / 2.0 - 0.5
             shift_y = height / 2.0 - 0.5
@@ -2926,7 +2925,7 @@ class AffineCv2(meta.Augmenter):
         valid_dts = iadt._convert_dtype_strs_to_types(
             "int32 int64 float32 float64"
         )
-        for i in sm.xrange(2):
+        for i in range(2):
             assert translate_samples[i].dtype in valid_dts, (
                 "Expected translate_samples to have any dtype of %s. "
                 "Got %s." % (str(valid_dts), translate_samples[i].dtype.name,))
@@ -3842,7 +3841,7 @@ class PerspectiveTransform(meta.Augmenter):
                         borderMode=mode,
                         flags=cv2.INTER_LINEAR
                     )
-                    for c in sm.xrange(nb_channels)
+                    for c in range(nb_channels)
                 ]
                 warped = np.stack(warped, axis=-1)
 
@@ -3904,7 +3903,7 @@ class PerspectiveTransform(meta.Augmenter):
                             borderMode=mode_i,
                             flags=flags
                         )
-                        for c in sm.xrange(nb_channels)
+                        for c in range(nb_channels)
                     ]
                     warped = np.stack(warped, axis=-1)
 
@@ -4798,7 +4797,7 @@ class ElasticTransformation(meta.Augmenter):
         if backend == "scipy":
             result = np.empty_like(image)
 
-            for c in sm.xrange(image.shape[2]):
+            for c in range(image.shape[2]):
                 remapped_flat = ndimage.map_coordinates(
                     image[..., c],
                     (y_shifted.flatten(), x_shifted.flatten()),
@@ -4978,7 +4977,7 @@ class _ElasticTfShiftMapGenerator(object):
     # Added in 0.5.0.
     @classmethod
     def _split_chunks(cls, iterable, chunk_size):
-        for i in sm.xrange(0, len(iterable), chunk_size):
+        for i in range(0, len(iterable), chunk_size):
             yield iterable[i:i+chunk_size]
 
 
@@ -5197,7 +5196,7 @@ class Rot90(meta.Augmenter):
                     y, x = kp.y, kp.x
                     yr, xr = y, x
                     wr, hr = w, h
-                    for _ in sm.xrange(k_i):
+                    for _ in range(k_i):
                         # for int coordinates this would instead be
                         #   xr, yr = (hr - 1) - yr, xr
                         # here we assume that coordinates are always

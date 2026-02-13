@@ -15,7 +15,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 import cv2
 
 import imgaug as ia
@@ -50,7 +49,7 @@ class Test_blur_gaussian_(unittest.TestCase):
                 assert np.all(observed[2, 2] < 255)
                 assert np.sum(observed[mask]) > (5*5-1)
                 if nb_channels is not None and nb_channels > 1:
-                    for c in sm.xrange(1, observed.shape[2]):
+                    for c in range(1, observed.shape[2]):
                         assert np.array_equal(observed[..., c],
                                               observed[..., 0])
 
@@ -187,7 +186,7 @@ class Test_blur_gaussian_(unittest.TestCase):
             diff = np.abs(image_cv2.astype(np.int32)
                           - image_scipy.astype(np.int32))
             assert np.average(diff) < 0.05 * (size * size)
-            for c in sm.xrange(3):
+            for c in range(3):
                 diff = np.abs(image_cv2[..., c].astype(np.int32)
                               - image_scipy[..., c].astype(np.int32))
                 assert np.average(diff) < 0.05 * (size * size)
@@ -636,8 +635,8 @@ class TestGaussianBlur(unittest.TestCase):
         images = np.array([base_img])
         images_list = [base_img]
         outer_pixels = ([], [])
-        for i in sm.xrange(base_img.shape[0]):
-            for j in sm.xrange(base_img.shape[1]):
+        for i in range(base_img.shape[0]):
+            for j in range(base_img.shape[1]):
                 if i != j:
                     outer_pixels[0].append(i)
                     outer_pixels[1].append(j)
@@ -700,7 +699,7 @@ class TestGaussianBlur(unittest.TestCase):
         nb_changed_aug = 0
         nb_changed_aug_det = 0
         nb_iterations = 1000
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed_aug = aug.augment_images(images)
             observed_aug_det = aug_det.augment_images(images)
             if i == 0:
@@ -1057,7 +1056,7 @@ class TestAverageBlur(unittest.TestCase):
         aug = iaa.AverageBlur(k=(3, 4))
         nb_iterations = 100
         nb_seen = [0, 0]
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(self.base_img)
             if np.array_equal(observed, self.blur3x3):
                 nb_seen[0] += 1
@@ -1074,7 +1073,7 @@ class TestAverageBlur(unittest.TestCase):
         aug = iaa.AverageBlur(k=(3, 5))
         nb_iterations = 200
         nb_seen = [0, 0, 0]
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(self.base_img)
             if np.array_equal(observed, self.blur3x3):
                 nb_seen[0] += 1
@@ -1094,7 +1093,7 @@ class TestAverageBlur(unittest.TestCase):
         aug = iaa.AverageBlur(k=iap.Choice([3, 5]))
         nb_iterations = 100
         nb_seen = [0, 0]
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(self.base_img)
             if np.array_equal(observed, self.blur3x3):
                 nb_seen[0] += 1
@@ -1122,7 +1121,7 @@ class TestAverageBlur(unittest.TestCase):
 
         nb_iterations = 250
         nb_seen = dict([(key, 0) for key, val in possible.items()])
-        for i in sm.xrange(nb_iterations):
+        for i in range(nb_iterations):
             observed = aug.augment_image(self.base_img)
             for key, img_aug in possible.items():
                 if np.array_equal(observed, img_aug):
@@ -1414,7 +1413,7 @@ class TestMedianBlur(unittest.TestCase):
         # k as (3, 5)
         aug = iaa.MedianBlur(k=(3, 5))
         seen = [False, False]
-        for i in sm.xrange(100):
+        for i in range(100):
             observed = aug.augment_image(self.base_img)
             if np.array_equal(observed, self.blur3x3):
                 seen[0] = True
@@ -1430,7 +1429,7 @@ class TestMedianBlur(unittest.TestCase):
         # k as stochastic parameter
         aug = iaa.MedianBlur(k=iap.Choice([3, 5]))
         seen = [False, False]
-        for i in sm.xrange(100):
+        for i in range(100):
             observed = aug.augment_image(self.base_img)
             if np.array_equal(observed, self.blur3x3):
                 seen[0] += True

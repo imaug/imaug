@@ -49,7 +49,6 @@ Added in 0.4.0.
 """
 from __future__ import print_function, division, absolute_import
 
-import six.moves as sm
 import numpy as np
 import cv2
 import PIL.Image
@@ -449,7 +448,7 @@ def _autocontrast_no_pil(image, cutoff, ignore):  # noqa: C901
     if result.ndim == 2:
         result = result[..., np.newaxis]
     nb_channels = image.shape[2] if image.ndim >= 3 else 1
-    for c_idx in sm.xrange(nb_channels):
+    for c_idx in range(nb_channels):
         # using [0] instead of [int(c_idx)] allows this to work with >4
         # channels
         if image.ndim == 2:

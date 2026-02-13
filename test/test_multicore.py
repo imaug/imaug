@@ -18,7 +18,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 
 import imgaug as ia
 import imgaug.multicore as multicore
@@ -449,7 +448,7 @@ class TestPool(unittest.TestCase):
         augseq = iaa.AddElementwise((0, 255))
         image = np.zeros((10, 10, 1), dtype=np.uint8)
         batch = ia.Batch(images=np.uint8([image, image]))
-        batches = [batch.deepcopy() for _ in sm.xrange(nb_batches)]
+        batches = [batch.deepcopy() for _ in range(nb_batches)]
 
         # seed=1
         with multicore.Pool(augseq, processes=2, maxtasksperchild=30,
@@ -497,7 +496,7 @@ class TestPool(unittest.TestCase):
         # contains images AND keypoints
         kps = ia.KeypointsOnImage([ia.Keypoint(x=2, y=0)], shape=(10, 10, 1))
         batch = ia.Batch(images=np.uint8([image, image]), keypoints=[kps, kps])
-        batches = [batch.deepcopy() for _ in sm.xrange(60)]
+        batches = [batch.deepcopy() for _ in range(60)]
 
         # seed=1
         with multicore.Pool(augseq, processes=2, maxtasksperchild=30,
@@ -546,7 +545,7 @@ class TestPool(unittest.TestCase):
         augseq = iaa.AddElementwise((0, 255))
         image = np.zeros((10, 10, 1), dtype=np.uint8)
         batch = ia.Batch(images=np.uint8([image, image]))
-        batches = [batch.deepcopy() for _ in sm.xrange(20)]
+        batches = [batch.deepcopy() for _ in range(20)]
 
         with multicore.Pool(augseq, processes=2, maxtasksperchild=5) as pool:
             batches_aug = pool.map_batches(batches, chunksize=2)
@@ -565,7 +564,7 @@ class TestPool(unittest.TestCase):
         # batch contains images AND keypoints
         kps = ia.KeypointsOnImage([ia.Keypoint(x=2, y=0)], shape=(10, 10, 1))
         batch = ia.Batch(images=np.uint8([image, image]), keypoints=[kps, kps])
-        batches = [batch.deepcopy() for _ in sm.xrange(20)]
+        batches = [batch.deepcopy() for _ in range(20)]
 
         with multicore.Pool(augseq, processes=2, maxtasksperchild=5) as pool:
             batches_aug = pool.map_batches(batches, chunksize=2)
@@ -589,7 +588,7 @@ class TestPool(unittest.TestCase):
             for batch_aug in batches_aug:
                 ids.add(int(batch_aug.images_unaug.flat[0]))
                 ids.add(int(batch_aug.images_unaug.flat[1]))
-            for idx in sm.xrange(2*100):
+            for idx in range(2*100):
                 assert idx in ids
             assert len(ids) == 200
 
@@ -598,7 +597,7 @@ class TestPool(unittest.TestCase):
             for batch_aug in batches_aug:
                 ids.add(int(batch_aug.images_aug.flat[0]))
                 ids.add(int(batch_aug.images_aug.flat[1]))
-            for idx in sm.xrange(2*100):
+            for idx in range(2*100):
                 assert idx in ids
             assert len(ids) == 200
 
@@ -609,7 +608,7 @@ class TestPool(unittest.TestCase):
         batches = [
             ia.Batch(images=np.uint8([image + b_idx*2, image + b_idx*2+1]))
             for b_idx
-            in sm.xrange(100)]
+            in range(100)]
 
         with multicore.Pool(augseq, processes=2, maxtasksperchild=25) as pool:
             batches_aug = pool.map_batches(batches)
@@ -847,7 +846,7 @@ class Test_Pool_starworker(unittest.TestCase):
 # it is outside of the test as putting it inside of it caused issues
 # with spawn mode not being able to pickle this method, see issue #414.
 def _batch_loader_load_func():
-    for _ in sm.xrange(20):
+    for _ in range(20):
         yield ia.Batch(images=np.zeros((2, 4, 4, 3), dtype=np.uint8))
 # ---------
 
@@ -861,7 +860,7 @@ class TestBatchLoader(unittest.TestCase):
     def test_basic_functionality(self):
         for nb_workers in [1, 2]:
             # repeat these tests many times to catch rarer race conditions
-            for _ in sm.xrange(5):
+            for _ in range(5):
                 loader = multicore.BatchLoader(
                     _batch_loader_load_func, queue_size=2,
                     nb_workers=nb_workers, threaded=True)

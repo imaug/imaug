@@ -18,7 +18,6 @@ except ImportError:
     import pickle
 
 import numpy as np
-import six.moves as sm
 
 import imgaug as ia
 from imgaug import augmenters as iaa
@@ -262,14 +261,14 @@ class Test_blend_alpha(unittest.TestCase):
                     assert np.all(img_blend == v2_scalar)
 
                     # TODO this test breaks for numpy <1.15 -- why?
-                    for c in sm.xrange(3):
+                    for c in range(3):
                         img_fg = np.full((3, 3, c), v1, dtype=dtype)
                         img_bg = np.full((3, 3, c), v2, dtype=dtype)
                         img_blend = blend.blend_alpha(
                             img_fg, img_bg, 0.75, eps=0)
                         assert img_blend.dtype.name == np.dtype(dtype)
                         assert img_blend.shape == (3, 3, c)
-                        for ci in sm.xrange(c):
+                        for ci in range(c):
                             v_blend = min(
                                 max(
                                     int(
@@ -419,7 +418,7 @@ class Test_blend_alpha(unittest.TestCase):
                     assert img_blend.shape == (3, 3, 1)
                     assert _allclose(img_blend, max_float_dt(v2))
 
-                    for c in sm.xrange(3):
+                    for c in range(3):
                         img_fg = np.full((3, 3, c), v1, dtype=dtype)
                         img_bg = np.full((3, 3, c), v2, dtype=dtype)
                         img_blend = blend.blend_alpha(
@@ -684,7 +683,7 @@ class TestBlendAlpha(unittest.TestCase):
         nb_iterations = 1000
         aug = iaa.BlendAlpha((0.0, 1.0), iaa.Add(10), iaa.Add(110))
         values = []
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             observed = aug.augment_image(image)
             observed_val = np.round(np.average(observed)) - 10
             values.append(observed_val / 100)
@@ -741,7 +740,7 @@ class TestBlendAlpha(unittest.TestCase):
             iaa.Add(0),
             per_channel=0.5)
         seen = [0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(np.zeros((1, 1, 100), dtype=np.uint8))
             uq = np.unique(observed)
             if len(uq) == 1:
@@ -989,7 +988,7 @@ class TestBlendAlpha(unittest.TestCase):
         expected_same = cbaoi.deepcopy()
         expected_shifted = cbaoi.shift(x=1)
         seen = [0, 0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = getattr(aug, augf_name)([cbaoi])[0]
 
             assert len(observed.items) == len(expected_same.items)
@@ -1481,7 +1480,7 @@ class TestBlendAlphaElementwise(unittest.TestCase):
             shape=self.kpsoi.shape)
 
         seen = [0, 0]
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_keypoints([kpsoi])[0]
             if keypoints_equal([observed], [expected_same]):
                 seen[0] += 1
@@ -1698,7 +1697,7 @@ class TestBlendAlphaElementwise(unittest.TestCase):
 
         nb_iterations = 400
         seen = [0, 0, 0]
-        for _ in sm.xrange(nb_iterations):
+        for _ in range(nb_iterations):
             observed = getattr(aug, augf_name)([cbaoi])[0]
             # We use here allclose() instead of coords_almost_equals()
             # as the latter one is much slower for polygons and we don't have
@@ -1844,7 +1843,7 @@ class TestBlendAlphaSomeColors(unittest.TestCase):
                                        nb_bins=256, smoothness=0)
 
         nb_grayscaled = []
-        for _ in sm.xrange(50):
+        for _ in range(50):
             image_aug = aug(image=image)
             grayscaled = np.sum((image_aug == image_gray).astype(np.int32),
                                 axis=2)
@@ -2446,7 +2445,7 @@ class TestSomeColorsMaskGen(unittest.TestCase):
         expected_mask_sums = expected_mask_sums.astype(np.float32)
 
         mask_sums = []
-        for i in sm.xrange(50):
+        for i in range(50):
             mask = gen.draw_masks(batch, random_state=i)[0]
 
             mask_sum = int(np.sum(mask))

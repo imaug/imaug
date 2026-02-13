@@ -9,7 +9,6 @@ neural networks. Supports the augmentation of images, keypoints/landmarks, bound
 maps in a variety of different ways."""
 
 INSTALL_REQUIRES = [
-    "six",
     "numpy>=1.21",
     "scipy",
     "Pillow",

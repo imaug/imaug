@@ -14,7 +14,6 @@ from abc import ABCMeta, abstractmethod, abstractproperty
 import os
 import collections
 
-import six
 import numpy as np
 import imageio
 
@@ -78,8 +77,7 @@ def _resizepad_to_size(image, size, cval):
 
 
 # TODO rename to Grid
-@six.add_metaclass(ABCMeta)
-class _IDebugGridCell(object):
+class _IDebugGridCell(object, metaclass=ABCMeta):
     """A single cell within a debug image's grid.
 
     Usually corresponds to one image, but can also be e.g. a title/description.
@@ -1011,8 +1009,7 @@ class _ListOfArraysStats(object):
 
 
 # Added in 0.4.0.
-@six.add_metaclass(ABCMeta)
-class _IImageDestination(object):
+class _IImageDestination(object, metaclass=ABCMeta):
     """A destination which receives images to save."""
 
     def on_batch(self, batch):
@@ -1087,8 +1084,7 @@ class _FolderImageDestination(_IImageDestination):
 
 
 # Added in 0.4.0.
-@six.add_metaclass(ABCMeta)
-class _IBatchwiseSchedule(object):
+class _IBatchwiseSchedule(object, metaclass=ABCMeta):
     """A schedule determining per batch whether a condition is met."""
 
     def on_batch(self, batch):

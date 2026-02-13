@@ -13,7 +13,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 
 import imgaug as ia
 
@@ -74,12 +73,12 @@ class TestHeatmapsOnImage_draw(unittest.TestCase):
         v1 = heatmaps_drawn[0, 0]
         v2 = heatmaps_drawn[0, -1]
 
-        for y in sm.xrange(4):
-            for x in sm.xrange(2):
+        for y in range(4):
+            for x in range(2):
                 assert np.allclose(heatmaps_drawn[y, x], v1)
 
-        for y in sm.xrange(4):
-            for x in sm.xrange(2, 4):
+        for y in range(4):
+            for x in range(2, 4):
                 assert np.allclose(heatmaps_drawn[y, x], v2)
 
 

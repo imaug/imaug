@@ -43,7 +43,6 @@ from __future__ import print_function, division, absolute_import
 import copy as copylib
 
 import numpy as np
-import six.moves as sm
 
 
 # Check if numpy is version 1.17 or later. In that version, the new random
@@ -436,7 +435,7 @@ class RNG(object):
             List containing `n` times this RNG (same instances, no copies).
 
         """
-        return [self for _ in sm.xrange(n)]
+        return [self for _ in range(n)]
 
     @classmethod
     def create_fully_random(cls):
@@ -1333,7 +1332,7 @@ def _derive_generators_np117_(generator, n):
     reset_rng_cache_(rng)
     state = rng.bit_generator.state
     rngs = []
-    for i in sm.xrange(n):
+    for i in range(n):
         state["state"]["state"] += (i * 100003 + 17)
         rng.bit_generator.state = state
         rngs.append(rng)
@@ -1361,7 +1360,7 @@ def _derive_generators_np117_(generator, n):
 
 def _derive_generators_np116_(random_state, n):
     seed_ = random_state.randint(SEED_MIN_VALUE, SEED_MAX_VALUE)
-    return [_convert_seed_to_generator_np116(seed_ + i) for i in sm.xrange(n)]
+    return [_convert_seed_to_generator_np116(seed_ + i) for i in range(n)]
 
 
 def get_generator_state(generator):
@@ -1477,7 +1476,7 @@ def _is_generator_equal_to_np116(random_state, other_random_state):
     # a numpy array and the values at 2-4 being ints/floats, so we can't just
     # apply array_equal to state1[1:4+1] and state2[1:4+1]. We need a loop
     # here.
-    for i in sm.xrange(1, 4+1):
+    for i in range(1, 4+1):
         if not np.array_equal(state1[i], state2[i]):
             return False
     return True

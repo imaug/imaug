@@ -13,7 +13,6 @@ except ImportError:
     import mock
 
 import numpy as np
-import six.moves as sm
 
 from imgaug import augmenters as iaa
 from imgaug import parameters as iap
@@ -495,12 +494,12 @@ class TestConvolve(unittest.TestCase):
             ]])
 
         expected = []
-        for i in sm.xrange(5):
+        for i in range(5):
             expected.append(self.img * i)
 
         aug = iaa.Convolve(matrix=_matrix_generator)
         seen = [False] * 5
-        for _ in sm.xrange(200):
+        for _ in range(200):
             observed = aug.augment_image(self.img)
             found = False
             for i, expected_i in enumerate(expected):
@@ -895,7 +894,7 @@ class TestSharpen(unittest.TestCase):
     )
     nb_iterations = 250
     distances = []
-    for _ in sm.xrange(nb_iterations):
+    for _ in range(nb_iterations):
         observed = aug.augment_image(base_img)
         distance = np.average(
             np.abs(
@@ -935,7 +934,7 @@ class TestSharpen(unittest.TestCase):
     )
     nb_iterations = 250
     distances = []
-    for _ in sm.xrange(nb_iterations):
+    for _ in range(nb_iterations):
         observed = aug.augment_image(base_img)
         distance = np.average(
             np.abs(
