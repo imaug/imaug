@@ -67,7 +67,7 @@ INSTALL_REQUIRES = get_install_requirements(INSTALL_REQUIRES, ALT_INSTALL_REQUIR
 
 setup(
     name="imaug",
-    version="0.4.2",
+    version="0.4.3.dev1",
     author="imaug",
     author_email="ej_foss@mailbox.org",
     url="https://github.com/imaug/imaug",
