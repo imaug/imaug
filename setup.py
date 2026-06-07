@@ -15,8 +15,8 @@ INSTALL_REQUIRES = [
     "Pillow",
     "matplotlib",
     "scikit-image>=0.18",
-    "opencv-python-headless",
-    "opencv-python",
+    "opencv-python-headless<4.13",
+    "opencv-python<4.13",
     "imageio",
     "Shapely",
     "imagecorruptions-imaug>=1.1.4"
