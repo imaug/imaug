@@ -10,13 +10,13 @@ maps in a variety of different ways."""
 
 INSTALL_REQUIRES = [
     "six",
-    "numpy>=1.21",
+    "numpy>=1.21,<2.4",
     "scipy",
     "Pillow",
     "matplotlib",
     "scikit-image>=0.18",
-    "opencv-python-headless<4.13",
-    "opencv-python<4.13",
+    "opencv-python-headless",
+    "opencv-python",
     "imageio",
     "Shapely",
     "imagecorruptions-imaug>=1.1.4"
