@@ -1,7 +1,7 @@
 # pylint: disable=missing-module-docstring
 import re
 
-from pkg_resources import get_distribution, DistributionNotFound
+from importlib import metadata
 from setuptools import setup, find_packages
 
 long_description = """A library for image augmentation in machine learning experiments, particularly convolutional
@@ -19,7 +19,7 @@ INSTALL_REQUIRES = [
     "opencv-python",
     "imageio",
     "Shapely",
-    "imagecorruptions-imaug>=1.1.3",
+    "imagecorruptions-imaug>=1.1.4"
 ]
 
 ALT_INSTALL_REQUIRES = {
@@ -42,9 +42,9 @@ def check_alternative_installation(install_require, alternative_install_requires
     for alternative_install_require in alternative_install_requires:
         try:
             alternative_pkg_name = re.split(r"[!<>=]", alternative_install_require)[0]
-            get_distribution(alternative_pkg_name)
+            metadata.version(alternative_pkg_name)
             return str(alternative_install_require)
-        except DistributionNotFound:
+        except metadata.PackageNotFoundError:
             continue
 
     return str(install_require)
@@ -67,11 +67,11 @@ INSTALL_REQUIRES = get_install_requirements(INSTALL_REQUIRES, ALT_INSTALL_REQUIR
 
 setup(
     name="imaug",
-    version="0.4.2",
+    version="0.4.3.dev1",
     author="imaug",
     author_email="ej_foss@mailbox.org",
     url="https://github.com/imaug/imaug",
-    python_requires='>3.6,<3.14',
+    python_requires='>3.6,<3.15',
     install_requires=INSTALL_REQUIRES,
     extras_require={
         'dev': DEV_REQUIRES,
@@ -103,6 +103,7 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Topic :: Software Development :: Libraries :: Python Modules"
