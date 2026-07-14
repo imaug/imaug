@@ -3886,7 +3886,13 @@ class WithChannels(Augmenter):
             return images
         if ia.is_np_array(images):
             return images[..., self.channels]
-        return [image[..., self.channels] for image in images]
+
+        results = []
+        for image in images:
+            if image.shape[-1] == 0:
+                image = image.reshape(image.shape[:-1] + (1,))
+            results.append(image[..., self.channels])
+        return results
 
     # Added in 0.4.0.
     def _invert_reduce_images_to_channels(self, images_aug, images):
@@ -3894,6 +3900,8 @@ class WithChannels(Augmenter):
             return images_aug
 
         for image, image_aug in zip(images, images_aug):
+            if image.shape[-1] == 0:
+                image = image.reshape(image.shape[:-1] + (1,))
             image[..., self.channels] = image_aug
         return images
 
