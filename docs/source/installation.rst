@@ -3,7 +3,7 @@ Installation
 ============
 
 The library uses python, which must be installed.
-Python 2.7, 3.4, 3.5, 3.6, 3.7 and 3.8 are supported.
+Python 3.10, 3.11, 3.12, 3.13, and 3.14 are supported.
 
 The below sections explain how to install the library in anaconda and pip.
 If you don't know what anaconda (aka conda) is, simply use pip instead.
