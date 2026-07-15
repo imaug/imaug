@@ -2,7 +2,7 @@
 Examples: Segmentation Maps and Masks
 =====================================
 
-``imgaug`` offers support for segmentation map data, such as semantic
+``imaug`` offers support for segmentation map data, such as semantic
 segmentation maps, instance segmentation maps or ordinary masks. Segmentation
 maps can be augmented correspondingly to images. E.g. if an image is rotated
 by 45°, the corresponding segmentation map for that image will also be rotated

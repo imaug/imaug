@@ -2,7 +2,7 @@
 dtype support
 =============
 
-The function ``augment_images()``, which all augmenters in ``imgaug`` offer,
+The function ``augment_images()``, which all augmenters in ``imaug`` offer,
 works by default with numpy arrays. In most cases, these arrays will have the numpy dtype ``uint8``,
 i.e. the images will have values in the range ``[0, 255]``. This is the datatype returned by
 most image loading functions. Sometimes however you may want to augment other datatypes,
@@ -43,7 +43,7 @@ imgaug helper functions
 .. figure:: ../images/dtype_support/imgaug_imgaug.png
     :alt: dtype support imgaug.imgaug
 
-    Dtype support of helper functions in ``imgaug``,
+    Dtype support of helper functions in ``imaug``,
     e.g. ``import imgaug; imgaug.imresize_single_image(array, size)``.
 
 imgaug.augmenters.meta

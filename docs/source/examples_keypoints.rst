@@ -2,7 +2,7 @@
 Examples: Keypoints
 ===================
 
-`imgaug` can handle not only images, but also keypoints/landmarks on these.
+`imaug` can handle not only images, but also keypoints/landmarks on these.
 E.g. if an image is rotated during augmentation, the library can also rotate
 all landmarks correspondingly.
 
