@@ -32,7 +32,6 @@ jobs:
         name: python-package-distributions
         path: dist/
 
-jobs:
   publish-to-testpypi:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
 
