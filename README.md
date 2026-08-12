@@ -177,6 +177,7 @@ All documentation related files of this project are available in the
 <a name="recent_changes"/>
 
 ## Recent Changes
+* **0.4.3**: Added support for Python 3.14
 * **0.4.2**: Added support for python 3.13 
 * **0.4.1**: Added support for python 3.9, 3.10, 3.11, 3.12 and numpy 2
 * **0.4.0**: Added new augmenters, changed backend to batchwise augmentation,
@@ -1275,7 +1276,7 @@ If this library has helped you during your research, feel free to cite it:
             and other imaug contributors},
   title = {{imaug}},
   howpublished = {\url{https://github.com/imaug/imaug}},
-  year = {2025},
-  note = {Online; accessed 25-Mar-2025}
+  year = {2026},
+  note = {Online; accessed 15-Jul-2026}
 }
 ```

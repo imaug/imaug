@@ -2,7 +2,7 @@
 Examples: Bounding Boxes
 ========================
 
-`imgaug` offers support for bounding boxes (aka rectangles, regions of interest).
+`imaug` offers support for bounding boxes (aka rectangles, regions of interest).
 E.g. if an image is rotated during augmentation, the library can also rotate
 all bounding boxes on it correspondingly.
 

@@ -2,7 +2,7 @@
 Examples: Heatmaps
 ========================
 
-``imgaug`` offers support for heatmap-like data. This can be used e.g. for
+``imaug`` offers support for heatmap-like data. This can be used e.g. for
 depth map or keypoint/landmark localization maps. Heatmaps can be augmented
 correspondingly to images, e.g. if an image is rotated by 45°, the
 corresponding heatmap for that image will also be rotated by 45°.
