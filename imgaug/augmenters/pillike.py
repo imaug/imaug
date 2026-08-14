@@ -427,6 +427,8 @@ def autocontrast(image, cutoff=0, ignore=None):
 
 # Added in 0.4.0.
 def _autocontrast_pil(image, cutoff, ignore):
+    cutoff = cutoff.item() if isinstance(cutoff, np.ndarray) else cutoff
+
     # don't return np.asarray(...) as its results are read-only
     return np.array(
         PIL.ImageOps.autocontrast(

@@ -11,7 +11,7 @@ maps in a variety of different ways."""
 INSTALL_REQUIRES = [
     "six",
     "numpy>=1.21",
-    "numpy>=2.3,<2.4 ; python_version >= '3.14'",
+    "numpy>=2.3",
     "scipy",
     "Pillow",
     "matplotlib",
@@ -68,7 +68,7 @@ INSTALL_REQUIRES = get_install_requirements(INSTALL_REQUIRES, ALT_INSTALL_REQUIR
 
 setup(
     name="imaug",
-    version="0.4.3.dev1",
+    version="0.4.3.dev2",
     author="imaug",
     author_email="ej_foss@mailbox.org",
     url="https://github.com/imaug/imaug",
