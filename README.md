@@ -1216,6 +1216,7 @@ erjel               Jelli, Eric
 aleju               Jung, Alexander B.**
 adamwkraft          Kraft, Adam
 Petemir             Laporte, Matias
+tuhlnaa             Lu, Shih-Li
 RephaelMeudec       Meudec, Raphael
 jduanen             Northcutt, Duane
 kilsenp             Pfeiffer, Kilian

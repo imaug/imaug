@@ -193,7 +193,7 @@ def _prevent_zero_size_after_crop_trbl_(height, width, crop_trbl):
 
 def _prevent_zero_size_after_crop_(axis_size, crop_start, crop_end):
     return map(
-        int,
+        lambda x: x.item(),
         _prevent_zero_sizes_after_crops_(
             np.array([axis_size], dtype=np.int32),
             np.array([crop_start], dtype=np.int32),
