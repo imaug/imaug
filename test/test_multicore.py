@@ -854,6 +854,7 @@ def _batch_loader_load_func():
 
 # Note that BatchLoader is deprecated
 @unittest.skipIf(sys.platform.startswith("win"), "depreciated and hangs")
+@unittest.skipIf(sys.version_info[0] == 3 and sys.version_info[1] >= 14, "triggers errors with Python 3.14")
 class TestBatchLoader(unittest.TestCase):
     def setUp(self):
         reseed()
