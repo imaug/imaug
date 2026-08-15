@@ -152,16 +152,16 @@ To deinstall the library, just execute `pip uninstall imaug`.
 ## Documentation
 
 Example jupyter notebooks:
-  * [Load and Augment an Image](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/A01%20-%20Load%20and%20Augment%20an%20Image.ipynb)
-  * [Multicore Augmentation](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/A03%20-%20Multicore%20Augmentation.ipynb)
-  * Augment and work with: [Keypoints/Landmarks](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/B01%20-%20Augment%20Keypoints.ipynb),
-    [Bounding Boxes](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/B02%20-%20Augment%20Bounding%20Boxes.ipynb),
-    [Polygons](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/B03%20-%20Augment%20Polygons.ipynb),
-    [Line Strings](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/B06%20-%20Augment%20Line%20Strings.ipynb),
-    [Heatmaps](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/B04%20-%20Augment%20Heatmaps.ipynb),
-    [Segmentation Maps](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/B05%20-%20Augment%20Segmentation%20Maps.ipynb) 
+  * [Load and Augment an Image](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/A01%20-%20Load%20and%20Augment%20an%20Image.ipynb)
+  * [Multicore Augmentation](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/A03%20-%20Multicore%20Augmentation.ipynb)
+  * Augment and work with: [Keypoints/Landmarks](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/B01%20-%20Augment%20Keypoints.ipynb),
+    [Bounding Boxes](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/B02%20-%20Augment%20Bounding%20Boxes.ipynb),
+    [Polygons](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/B03%20-%20Augment%20Polygons.ipynb),
+    [Line Strings](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/B06%20-%20Augment%20Line%20Strings.ipynb),
+    [Heatmaps](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/B04%20-%20Augment%20Heatmaps.ipynb),
+    [Segmentation Maps](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/B05%20-%20Augment%20Segmentation%20Maps.ipynb)
 
-More notebooks: [imaug-doc/notebooks](https://github.com/imaug/imaug-doc/tree/master/notebooks).
+More notebooks: [imaug/doc/notebooks](https://github.com/imaug/imaug/tree/master/docs/notebooks).
 
 Example ReadTheDocs pages:
 * [Quick example code on how to use the library](http://imaug.readthedocs.io/en/latest/source/examples_basics.html)
@@ -1119,7 +1119,7 @@ for images_aug in augseq.augment_batches(batches, background=True):
 If you need more control over the background augmentation, e.g. to set
 seeds, control the number of used CPU cores or constraint the memory usage,
 see the corresponding
-[multicore augmentation notebook](https://nbviewer.jupyter.org/github/imaug/imaug-doc/blob/master/notebooks/A03%20-%20Multicore%20Augmentation.ipynb)
+[multicore augmentation notebook](https://nbviewer.jupyter.org/github/imaug/imaug/blob/master/docs/notebooks/A03%20-%20Multicore%20Augmentation.ipynb)
 or the API about
 [Augmenter.pool()](https://imaug.readthedocs.io/en/latest/source/api_augmenters_meta.html#imgaug.augmenters.meta.Augmenter.pool)
 and
@@ -1260,6 +1260,7 @@ If this library has helped you during your research, feel free to cite it:
             and Jelli, Eric
             and Kraft, Adam
             and Laporte, Matias
+            and Lu, Shih-Li
             and Meudec, Raphael
             and Northcutt, Duane
             and Pfeiffer, Kilian
@@ -1278,6 +1279,6 @@ If this library has helped you during your research, feel free to cite it:
   title = {{imaug}},
   howpublished = {\url{https://github.com/imaug/imaug}},
   year = {2026},
-  note = {Online; accessed 15-Jul-2026}
+  note = {Online; accessed 15-Aug-2026}
 }
 ```
