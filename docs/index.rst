@@ -1,7 +1,7 @@
-imgaug
+imaug
 ======
 
-`imgaug` is a library for image augmentation in machine learning experiments.
+`imaug` is a library for image augmentation in machine learning experiments.
 It supports a wide range of augmentation techniques, allows to easily combine
 these and to execute them in random order or on multiple CPU cores,
 has a simple yet powerful stochastic interface and can not only augment images,

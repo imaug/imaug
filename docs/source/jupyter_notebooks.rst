@@ -4,8 +4,8 @@
 Jupyter Notebooks
 ==========================
 
-Several jupyter notebooks are available that provide tutorials about `imgaug`'s functionality.
-They are hosted at `imgaug-doc/notebooks <https://github.com/aleju/imgaug-doc/tree/master/notebooks>`_.
+Several jupyter notebooks are available that provide tutorials about `imaug`'s functionality.
+They are hosted at `imaug/docs/notebooks <https://github.com/imaug/imaug/tree/master/docs/notebooks>`_.
 The notebooks can be downloaded to interactively modify the examples.
 
 List of Notebooks:
