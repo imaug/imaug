@@ -33,7 +33,7 @@ registry = {
     'data/500px-Squirrel_posing.jpg': "986e04d38ff5c840d47068749e295e922dc165391a3101c5ae15bec7d3a0b24c",
     'data/960px-Physicist_Stephen_Hawking_in_Zero_Gravity_NASA.jpg': "4654327c4c1dae72e8afb79daec326c0d5be4a91041b432cb3a46da317991097",
     'data/960px-Barack_Obama_family_portrait_2011.jpg': "c28c41bb00d28a6e832ef5d49298837a8973271acd72ca96fd57c3d50c707d8a",
-    'data/960px-Pahalgam_Valley.jpg': "8eeacfeb41e90f8b7e3bb4099b663ce049212aab99413d77138542cb997aa4bf",
+    'data/960px-Pahalgam_Valley.jpg': "3ef201803fd5a4340a342bc3bbf48bf118b08311cde3eea00f834f1401c7921b",
     'data/960px-Iglesia_de_Nuestra_Señora_de_La_Blanca.jpg': "37682593507d49140e6cf52fa04f2b3d38f2d2ca46a0de4e3d3dffb0a601e69f",
     'data/960px-Salad_platter.jpg': "fa834f9780ee5d6e3d6b7a51571251b35995f9b25e6b2be2ca4a97f8b7cf140d",
     'data/1280px-Vincent_van_Gogh-Wheatfield.jpg': "b14b0709ecaf6620407c457030c5b2dd70a48cc75d29f7e5870ccbce48dfa1b1",
